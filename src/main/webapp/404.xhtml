@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template.xhtml">
+
+
+
+	<ui:define name="content">
+		<div class="ui-g">
+			<div class="ui-g-12">
+				
+						<div class="error-img-div">
+							<img src="#{resource['dp-layout/images/404.svg']}" />
+							<h2 class="error-header mb-20 mt-30">
+							الصفحة غير متوفرة
+						</h2>
+						  <p class="error-txt mb-20">
+						لم يتم العثور على عنوان 
+         <br/>المشاركة المطلوب على هذا الخادم
+						  </p>
+						
+						<p:button value="الرجوع الى الصفحة الرئيسية" styleClass="dp-btn" />
+						</div>
+						
+						
+				
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>

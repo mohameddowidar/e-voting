@@ -1,0 +1,136 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Candidate Management</ui:define>
+    <ui:define name="breadCrumb">
+        <p:breadCrumb>
+            <p:menuitem value="Home" url="#"/>
+            <!-- Additional breadcrumb items if needed -->
+        </p:breadCrumb>
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="candidateForm" dir="RTL" style="width:100% !important">
+            <div class="wow zoomIn wHighlight animated web">
+                <div class="ui-g">
+                    <p:growl id="messages" showDetail="true" />
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <div class="main-title">
+                                <h1>إضافة أو تعديل المرشح </h1>
+                            </div>
+                            <hr class="green-line" />
+                            <div class="ui-g">
+                                <!-- Candidate Fields -->
+                                <div class="ui-g-12 ui-lg-12">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>الرقم الوطني </span>
+                                        <p:inputText placeholder=" " id="nationalIdNumberId"
+                                                       process="@this"
+                                                     requiredMessage="National ID is required"
+                                                     value="#{candidateMB.searchNationalId}">
+                                        </p:inputText>
+                                    </label>
+                                </div>
+                                <!-- Search Voter Button -->
+                                <div class="ui-g-12">
+                                    <p:commandButton styleClass="dp-btn mt-5" value="بحث عن مواطن" icon="pi pi-search"
+                                                     actionListener="#{candidateMB.searchVoterByNationalId}"
+                                                     update="candidateForm"
+                                                     process="@form"/>
+                                </div>
+                                <!-- ... Existing fields, including the search button ... -->
+
+                                <!-- Candidate Description Fields -->
+                                <div class="ui-g-12">
+                                    <p:outputPanel id="candidateDetails" rendered="#{candidateMB.selectedVoter ne null}">
+                                        <div class="ui-g-12 ui-lg-3">
+                                            <label class="pure-material-textfield-outlined">
+                                                <span>عنوان</span>
+                                                <p:inputText placeholder=" " value="#{candidateMB.selectedVoter.address}">
+                                                </p:inputText>
+                                            </label>
+                                        </div>
+                                        <div class="ui-g-12 ui-lg-3">
+                                            <label class="pure-material-textfield-outlined">
+                                                <span>تاريخ الميلاد</span>
+                                                <p:calendar id="dob" value="#{candidateMB.selectedVoter.dateOfBirth}" pattern="dd-MM-yyyy" required="true" requiredMessage="Date of Birth is required" />
+                                            </label>
+                                        </div>
+                                        <div class="ui-g-12 ui-lg-3">
+                                            <label class="pure-material-textfield-outlined">
+                                                <span>الرقم الوطني</span>
+                                                <p:inputText placeholder=" " value="#{candidateMB.selectedVoter.nationalId}">
+                                                </p:inputText>
+                                            </label>
+                                        </div>
+                                        <div class="ui-g-12 ui-lg-3">
+                                            <label class="pure-material-textfield-outlined">
+                                                <span>اسم المواطن </span>
+                                                <p:inputText placeholder=" " value="#{candidateMB.selectedVoter.name}">
+                                                </p:inputText>
+                                            </label>
+                                        </div>
+                                        <!-- Additional fields as needed -->
+                                    </p:outputPanel>
+                                </div>
+
+                                <!-- ... Remaining fields and buttons ... -->
+
+                                <!-- Candidate Assignment Fields -->
+                                <div class="ui-g-12 ui-lg-4">
+                                    <label class="pure-material-textfield-outlined">
+                                        <p:selectOneMenu value="#{candidateMB.selectedElectionId}" requiredMessage="Election is required">
+                                            <f:selectItem itemLabel="اختر الانتخابات " itemValue="" noSelectionOption="true"/>
+                                            <f:selectItems value="#{candidateMB.elections}" var="election" itemLabel="#{election.name}" itemValue="#{election.electionId}"/>
+                                        </p:selectOneMenu>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-4">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span> اسم الرمز</span>
+                                        <p:inputText placeholder=" "
+                                                     requiredMessage="Candidate Name is required"
+                                                     value="#{candidateMB.selectedCandidate.symbolName}">
+                                        </p:inputText>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-4">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>الحزب المنتمي</span>
+                                        <p:inputText placeholder=" "
+                                                     requiredMessage="Affiliated Party is required"
+                                                     value="#{candidateMB.selectedCandidate.affiliatedParty}">
+                                        </p:inputText>
+                                    </label>
+                                </div>
+
+
+                                <div class="ui-g-12 ui-lg-12">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>السيرة الذاتية</span>
+                                        <p:inputTextarea value="#{candidateMB.selectedCandidate.biography}"
+                                                         requiredMessage="Biography is required" cols="5" rows="8" />
+                                    </label>
+                                </div>
+
+
+                                <!-- Save and Back Buttons -->
+                                <div class="ui-g-12">
+                                    <div class="ui-g-12 ui-lg-8 btn-left">
+                                        <p:commandButton styleClass="dp-btn mt-5" value="Save" icon="pi pi-save" actionListener="#{candidateMB.save}" update="@form"
+                                                         rendered="#{candidateMB.selectedVoter ne null}" />
+                                        <p:button class="dp-btn" icon="pi pi-step-backward" outcome="candidates.xhtml" value="Back" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

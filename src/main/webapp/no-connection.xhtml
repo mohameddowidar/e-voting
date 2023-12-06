@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+
+
+    <ui:define name="content">
+        <div class="ui-g">
+            <div class="ui-g-12">
+
+                <div class="error-img-div">
+                    <img src="#{resource['dp-layout/images/no-connection.svg']}" />
+                    <h2 class="error-header mb-20 mt-30">
+                        لا يوجد اتصال
+                    </h2>
+                    <p class="error-txt mb-20">
+                        غير قادر على الاتصال بالانترنت. تحقق من
+                        <br/>اتصال الإنترنت أو اتصل بالمسؤولحظرها حسب تفضيلات الأمان
+                    </p>
+
+                    <p:button value="التواصل مع الفني" styleClass="dp-btn ml-10" />
+                    <p:button value="إعادة تحميل الصفحة" styleClass="outlined-dp-btn mr-10" />
+                </div>
+
+
+
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

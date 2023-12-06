@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template.xhtml">
+	
+
+	<ui:define name="breadCrumb">
+		<h:form id="breadCrumbForm">
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#" />
+				<p:menuitem value="مختلفة" url="#" />
+				<p:menuitem value="مختلفة" url="#" disabled="true" />
+			</p:breadCrumb>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="content">
+
+			<div class="ui-g">
+			<div class="ui-g-12">
+			
+			<div class="error-img-div">
+							<img src="#{resource['dp-layout/images/coming-soon.png']}" />
+							<h2 class="error-header mb-20">
+							قريبا 
+						</h2>
+						  <p class="error-txt mb-20">المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤ.</p>
+						
+						<p:button value="ماا لعرفه" styleClass="dp-btn" />
+						</div>
+				
+					
+						
+						
+				
+			</div>
+		</div>
+		<script>
+			const second = 1000,
+			      minute = second * 60,
+			      hour = minute * 60,
+			      day = hour * 24;
+			
+			let countDown = new Date('Mar 10, 2019 00:00:00').getTime(),
+			    x = setInterval(function() {
+			
+			      let now = new Date().getTime(),
+			          distance = countDown - now;
+			
+			      document.getElementById('days').innerText = Math.floor(distance / (day)),
+			        document.getElementById('hours').innerText = Math.floor((distance % (day)) / (hour)),
+			        document.getElementById('minutes').innerText = Math.floor((distance % (hour)) / (minute)),
+			        document.getElementById('seconds').innerText = Math.floor((distance % (minute)) / second);
+			    }, second)
+			    
+			</script>
+		
+		
+	</ui:define>
+</ui:composition>

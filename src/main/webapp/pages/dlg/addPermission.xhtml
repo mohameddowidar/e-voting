@@ -1,0 +1,72 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        template="/WEB-INF/template.xhtml"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+
+    <h:form id="addPermissionForm">
+
+        <p:dialog id="addPermissionDlg" dynamic="true" widgetVar="addPermissionDlg" width="50%" modal="true" class="top" draggable="false">
+            <div class="ui-g">
+                <div class="ui-g-12">
+
+                    <h1 class="sub-title"><h:outputText value="#{permissionController.currentBreadcrumb}"/></h1>
+                </div>
+            </div>
+            <h:panelGroup id="permissionPanel">
+                <div class="ui-g-12">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        
+                        <span class="ui-float-label full-w-input "> 
+                                            <p:inputText id="newPermission" value="#{permissionController.newPermission}" required="true" requiredMessage="الرجاء ادخال الأحقية"   /> 
+                                            <p:outputLabel  value="الأحقية" />
+			</span>
+                        
+                    
+                    </div>
+
+                    <div class="ui-g-12">
+                        <p:message for="newPermission"/>
+                    </div>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        
+                        <span class="ui-float-label full-w-input "> 
+                                            <p:inputText  value="#{permissionController.newPermissionDesc}"   /> 
+                                            <p:outputLabel  value="وصف احقية" />
+					</span>
+                        
+                      
+                    </div>
+                </div>
+
+                <p:panel styleClass="panel-style3">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                             <span class="ui-float-label full-w-input "> 
+                                            <p:inputText  value="#{permissionController.roleName}"   /> 
+                                            <p:outputLabel  value=" اسم الأحقية الخاص يجب أن يتكون من اللغة الانجليزية بدون حروف خاصه او مسافات" />
+					</span>
+                            
+                            
+                         
+                        </div>
+                    </div>
+                </p:panel>
+                     <div class="ui-g-12 ui-lg-12 btn-left">
+                    <p:commandButton styleClass="dp-btn dp-btn-danger"  icon="bx bx-x"  value="#{msg['cancel']}" ajax="false" onclick="PF('addPermissionDlg').hide();return false;" />
+                    <p:commandButton  value="حفظ" icon="bx bxs-save" class="dp-btn"
+                                      actionListener="#{permissionController.savePermission}" />
+                </div>
+                </div>
+            </h:panelGroup>
+         
+        </p:dialog>
+    </h:form>
+</f:view>
+
+
+

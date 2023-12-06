@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Dubai Police Smart CMS</ui:define>
+    <ui:define name="breadCrumb">
+        <p:breadCrumb>
+            <p:menuitem value="Home" url="#"/>
+        </p:breadCrumb>
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="voterFormId" name="voterFormId" dir="RTL" style="width:100% !important" >
+            <div class="wow zoomIn wHighlight animated web">
+                <div class="ui-g" id="searchDiv">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-lg-4">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>اسم الناخب</span>
+                                        <p:inputText class=""
+                                                     placeholder=" "
+                                                     filter="true" required="false"
+                                                     requiredMessage="اسم الناخب"
+                                                     value="#{voteMB.voteLazyDataModel.searchDTO.title}">
+                                        </p:inputText>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-4">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>رقم الهوية الوطنية</span>
+                                        <p:inputText class=""
+                                                     placeholder=" "
+                                                     filter="true" required="false"
+                                                     requiredMessage="رقم الهوية الوطنية"
+                                                     value="#{voteMB.voteLazyDataModel.searchDTO.nationalId}">
+                                        </p:inputText>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12">
+                                    <div class="ui-g-12 ui-lg-8 btn-left">
+                                        <p:commandButton styleClass="dp-btn mt-5"  value="بحث"
+                                                         icon="pi pi-search" update="voterFormId:voterSearchTable"
+                                                         id="search-btn" />
+
+                                        <p:commandButton styleClass="dp-btn mt-5"   value="إعادة تعيين حقول البحث" icon="pi pi-sync"
+                                                         actionListener="#{voteMB.clearSearchFields}"
+                                                         update="@form" />
+                                    </div>
+                                </div>
+                                <div class="ui-g-12">
+                                    <p:dataTable var="content"
+                                                 value="#{voteMB.voteLazyDataModel}" paginator="true"
+                                                 rows="5"
+                                                 paginatorTemplate="{RowsPerPageDropdown} {LastPageLink}  {NextPageLink} {CurrentPageReport}  {PreviousPageLink} {FirstPageLink}"
+                                                 rowsPerPageTemplate="20,40,60,80" id="voterSearchTable" lazy="true"
+                                                 paginatorPosition="bottom" styleClass="fixed-size ui-ltr"
+                                                 varStatus="index" metaKeySelection="false"
+                                                 nativeElements="true" rowKey="#{content.mediaId}" dir="rtl" >
+                                        <f:facet name="header">
+                                            جميع الأصوات
+                                        </f:facet>
+                                        <f:facet name="emptyMessage">
+                                            <div class="datatable-empty-image">
+                                                <img class="dplogo" src="#"/>
+                                            </div>
+                                            <p>لم يتم العثور على نتائج</p>
+                                        </f:facet>
+                                        <p:column headerText="اسم الناخب">
+                                            <h:outputText value="#{content.voter.name}" />
+                                        </p:column>
+
+                                        <p:column headerText="تاريخ الميلاد">
+                                            <h:outputText value="#{content.voter.dateOfBirth}">
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+
+                                        <p:column headerText="عنوان">
+                                            <h:outputText value="#{content.voter.address}" />
+                                        </p:column>
+                                        <p:column headerText="رقم الهوية الوطنية">
+                                            <h:outputText value="#{content.voter.nationalId}" />
+                                        </p:column>
+                                        <p:column headerText="عمر">
+                                            <h:outputText value="#{content.voter.age}" />
+                                        </p:column>
+                                        <p:column headerText="صوت ل">
+                                            <h:outputText value="#{content.candidate.voter.name}" />
+                                        </p:column>
+                                        <p:column headerText="نوع الانتخابات">
+                                            <h:outputText value="#{content.election.name}" />
+                                        </p:column>
+                                        <p:column headerText="حذف" >
+                                            <p:commandLink
+                                                    actionListener="#{voteMB.deleteVote(content)}" update="@form" immediate="true">
+                                                <p:confirm header="Confirmation" message="هل أنت متأكد؟"  icon="pi pi-user-edit"/>
+                                                <i class="pi pi-ban" style="padding-left:4px;" aria-hidden="true"></i>
+                                            </p:commandLink>
+                                        </p:column>
+                                    </p:dataTable>
+                                </div>
+                            </div>
+                        </div>
+                        <p:confirmDialog global="true" showEffect="fade"
+                                         hideEffect="fade">
+                            <p:commandButton value="نعم" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                            <p:commandButton value="لا" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                        </p:confirmDialog>
+                    </div>
+
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

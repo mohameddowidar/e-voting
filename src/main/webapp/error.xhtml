@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template.xhtml">
+
+	<ui:define name="breadCrumb">
+		<h:form id="breadCrumbForm">
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#" />
+				<p:menuitem value="مختلفة" url="#" />
+				<p:menuitem value="مختلفة" url="#" disabled="true" />
+			</p:breadCrumb>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="content">
+		<div class="ui-g">
+			<div class="ui-g-12">
+				<div class="card animated wow zoomIn wHighlight" data-wow-delay=".35s">
+						<div class="error-img-div">
+							<img src="#{resource['barcelona-layout/images/404.png']}" />
+							<div class="error-header">
+							لهذا خطأ!
+						</div>
+						<p> لم يتم العثور على عنوان
+URL / المشاركة المطلوب على هذا الخادم.
+
+						</p>
+						<div class="cust-margin">
+								<p:commandLink class="cml-btn"><h:outputLabel value="إماا نعرفه"/></p:commandLink>
+							</div>
+						</div>
+						
+						
+				</div>
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>

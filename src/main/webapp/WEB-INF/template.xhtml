@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="shortcut icon" type="image/png" href="#{resource['dp-layout/images/fav.png']}" />
+	</f:facet>
+	<title><ui:insert name="title">Dubai Police</ui:insert></title>
+
+	
+	
+
+
+	<ui:insert name="head" />
+</h:head>
+
+<h:body styleClass="main-body">
+	<div class="layout-wrapper layout-rtl">
+      
+		<ui:include src="/WEB-INF/topbar.xhtml" />
+
+		<div class="layout-main">
+			<ui:include src="/WEB-INF/ui-sidebar-menu.xhtml" />
+			<div class="side-left">
+				<div class="top-breadcm">
+					<div class="ui-g">
+						<div class="ui-g-8" style="padding: 0;">
+							<div class="nav-section left-navbar animated wow zoomIn wHighlight" data-wow-delay=".35s">
+								<button type="button" id="sidebarCollapse" class="left-navbar-btn">
+									<i class="material-icons nav-close nav-hide">menu</i> <i class="material-icons nav-open">navigate_next</i>
+								</button>
+							</div>
+							<div class="breadcrumb-div">
+							<!-- <ui:include src="/WEB-INF/breadcrumb.xhtml" /> -->
+                                                        <ui:include src="/WEB-INF/switch.xhtml" />
+								
+							</div>
+						</div>
+						<div class="ui-g-1">
+							<div class="left-search">
+								<ui:include src="/WEB-INF/search.xhtml" />
+							</div>
+						</div>
+						<div class="ui-g-3">
+							<div class="left-switch">
+								<!-- <ui:include src="/WEB-INF/switch.xhtml" /> -->
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div>
+					<ui:insert name="main-menu"></ui:insert>
+					<!-- <ui:include src="/WEB-INF/main-menu.xhtml" /> -->
+				</div>
+				
+				<div class="scroll-div">
+					<div class="content-area">
+					
+						<ui:insert name="content" /> 
+					<!-- 	<ui:include src="/WEB-INF/menu.xhtml" /> -->
+						
+						
+					</div>
+					<ui:include src="/WEB-INF/footer.xhtml" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<p:ajaxStatus onstart="PF('intraThemeLoaderDialog').show()" onsuccess="PF('intraThemeLoaderDialog').hide()" />
+
+	<p:dialog styleClass="loaderGif" widgetVar="intraThemeLoaderDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+		
+                <img src="#{resource['/images/loader.gif']}" />
+	</p:dialog>
+
+
+        
+        
+        
+        
+        
+	<h:outputStylesheet name="css/dubai-police-icon.css" library="dp-layout" />
+	<!--<h:outputStylesheet name="css/fontello.css" library="dp-layout" /> -->
+	<h:outputStylesheet name="css/nanoscroller.css" library="dp-layout" />
+	<h:outputStylesheet name="css/animate.css" library="dp-layout" />
+	<h:outputStylesheet name="css/wow.css" library="dp-layout" />
+	<h:outputStylesheet name="css/ripple.css" library="dp-layout" />
+	<h:outputStylesheet name="css/aos.css" library="dp-layout" />
+	<h:outputStylesheet name="css/boxicons.min.css" library="dp-layout" />
+	<h:outputStylesheet name="css/dp-style.css" library="dp-layout" />
+	<!-- <h:outputStylesheet name="css/layout-intra-green.css" library="dp-layout" /> -->
+	<h:outputStylesheet name="fonts/fontawesome/all.css" library="dp-layout" />
+	<h:outputStylesheet name="fonts/fontawesome-old/font-awesome.min.css" library="dp-layout" />
+        <h:outputStylesheet name="css/style.css"  />
+        
+        <h:outputStylesheet name="css/gijgo.min.css" library="dp-layout" />
+        
+        
+
+
+	<h:outputScript name="js/nanoscroller.js" library="dp-layout" />
+	<h:outputScript name="js/sidebar-n.js" library="dp-layout" />
+	<h:outputScript name="js/wow.min.js" library="dp-layout" />
+	<h:outputScript name="js/layout.js" library="dp-layout" />    
+        <h:outputScript name="js/date_time.js" library="dp-layout" />
+	<h:outputScript name="js/aos.js" library="dp-layout" />
+	 <h:outputScript name="js/customjs.js" library="dp-layout" />
+	<h:outputScript name="js/ripple.js" library="dp-layout" />
+      
+        
+	
+        
+        
+	<script>
+		$(".menu-toggle").on('click', function() {
+			$(this).toggleClass("on");
+			$('.menu-section').toggleClass("on");
+			$("nav ul").toggleClass('hidden');
+		});
+	</script>
+	
+<script>
+
+
+$( ".table-search-btn" ).click(function() {
+	  $('.table-search-btn').toggleClass('tb-search-active');
+	  $('.search-table').toggleClass('header-bg');
+	  $( ".search-content-div" ).slideToggle( "fast", function() {
+	    // Animation complete.
+	  });
+	});
+
+
+</script>
+
+
+	<script>
+	var	localStorage = window.localStorage;
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar-inner').toggleClass('sidebar-inner-sm');
+			});
+			
+		
+		});
+	</script>
+	
+
+	<script>
+	$(".scroll-div").scroll(function () {
+    $("input") .datepicker('hide');
+    $("input").blur();
+        
+    $(".ui-selectonemenu-panel").hide(200);
+    $(".ui-selectonemenu-panel").blur();
+        
+    $(".ui-autocomplete-item").hide(200);
+    $(".ui-autocomplete-item").blur();
+        
+    $(".ui-selectcheckboxmenu-panel").hide(200);
+    $(".ui-selectcheckboxmenu-panel").blur();
+    
+    });
+	</script>
+
+
+
+	<script>
+	$(".gj-timepicker").click(function() {
+		$( ".gj-timepicker .gj-textbox-md").addClass( "time-date-div");
+		$( ".time-label").addClass( "label-top");
+		});
+	
+	$(".gj-datepicker").click(function() {
+		$( ".gj-datepicker .gj-textbox-md").addClass( "time-date-div");
+		$( ".date-label").addClass( "label-top");
+		});
+	</script>
+
+
+
+	<script>
+	      if($(window).width() &lt; 600) {
+	              $('#sidebar-inner').addClass('sidebar-inner-sm');
+	              $('.nav-open').addClass('nav-hide');
+	              $('.nav-close').removeClass('nav-hide')
+	          }else{
+	              $('#sidebar-inner').addClass('sidebar-inner');
+	              $('#sidebar-inner').removeClass('sidebar-inner-sm');
+	          }
+    </script>
+
+<script>
+$(document).ready(function(){
+    $(".ui-fileupload-choose").click(function(){
+        $(".ui-fileupload-files").addClass("upload-height");
+       
+    });
+    
+    $('.ui-fileupload-upload').click(function(){
+        $(".ui-fileupload-files").removeClass("upload-height");
+       
+    });
+});
+</script>
+        
+          <script>
+
+            const index = window.location.href.indexOf('#{request.contextPath}');
+            const url = window.location.href.substring(index);
+            $('.top-main-menu').find('a').each(function () {
+                if ($(this).attr('href').includes(url)) {
+                    $(this).addClass('active');
+                } else {
+                    $(this).removeClass('active');
+                }
+            });
+        </script>
+
+
+	
+
+</h:body>
+</html>

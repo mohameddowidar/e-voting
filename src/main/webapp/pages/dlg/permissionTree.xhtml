@@ -1,0 +1,43 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        template="/WEB-INF/template.xhtml"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+    <style>
+        .ui-dialog-content .ui-widget-content{
+            height: 500px;padding-bottom: 0px;
+        }
+
+    </style>
+    <h:form id="treeForm">
+        <p:growl life="5000" id="msg" showDetail="true"/>
+        <p:dialog  header="
+                   لائحة الأحقيات
+                   " minHeight="40"  id="treeFormDlg" dynamic="true" widgetVar="treeFormDlg" width="35%" modal="true" class="top" draggable="false">
+
+            <p:tree filterMatchMode="contains" var="node" styleClass="tree-list-div " 
+                    filterBy="#{node.permissionName}" dynamic="true"
+                    id="treeNodeId"
+                    value="#{permissionUserLogController.root}"
+                    selectionMode="single"
+                    selection="#{permissionUserLogController.selectedNode}">
+
+                <p:treeNode type="Folder" expandedIcon="bx bxs-folder-open fa-2x"
+                            collapsedIcon="bx bxs-folder fa-2x">
+                    <h:outputText value="#{node.permissionName}" />
+                </p:treeNode>
+
+                <p:treeNode type="Key" expandedIcon="bx bxs-folder-open fa-2x"
+                            collapsedIcon="bx bx-key fa-2x">
+                    <h:outputText value="#{node.permissionName}" />
+                </p:treeNode>
+                <p:ajax event="select" update=":mainForm:permPath" listener="#{permissionUserLogController.onNodeSelect}" />
+            </p:tree>
+
+        </p:dialog>
+    </h:form>
+</f:view>
+
+
+

@@ -1,0 +1,3280 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:sec="http://www.springframework.org/security/tags"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/WEB-INF/template.xhtml">
+
+
+
+
+	<ui:define name="breadCrumb">
+		<h:form id="breadCrumbForm">
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#" />
+				<p:menuitem value="مختلفة" url="#" />
+				<p:menuitem value="مختلفة" url="#" disabled="true" />
+			</p:breadCrumb>
+		</h:form>
+	</ui:define>
+
+
+	<ui:define name="content" styleClass="content-height">
+		<h:form id="form">
+			
+			<div class="ui-g">
+			
+
+			
+				<div class="input-div-onepage" id="section1">
+				<div class="ui-g-12 ui-md-6 ui-lg-12">
+				<h4 class="h2-heading ">Input Styles  <span class="material-icons">info</span> </h4>
+				</div>
+					<div class="ui-g-12">
+
+						
+						<div class="card">
+							<div class="ui-g">
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label full-w-input "> <p:inputText
+											id="float-input"  /> <p:outputLabel for="@previous"
+											value="ملصق" />
+									</span>
+
+
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label full-w-input"> <p:inputText
+											id="float-input2" value="تعديل ملف" /> <p:outputLabel
+											for="@previous" value="ملصق" />
+									</span>
+								</div>
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label"> <p:inputNumber id="input1" 
+											modifyValueOnWheel="false" /> <p:outputLabel for="input1"
+											value="Input Number" />
+									</span>
+								</div>
+
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label full-w-input"> <p:inputMask
+											id="phone" mask="(999) 999-9999" validateMask="false" /> <p:outputLabel
+											for="phone" value="Phone" />
+									</span>
+								</div>
+
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+
+
+									<span class="ui-float-label"> <p:selectOneMenu
+											id="console1" style="width:100%" value=" "
+											styleClass="select-full-w">
+											<f:selectItem itemLabel="select any option" itemValue="" />
+											<f:selectItem itemLabel="Option1ddddd" itemValue="Option1" />
+											<f:selectItem itemLabel="Option2" itemValue="Option2" />
+											<f:selectItem itemLabel="Option3" itemValue="Option3" />
+											<f:selectItem itemLabel="Option4" itemValue="Option3" />
+											<f:selectItem
+												itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+												itemValue="Option3" />
+											<f:selectItem itemLabel="Option6" itemValue="Option3" />
+											<f:selectItem itemLabel="Option7" itemValue="Option3" />
+											<f:selectItem itemLabel="Option8" itemValue="Option3" />
+											<f:selectItem itemLabel="Option9" itemValue="Option3" />
+											<f:selectItem itemLabel="Option10" itemValue="Option3" />
+											<f:selectItem itemLabel="Option11" itemValue="Option3" />
+											<f:selectItem itemLabel="Option12" itemValue="Option3" />
+
+
+										</p:selectOneMenu> <p:outputLabel for="@this" value="Basic Select" />
+									</span>
+
+
+
+								</div>
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+
+
+									<span class="ui-float-label"> <p:selectOneMenu
+											id="console2" style="width:100%" value=" "
+											styleClass="select-full-w" filter="true">
+											<f:selectItem itemLabel="select any option" itemValue="" />
+											<f:selectItem itemLabel="Option1" itemValue="Option1" />
+											<f:selectItem itemLabel="Option2" itemValue="Option2" />
+											<f:selectItem itemLabel="Option3" itemValue="Option3" />
+											<f:selectItem itemLabel="Option4" itemValue="Option3" />
+											<f:selectItem
+												itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+												itemValue="Option3" />
+											<f:selectItem itemLabel="Option6" itemValue="Option3" />
+											<f:selectItem itemLabel="Option7" itemValue="Option3" />
+											<f:selectItem itemLabel="Option8" itemValue="Option3" />
+											<f:selectItem itemLabel="Option9" itemValue="Option3" />
+											<f:selectItem itemLabel="Option10" itemValue="Option3" />
+											<f:selectItem itemLabel="Option11" itemValue="Option3" />
+											<f:selectItem itemLabel="Option12" itemValue="Option3" />
+
+
+										</p:selectOneMenu> <p:outputLabel for="@this" value="Filter Select" />
+									</span>
+
+
+
+								</div>
+
+
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label"> <p:selectCheckboxMenu
+											appendTo="@this" label="Cities" multiple="true" filter="true"
+											styleClass="select-full-w" filterMatchMode="startsWith">
+											<f:selectItem itemLabel="الكل" itemValue="yewue1" />
+											<f:selectItem itemLabel="الأحمر" itemValue="yewue2" />
+											<f:selectItem itemLabel="الأزرق" itemValue="yewu3e" />
+											<f:selectItem itemLabel="الأرجواني" itemValue="yewue4" />
+
+										</p:selectCheckboxMenu> <p:outputLabel for="@this" value="Checkbox Menu" />
+									</span>
+								</div>
+
+
+
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label"> <p:autoComplete id="dd2"
+											dropdown="true" value="#{autoCompleteView.txt6}"
+											placeholder=" "
+											completeMethod="#{autoCompleteView.completeText}" /> <p:outputLabel
+											for="@this" value="Auto complete View" />
+									</span>
+								</div>
+
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label"> <p:spinner placeholder=" "
+											value="0" /> <p:outputLabel for="@this" value="Spinner" />
+									</span>
+								</div>
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label time-picker"> <p:inputText
+											class="timepicker1" /> <p:outputLabel for="@this"
+											value="Time picker" styleClass="time-label" />
+									</span>
+								</div>
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label time-picker"> <p:inputText
+											class="datepicke1" /> <p:outputLabel for="@this"
+											value="Date picker" styleClass="date-label" />
+									</span>
+								</div>
+
+
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label full-w-input"> <p:calendar
+											id="p-datepicker" showOn="button"
+											value="#{calendarView.date5}" locale="de" navigator="true"
+											pattern="yyyy-MMM-dd" /> <p:outputLabel for="p-datepicker"
+											value="Date Picker" />
+									</span>
+								</div>
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label full-w-input"> <p:datePicker
+											id="timeonly" timeOnly="true" pattern="HH:mm" showIcon="true" />
+										<p:outputLabel for="timeonly" value="Time Picker" />
+									</span>
+								</div>
+
+								<div class="ui-g-12 ui-md-6 ui-lg-4">
+									<span class="ui-float-label full-w-input"> <p:keyboard
+											id="rtl" value="#{keyboardView.value1}" dir="rtl" /> <p:outputLabel
+											for="@previous" value="Keyboard" />
+									</span>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-4"></div>
+
+								<div class="ui-g-12 ui-md-6 ui-lg-6">
+									<div class="ui-float-label">
+										<p:inputTextarea rows="6" cols="33" />
+										<p:outputLabel for="@previous" value="ملصق" />
+									</div>
+								</div>
+
+
+								<div class="ui-g-12 ui-md-6 ui-lg-6">
+									<span class="ui-float-label full-w-input"> <p:signature
+											style="width:400px;height:200px" widgetVar="sig"
+											value="#{signatureView.value}" guideline="true" /> <p:outputLabel
+											for="@previous" value="Signature" />
+									</span>
+
+									<div class="btn-left">
+										<p:commandButton value="Save" styleClass="dp-btn-icon"
+											iconPos="right" icon="bx bxs-save" update="output" />
+										<p:commandButton value="Clear"
+											styleClass="dp-btn-icon dp-btn-danger" iconPos="right"
+											icon="bx bxs-eraser" type="button"
+											onclick="PF('sig').clear()" />
+									</div>
+
+									<p:outputPanel id="output">
+										<h:outputText rendered="#{not empty signatureView.value}"
+											style="font-size:1.5rem" styleClass="p-d-block p-mb-2"
+											value="Your Signature" />
+										<p:signature style="width:400px;height:200px;"
+											value="#{signatureView.value}" readonly="true"
+											rendered="#{not empty signatureView.value}"
+											backgroundColor="#eaeaea" color="#03a9f4" />
+									</p:outputPanel>
+
+								</div>
+
+								
+
+
+
+
+
+
+
+
+
+
+							</div>
+						</div>
+
+
+					</div>
+					<div class="ui-g-12">
+
+						
+						<div class="card">
+							<div class="ui-g">
+
+						
+							<div class="ui-g-12 ui-md-12 ui-lg-4">
+							<label class="pure-material-textfield-outlined">
+							<p:inputText id="input05" placeholder="test23" />
+							<span>input1</span>
+							</label>
+							</div>
+							<div class="ui-g-12 ui-md-12 ui-lg-4">
+							<label class="pure-material-textfield-outlined">
+							<p:inputText id="input06" placeholder="test423" />
+							<span>input2</span>
+							</label>
+							</div>
+							<div class="ui-g-12 ui-md-12 ui-lg-4">
+							<label class="pure-material-textfield-outlined">
+							<p:inputText id="input07" placeholder=" " />
+							<span>input3</span>
+							</label>
+							</div>
+							<div class="ui-g-12 ui-lg-4">
+						
+							
+							
+									<label class="pure-material-textfield-outlined"> 
+									<p:selectOneMenu
+											id="console52" style="width:100%" value=" "
+											 filter="true">
+											<f:selectItem itemLabel="select any option" itemValue="" />
+											<f:selectItem itemLabel="Option1" itemValue="Option1" />
+											<f:selectItem itemLabel="Option2" itemValue="Option2" />
+											<f:selectItem itemLabel="Option3" itemValue="Option3" />
+											<f:selectItem itemLabel="Option4" itemValue="Option3" />
+											<f:selectItem
+												itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+												itemValue="Option3" />
+											<f:selectItem itemLabel="Option6" itemValue="Option3" />
+											<f:selectItem itemLabel="Option7" itemValue="Option3" />
+											<f:selectItem itemLabel="Option8" itemValue="Option3" />
+											<f:selectItem itemLabel="Option9" itemValue="Option3" />
+											<f:selectItem itemLabel="Option10" itemValue="Option3" />
+											<f:selectItem itemLabel="Option11" itemValue="Option3" />
+											<f:selectItem itemLabel="Option12" itemValue="Option3" />
+
+
+										</p:selectOneMenu>	<span>select One Menu</span>
+									</label>
+							</div>
+							
+							
+							<div class="ui-g-12 ui-lg-4">
+								<label class="pure-material-textfield-outlined">
+								<p:selectOneMenu appendTo="@this" style="width:100%" id="console212" value="#{selectOneMenuView.console}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+									<f:selectItem itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config 33 during the configured idle timeout of 5 seconds" itemValue="PS4" />
+									<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+								</p:selectOneMenu>
+								<span>select One Menu</span>
+								</label>
+							</div>
+							<div class="ui-g-12 ui-lg-4 calendar-label">
+								<p:outputLabel for="german4" value="German" />
+        						<p:calendar id="german4" showOn="button" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" placeholder=" from Date" />
+        					</div>
+        					<div class="ui-g-12 ui-lg-4 calendar-label">
+								<p:outputLabel for="german124" value="German" />
+        						<p:calendar id="german124" showOn="button" value="#{calendarView.date5}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+        					</div>
+							
+						
+							
+							
+														
+							<div class="ui-g-12 ui-lg-4">
+									<h:form>
+									<label class="pure-material-textfield-outlined">
+									<p:selectCheckboxMenu appendTo="@this" label="Cities" multiple="true" style="width:100%" filter="true" placeholder=" " filterMatchMode="startsWith">
+										<f:selectItem itemLabel="test1" itemValue="yewue1" />
+										<f:selectItem itemLabel="test2" itemValue="yewue2" />
+										<f:selectItem itemLabel="test3" itemValue="yewu3e" />
+										<f:selectItem itemLabel="test4" itemValue="yewue4" />
+										<f:selectItem itemLabel="test5" itemValue="yewue5" />
+										<f:selectItem itemLabel="test6" itemValue="yewue6" />
+										<f:selectItem itemLabel="test7" itemValue="yewue7" />
+										<f:selectItem itemLabel="test8" itemValue="yewue8" />
+									</p:selectCheckboxMenu>
+									<span>Checkbox Menu</span>
+									</label>
+								  </h:form>
+							</div>
+							
+							<div class="ui-g-12 ui-lg-4">
+								<label class="pure-material-textfield-outlined">
+								<p:spinner placeholder=" " value="0" />
+								<span>Spinner</span>
+								</label>
+							</div>
+							
+							<div class="ui-g-12 ui-lg-4">
+								<label class="pure-material-textfield-outlined">
+								<p:selectOneMenu appendTo="@this" style="width:100%" id="console4rer4" value="#{selectOneMenuView.console}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+									<f:selectItem itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the " itemValue="PS4" />
+									<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+								</p:selectOneMenu>
+								<span>Select One</span>
+								</label>
+							</div>
+							
+							
+							<div class="ui-g-12 ui-lg-4">
+							<label class="pure-material-textfield-outlined autocomplete-view">
+								
+							<p:autoComplete id="dd24" dropdown="true" value="#{autoCompleteView.txt6}" placeholder=" " completeMethod="#{autoCompleteView.completeText}"  />
+							<span>Auto complete View</span>
+							</label>
+							</div>
+							
+							<div class="ui-g-12 ui-lg-12">
+							<label class="pure-material-textfield-outlined">
+								<p:inputTextarea rows="5" placeholder=" " />
+								<span>Your Message</span>
+							</label>
+							</div>
+							
+							
+						
+
+
+
+							</div>
+						</div>
+
+
+					</div>
+				
+				
+				</div>
+
+
+
+
+				<div class="button-div-onepage" id="section2">
+					<div class="ui-g-12 ui-md-6 ui-lg-12">
+						<h4 class="h2-heading">Button Styles</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+									<h3 class="headline-bold mb-25">Default Button with icon</h3>
+									<div class="btn-right">
+										<p:button value="Save" styleClass="dp-btn mb-10" />
+										<p:button value="Save" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="dp-btn-icon mb-10" />
+										<p:commandButton value="Save" styleClass="dp-btn mb-10" />
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Outlined Default Button</h3>
+									<div class="btn-right">
+										<p:button value="زر الخطوط العريضة"
+											styleClass="outlined-dp-btn mb-10" />
+										<p:button value="زر الخطوط العريضة" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="outlined-dp-btn-icon mb-10" />
+
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Text Button</h3>
+									<div class="btn-right">
+										<p:button value="زر الخطوط العريضة" styleClass="text-dp-btn mb-10" />
+										<p:button value="زر الخطوط العريضة" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="text-dp-btn-icon mb-10" />
+
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+									<h3 class="headline-bold mb-25">Large Button</h3>
+									<div class="btn-right">
+										<p:button value="Save" styleClass="dp-btn-l mb-10" />
+										<p:button value="Save" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="dp-btn-icon-l mb-10" />
+
+										<div class="p-clearfix"></div>
+
+										<p:button value="زر الخطوط العريضة"
+											styleClass="outlined-dp-btn-l mb-10" />
+										<p:button value="زر الخطوط العريضة" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="outlined-dp-btn-icon-l mb-10" />
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Small Button</h3>
+									<div class="btn-right">
+										<p:button value="Save" styleClass="dp-btn-sm mb-10" />
+										<p:button value="Save" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="dp-btn-icon-sm mb-10" />
+
+										<div class="p-clearfix"></div>
+
+										<p:button value="زر الخطوط العريضة"
+											styleClass="outlined-dp-btn-sm mb-10" />
+										<p:button value="زر الخطوط العريضة" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="outlined-dp-btn-icon-sm mb-10" />
+
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">XSmall Button</h3>
+									<div class="btn-right">
+										<p:button value="Save" styleClass="dp-btn-xs-sm mb-10" />
+										<p:button value="Save" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="dp-btn-icon-xs-sm mb-10" />
+
+										<div class="p-clearfix"></div>
+
+										<p:button value="زر الخطوط العريضة"
+											styleClass="outlined-dp-btn-xs-sm mb-10" />
+										<p:button value="زر الخطوط العريضة" icon="bx bxs-memory-card"
+											iconPos="right" styleClass="outlined-dp-btn-icon-xs-sm mb-10" />
+
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+									<h3 class="headline-bold mb-25">Disabled Default Button with icon</h3>
+									<div class="btn-right">
+										<p:button value="Save" styleClass="dp-btn mb-10" disabled="true" />
+										<p:button value="Save" icon="pi pi-check" iconPos="right"
+											styleClass="dp-btn-icon mb-10" disabled="true" />
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Disabled Outlined Default Button</h3>
+									<div class="btn-right">
+										<p:button value="زر الخطوط العريضة"
+											styleClass="outlined-dp-btn mb-10" disabled="true" />
+										<p:button value="زر الخطوط العريضة" icon="pi pi-check"
+											iconPos="right" styleClass="outlined-dp-btn-icon mb-10"
+											disabled="true" />
+
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Disabled Text Button</h3>
+									<div class="btn-right">
+										<p:button value="زر الخطوط العريضة" styleClass="text-dp-btn mb-10"
+											disabled="true" />
+										<p:button value="زر الخطوط العريضة" icon="pi pi-check"
+											iconPos="right" styleClass="text-dp-btn-icon mb-10" disabled="true" />
+
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">CommandLink</h3>
+									<div class="btn-right">
+
+
+										<p:commandLink styleClass="cmd-dp-btn mb-10">
+											<h:outputText value="cmd link" />
+										</p:commandLink>
+										<p:commandLink styleClass="cmd-dp-btn mb-10">
+											<h:outputText value="cmd link" />
+											<i class="material-icons m-icon-right">done</i>
+										</p:commandLink>
+										<p:commandLink styleClass="cmd-outlined-btn mb-10">
+											<h:outputText value="cmd link" />
+										</p:commandLink>
+										<p:commandLink styleClass="cmd-outlined-btn mb-10">
+											<h:outputText value="cmd link" />
+											<i class="material-icons m-icon-right">done</i>
+										</p:commandLink>
+
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Button with icons</h3>
+									<div class="btn-right">
+
+										<p:button value="Next" icon="pi pi-angle-right"
+											styleClass="dp-btn mb-10" iconPos="right" />
+										<p:button value="Next" icon="pi pi-angle-right"
+											styleClass="outlined-dp-btn mb-10" iconPos="right" />
+
+										<p:button value="Previous" icon="pi pi-angle-left"
+											styleClass="dp-btn mb-10" />
+										<p:button value="Previous" icon="pi pi-angle-left"
+											styleClass="outlined-dp-btn mb-10" />
+
+
+
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Different Buttons</h3>
+									<div class="btn-right">
+
+										<p:button value="Save" styleClass="dp-btn mb-10" />
+										<p:button value="Print" styleClass="dp-btn dp-btn-primary mb-10"  />
+										<p:button value="Warning" styleClass="dp-btn dp-btn-warning mb-10" />
+										<p:button value="Delete" styleClass="dp-btn dp-btn-danger mb-10" />
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Different Buttons with Icons</h3>
+									<div class="btn-right">
+
+										<p:button value="Save" icon="bx bxs-save" iconPos="right"
+											styleClass="dp-btn-icon mb-10" />
+										<p:button value="Print" icon="bx bxs-printer" iconPos="right"
+											styleClass="dp-btn-icon dp-btn-primary mb-10" />
+										<p:button value="Warning" icon="bx bxs-info-circle"
+											iconPos="right" styleClass="dp-btn-icon dp-btn-warning mb-10" />
+										<p:button value="Delete" icon="bx bxs-trash" iconPos="right"
+											styleClass="dp-btn-icon dp-btn-danger mb-10" />
+
+
+
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+								<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<div class="card">
+								<div class="ui-g">
+						<div class="btn-left">
+						
+						
+								<p:commandButton value="زر أبيض" icon="pi pi-angle-right" class="dp-btn mb-10" iconPos="right" />
+								<p:commandButton value="أزرار بأحجام مختلفة" icon="pi pi-angle-left" class="white-dp-btn mb-10" iconPos="left" />
+								
+								<p:commandLink class="cml-btn mb-10">
+									<i class='bx bxs-printer'></i>
+									<h:outputLabel value="Add" />
+								</p:commandLink>
+								<p:commandLink class="cml-btn-white mb-10">
+									<i class='bx bx-edit-alt' ></i>
+									<h:outputLabel value="Edit" />
+								</p:commandLink>
+
+</div>
+</div>
+</div>
+</div>
+
+
+					</div>
+				</div>
+
+
+				<div class="accordion-div-onepage" id="section3">
+					<div class="ui-g-12">
+						<h4 class="h2-heading ">Accordion Styles</h4>
+					</div>
+
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-6">
+
+
+							<div class="card">
+								<div class="ui-g">
+									<p:accordionPanel styleClass="accordion-inside-card">
+										<p:tab title="القسم الاول">
+											<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي.</p>
+										</p:tab>
+										<p:tab title="القسم الثاني">
+											<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي.</p>
+										</p:tab>
+										<p:tab title="القسم الثالث">
+											<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي.</p>
+										</p:tab>
+									</p:accordionPanel>
+								</div>
+							</div>
+
+
+						</div>
+
+						<div class="ui-g-6">
+
+
+							<div class="card">
+								<div class="ui-g">
+									<p:accordionPanel styleClass="accordion-inside-card">
+										<p:tab>
+											<f:facet name="title">
+												<h:outputText value="tab title" />
+												<i class="pi pi-folder acc-tab-icon"></i>
+											</f:facet>
+											<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي.</p>
+										</p:tab>
+										<p:tab>
+											<f:facet name="title">
+												<h:outputText value="tab title" />
+												<p:graphicImage
+													value="/resources/dp-layout/images/user-icon.svg"
+													styleClass="acc-svg-icon" />
+
+											</f:facet>
+											<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي.</p>
+										</p:tab>
+										<p:tab>
+											<f:facet name="title">
+												<h:outputText value="tab title" />
+
+												<i class="material-icons acc-tab-icon">input</i>
+											</f:facet>
+											<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+												الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+												دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+												من موظفي شرطة دبي.</p>
+										</p:tab>
+									</p:accordionPanel>
+								</div>
+							</div>
+
+
+						</div>
+
+						<div class="p-clearfix"></div>
+
+						<div class="ui-g-6">
+
+
+
+							<div class="ui-g">
+								<p:accordionPanel styleClass="accordion-inside-card">
+									<p:tab title="القسم الاول">
+
+										<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي.</p>
+									</p:tab>
+									<p:tab title="القسم الثاني">
+										<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي.</p>
+									</p:tab>
+									<p:tab title="القسم الثالث">
+										<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي.</p>
+									</p:tab>
+								</p:accordionPanel>
+							</div>
+
+
+
+						</div>
+
+						<div class="ui-g-6">
+
+
+
+							<div class="ui-g">
+								<p:accordionPanel styleClass="accordion-inside-card">
+									<p:tab>
+										<f:facet name="title">
+											<h:outputText value="tab title" />
+											<i class="pi pi-folder acc-tab-icon"></i>
+										</f:facet>
+										<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي.</p>
+									</p:tab>
+									<p:tab>
+										<f:facet name="title">
+											<h:outputText value="tab title" />
+											<p:graphicImage
+												value="/resources/dp-layout/images/user-icon.svg"
+												styleClass="acc-svg-icon" />
+
+										</f:facet>
+										<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي.</p>
+									</p:tab>
+									<p:tab>
+										<f:facet name="title">
+											<h:outputText value="tab title" />
+
+											<i class="material-icons acc-tab-icon">input</i>
+										</f:facet>
+										<p class="p-m-0">القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي. القائد العام لشرطة دبي، وسعادة سعيد حارب
+											الأمين العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة
+											دبي، ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير
+											من موظفي شرطة دبي.</p>
+									</p:tab>
+								</p:accordionPanel>
+							</div>
+
+
+
+						</div>
+						
+						
+						<div class="ui-g-12">
+						    <p:panel header="القسم الاول" styleClass="toogle-panel" toggleable="true"  toggleSpeed="500"
+                closeSpeed="500" >
+
+     
+
+        <p class="p-m-0">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+
+     
+    </p:panel>
+  
+						</div>
+
+					</div>
+				</div>
+
+
+
+				<div class="tab-div-onepage" id="section4">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Tab Styles</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+
+						<div class="ui-g-6">
+
+
+							<div class="card">
+
+								<h3 class="headline-bold mb-25">Normal Tab</h3>
+
+
+								<p:tabView styleClass="tab-inside-card">
+									<p:tab>
+										<f:facet name="title">
+											
+											<h:outputText value="رابط مباشر" />
+										</f:facet>
+
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-12 ui-lg-12">
+												<p class="p-m-0">في إطار مشاركتها في تحدي دبي للياقة،
+													نظمت القيادة العامة لشرطة دبي فعالية "مشي القادة" في ممشى
+													"كايت بيتش" بجميرا، بمشاركة سعادة اللواء عبد الله خليفة
+													المري، القائد العام لشرطة دبي، وسعادة سعيد حارب الأمين
+													العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة دبي،
+													ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير من
+													موظفي شرطة دبي من عسكريين ومدنيين. وتوجه اللواء عبد الله
+													خليفة المري بجزيل الشكر إلى سمو الشيخ حمدان بن محمد بن راشد
+													آل مكتوم، ولي عهد دبي، رئيس المجلس التنفيذي للإمارة، رئيس
+													مجلس دبي الرياضي، على إطلاق تحدي دبي للياقة للعام الثالث
+													على التوالي، مؤكداً أن آل مكتوم، ولي عهد دبي، رئيس المجلس
+													التنفيذي للإمارة، رئيس مجلس دبي الرياضي، على إطلاق تحدي دبي
+													للياقة للعام الثالث على التوالي، مؤكداً أن</p>
+											</div>
+										</div>
+
+									</p:tab>
+									<p:tab>
+										<f:facet name="title">
+											
+											<h:outputText value="تحرير عينة" />
+										</f:facet>
+
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="float-input3" /> <p:outputLabel for="@previous"
+														value="ملصق" />
+												</span>
+
+
+											</div>
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="float-input4" value="تعديل ملف" /> <p:outputLabel
+														for="@previous" value="ملصق" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label"> <p:inputNumber
+														id="input3" modifyValueOnWheel="false" /> <p:outputLabel
+														for="input3" value="Input Number" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+
+
+
+												<span class="ui-float-label"> <p:selectOneMenu
+														id="console4" style="width:100%" value=" "
+														styleClass="select-full-w">
+														<f:selectItem itemLabel="select any option" itemValue="" />
+														<f:selectItem itemLabel="Option1" itemValue="Option1" />
+														<f:selectItem itemLabel="Option2" itemValue="Option2" />
+														<f:selectItem itemLabel="Option3" itemValue="Option3" />
+														<f:selectItem itemLabel="Option4" itemValue="Option3" />
+														<f:selectItem
+															itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+															itemValue="Option3" />
+
+
+
+													</p:selectOneMenu> <p:outputLabel for="@this" value="Basic Select" />
+												</span>
+
+
+
+											</div>
+
+
+
+											<div class="ui-g-12">
+												<div class="btn-left">
+													<p:button value="Save" icon="bx bxs-save" iconPos="right"
+														styleClass="dp-btn-icon" />
+													<p:button value="Previous" icon="pi pi-angle-left"
+														styleClass="outlined-dp-btn" />
+												</div>
+
+											</div>
+										</div>
+
+									</p:tab>
+									<p:tab title="اختر ملف">
+
+									</p:tab>
+								</p:tabView>
+
+							</div>
+						</div>
+
+						<div class="ui-g-6">
+
+
+							<div class="card">
+
+								<h3 class="headline-bold mb-25">Normal Tab with Icon</h3>
+
+								<p:tabView styleClass="tab-inside-card">
+
+									<p:tab>
+										<f:facet name="title">
+											<p:graphicImage
+												value="/resources/dp-layout/images/user-icon.svg"
+												styleClass="h-tab-svg-icon" />
+											<h:outputText value="تحرير عينة" />
+										</f:facet>
+
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="float-input3" /> <p:outputLabel for="@previous"
+														value="ملصق" />
+												</span>
+
+
+											</div>
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="float-input4" value="تعديل ملف" /> <p:outputLabel
+														for="@previous" value="ملصق" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label"> <p:inputNumber
+														id="input3" modifyValueOnWheel="false" /> <p:outputLabel
+														for="input3" value="Input Number" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+
+
+
+												<span class="ui-float-label"> <p:selectOneMenu
+														id="console4" style="width:100%" value=" "
+														styleClass="select-full-w">
+														<f:selectItem itemLabel="select any option" itemValue="" />
+														<f:selectItem itemLabel="Option1" itemValue="Option1" />
+														<f:selectItem itemLabel="Option2" itemValue="Option2" />
+														<f:selectItem itemLabel="Option3" itemValue="Option3" />
+														<f:selectItem itemLabel="Option4" itemValue="Option3" />
+														<f:selectItem
+															itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+															itemValue="Option3" />
+
+
+
+													</p:selectOneMenu> <p:outputLabel for="@this" value="Basic Select" />
+												</span>
+
+
+
+											</div>
+
+
+
+											<div class="ui-g-12">
+												<div class="btn-left">
+													<p:button value="Save" icon="bx bxs-save" iconPos="right"
+														styleClass="dp-btn-icon" />
+
+												</div>
+
+											</div>
+										</div>
+
+									</p:tab>
+									<p:tab>
+										<f:facet name="title">
+											<i class="pi pi-folder h-tab-icon"></i>
+											<h:outputText value="رابط مباشر" />
+										</f:facet>
+
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-12 ui-lg-12">
+												<p class="p-m-0">في إطار مشاركتها في تحدي دبي للياقة،
+													نظمت القيادة العامة لشرطة دبي فعالية "مشي القادة" في ممشى
+													"كايت بيتش" بجميرا، بمشاركة سعادة اللواء عبد الله خليفة
+													المري، القائد العام لشرطة دبي، وسعادة سعيد حارب الأمين
+													العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة دبي،
+													ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير من
+													موظفي شرطة دبي من عسكريين ومدنيين. وتوجه اللواء عبد الله
+													خليفة المري بجزيل الشكر إلى سمو الشيخ حمدان بن محمد بن راشد
+													آل مكتوم، ولي عهد دبي، رئيس المجلس التنفيذي للإمارة، رئيس
+													مجلس دبي الرياضي، على إطلاق تحدي دبي للياقة للعام الثالث
+													على التوالي، مؤكداً أن</p>
+											</div>
+										</div>
+
+									</p:tab>
+									<p:tab title="اختر ملف">
+										<f:facet name="title">
+											<i class="pi pi-paperclip h-tab-icon"></i>
+											<h:outputText value="تحرير عينة" />
+										</f:facet>
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-12 ui-lg-12">
+												<p class="p-m-0">في إطار مشاركتها في تحدي دبي للياقة،
+													نظمت القيادة العامة لشرطة دبي فعالية "مشي القادة" في ممشى
+													"كايت بيتش" بجميرا، بمشاركة سعادة اللواء عبد الله خليفة
+													المري، القائد العام لشرطة دبي، وسعادة سعيد حارب الأمين
+													العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة دبي،
+													ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير من
+													موظفي شرطة دبي من عسكريين ومدنيين. وتوجه اللواء عبد الله
+													خليفة المري بجزيل الشكر إلى سمو الشيخ حمدان بن محمد بن راشد
+													آل مكتوم، ولي عهد دبي، رئيس المجلس التنفيذي للإمارة، رئيس
+													مجلس دبي الرياضي، على إطلاق تحدي دبي للياقة للعام الثالث
+													على التوالي، مؤكداً أن</p>
+											</div>
+										</div>
+
+									</p:tab>
+								</p:tabView>
+
+							</div>
+						</div>
+
+
+						<div class="p-clearfix"></div>
+
+
+
+						<div class="ui-g-6">
+
+
+
+
+							<h3 class="headline-bold mb-25">Normal Tab</h3>
+
+							<p:tabView styleClass="tab-outside-card">
+
+								<p:tab>
+									<f:facet name="title">
+
+										<h:outputText value="تحرير عينة" />
+									</f:facet>
+									<div class="card">
+
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="float-input3" /> <p:outputLabel for="@previous"
+														value="ملصق" />
+												</span>
+
+
+											</div>
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="float-input4" value="تعديل ملف" /> <p:outputLabel
+														for="@previous" value="ملصق" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label"> <p:inputNumber
+														id="input3" modifyValueOnWheel="false" /> <p:outputLabel
+														for="input3" value="Input Number" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+
+
+
+												<span class="ui-float-label"> <p:selectOneMenu
+														id="console4" style="width:100%" value=" "
+														styleClass="select-full-w">
+														<f:selectItem itemLabel="select any option" itemValue="" />
+														<f:selectItem itemLabel="Option1" itemValue="Option1" />
+														<f:selectItem itemLabel="Option2" itemValue="Option2" />
+														<f:selectItem itemLabel="Option3" itemValue="Option3" />
+														<f:selectItem itemLabel="Option4" itemValue="Option3" />
+														<f:selectItem
+															itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+															itemValue="Option3" />
+
+
+
+													</p:selectOneMenu> <p:outputLabel for="@this" value="Basic Select" />
+												</span>
+
+
+
+											</div>
+
+
+
+											<div class="ui-g-12">
+												<div class="btn-left">
+													<p:button value="Save" icon="bx bxs-save" iconPos="right"
+														styleClass="dp-btn-icon" />
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</p:tab>
+								<p:tab>
+									<f:facet name="title">
+
+										<h:outputText value="رابط مباشر" />
+									</f:facet>
+									<div class="card">
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-12 ui-lg-12">
+												<p class="p-m-0">في إطار مشاركتها في تحدي دبي للياقة،
+													نظمت القيادة العامة لشرطة دبي فعالية "مشي القادة" في ممشى
+													"كايت بيتش" بجميرا، بمشاركة سعادة اللواء عبد الله خليفة
+													المري، القائد العام لشرطة دبي، وسعادة سعيد حارب الأمين
+													العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة دبي،
+													ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير من
+													موظفي شرطة دبي من عسكريين ومدنيين. وتوجه اللواء عبد الله
+													خليفة المري بجزيل الشكر إلى سمو الشيخ حمدان بن محمد بن راشد
+													آل مكتوم، ولي عهد دبي، رئيس المجلس التنفيذي للإمارة، رئيس
+													مجلس دبي الرياضي، على إطلاق تحدي دبي للياقة للعام الثالث
+													على التوالي، مؤكداً أن</p>
+											</div>
+										</div>
+									</div>
+								</p:tab>
+								<p:tab title="اختر ملف">
+									<f:facet name="title">
+
+										<h:outputText value="تحرير عينة" />
+									</f:facet>
+									<div class="card">
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-12 ui-lg-12">
+												<p class="p-m-0">في إطار مشاركتها في تحدي دبي للياقة،
+													نظمت القيادة العامة لشرطة دبي فعالية "مشي القادة" في ممشى
+													"كايت بيتش" بجميرا، بمشاركة سعادة اللواء عبد الله خليفة
+													المري، القائد العام لشرطة دبي، وسعادة سعيد حارب الأمين
+													العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة دبي،
+													ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير من
+													موظفي شرطة دبي من عسكريين ومدنيين. وتوجه اللواء عبد الله
+													خليفة المري بجزيل الشكر إلى سمو الشيخ حمدان بن محمد بن راشد
+													آل مكتوم، ولي عهد دبي، رئيس المجلس التنفيذي للإمارة، رئيس
+													مجلس دبي الرياضي، على إطلاق تحدي دبي للياقة للعام الثالث
+													على التوالي، مؤكداً أن</p>
+											</div>
+										</div>
+									</div>
+								</p:tab>
+							</p:tabView>
+
+
+						</div>
+
+
+
+
+						<div class="ui-g-6">
+
+
+
+
+							<h3 class="headline-bold mb-25">Normal Tab with Icon</h3>
+
+							<p:tabView styleClass="tab-outside-card">
+
+								<p:tab>
+									<f:facet name="title">
+										<p:graphicImage
+											value="/resources/dp-layout/images/user-icon.svg"
+											styleClass="h-tab-svg-icon" />
+										<h:outputText value="تحرير عينة" />
+									</f:facet>
+									<div class="card">
+
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="float-input3" /> <p:outputLabel for="@previous"
+														value="ملصق" />
+												</span>
+
+
+											</div>
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="float-input4" value="تعديل ملف" /> <p:outputLabel
+														for="@previous" value="ملصق" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+												<span class="ui-float-label"> <p:inputNumber
+														id="input3" modifyValueOnWheel="false" /> <p:outputLabel
+														for="input3" value="Input Number" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+
+
+
+												<span class="ui-float-label"> <p:selectOneMenu
+														id="console4" style="width:100%" value=" "
+														styleClass="select-full-w">
+														<f:selectItem itemLabel="select any option" itemValue="" />
+														<f:selectItem itemLabel="Option1" itemValue="Option1" />
+														<f:selectItem itemLabel="Option2" itemValue="Option2" />
+														<f:selectItem itemLabel="Option3" itemValue="Option3" />
+														<f:selectItem itemLabel="Option4" itemValue="Option3" />
+														<f:selectItem
+															itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+															itemValue="Option3" />
+
+
+
+													</p:selectOneMenu> <p:outputLabel for="@this" value="Basic Select" />
+												</span>
+
+
+
+											</div>
+
+
+
+											<div class="ui-g-12">
+												<div class="btn-left">
+													<p:button value="Save" icon="bx bxs-save" iconPos="right"
+														styleClass="dp-btn-icon" />
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</p:tab>
+								<p:tab>
+									<f:facet name="title">
+										<i class="pi pi-folder h-tab-icon"></i>
+										<h:outputText value="رابط مباشر" />
+									</f:facet>
+									<div class="card">
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-12 ui-lg-12">
+												<p class="p-m-0">في إطار مشاركتها في تحدي دبي للياقة،
+													نظمت القيادة العامة لشرطة دبي فعالية "مشي القادة" في ممشى
+													"كايت بيتش" بجميرا، بمشاركة سعادة اللواء عبد الله خليفة
+													المري، القائد العام لشرطة دبي، وسعادة سعيد حارب الأمين
+													العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة دبي،
+													ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير من
+													موظفي شرطة دبي من عسكريين ومدنيين. وتوجه اللواء عبد الله
+													خليفة المري بجزيل الشكر إلى سمو الشيخ حمدان بن محمد بن راشد
+													آل مكتوم، ولي عهد دبي، رئيس المجلس التنفيذي للإمارة، رئيس
+													مجلس دبي الرياضي، على إطلاق تحدي دبي للياقة للعام الثالث
+													على التوالي، مؤكداً أن</p>
+											</div>
+										</div>
+									</div>
+								</p:tab>
+								<p:tab title="اختر ملف">
+									<f:facet name="title">
+										<i class="pi pi-paperclip h-tab-icon"></i>
+										<h:outputText value="تحرير عينة" />
+									</f:facet>
+									<div class="card">
+										<div class="ui-g">
+											<div class="ui-g-12 ui-md-12 ui-lg-12">
+												<p class="p-m-0">في إطار مشاركتها في تحدي دبي للياقة،
+													نظمت القيادة العامة لشرطة دبي فعالية "مشي القادة" في ممشى
+													"كايت بيتش" بجميرا، بمشاركة سعادة اللواء عبد الله خليفة
+													المري، القائد العام لشرطة دبي، وسعادة سعيد حارب الأمين
+													العام لمجلس دبي الرياضي، ومساعدي القائد العام لشرطة دبي،
+													ومديري الإدارات العامة والمراكز، بالإضافة إلى عدد كبير من
+													موظفي شرطة دبي من عسكريين ومدنيين. وتوجه اللواء عبد الله
+													خليفة المري بجزيل الشكر إلى سمو الشيخ حمدان بن محمد بن راشد
+													آل مكتوم، ولي عهد دبي، رئيس المجلس التنفيذي للإمارة، رئيس
+													مجلس دبي الرياضي، على إطلاق تحدي دبي للياقة للعام الثالث
+													على التوالي، مؤكداً أن</p>
+											</div>
+										</div>
+									</div>
+								</p:tab>
+							</p:tabView>
+
+
+						</div>
+
+
+
+					</div>
+				</div>
+
+
+
+				<div class="input2-div-onepage" id="section5">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Input 2</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Vertical radio button</h3>
+									<div class="ui-g-12 ui-md-6 ui-lg-12">
+
+										<p:selectOneRadio layout="responsive" columns="1"
+											styleClass="list-radio-btn">
+											<f:selectItem itemLabel="Muraghabbat police station"
+												itemValue="Xbox One" />
+											<f:selectItem itemLabel="Naief police station"
+												itemValue="PS+" />
+											<f:selectItem itemLabel="Marina police station"
+												itemValue="Wii U" />
+										</p:selectOneRadio>
+
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-8">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Horizontal radio button</h3>
+
+
+									<div class="ui-g-12 ui-md-6 ui-lg-12">
+
+										<p:selectOneRadio layout="responsive" columns="3"
+											styleClass="list-radio-btn2">
+											<f:selectItem itemLabel="Muraghabbat police station"
+												itemValue="Xbox One" />
+											<f:selectItem itemLabel="Naief police station"
+												itemValue="PS+" />
+											<f:selectItem itemLabel="Marina police station"
+												itemValue="Wii U" />
+										</p:selectOneRadio>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Vertical Check box</h3>
+									<div class="ui-g-12 ui-md-6 ui-lg-12">
+
+										<p:selectManyCheckbox layout="responsive" columns="1"
+											styleClass="checkbox-style-1">
+											<f:selectItem itemLabel="Checkbox 1" itemValue="Xbox One" />
+											<f:selectItem itemLabel="Checkbox 2" itemValue="PS+" />
+											<f:selectItem itemLabel="Checkbox 3" itemValue="Wii U" />
+										</p:selectManyCheckbox>
+
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-8">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Horizontal Check box</h3>
+
+
+									<div class="ui-g-12 ui-md-6 ui-lg-12">
+
+										<p:selectManyCheckbox layout="responsive" columns="4"
+											styleClass="checkbox-style-1">
+											<f:selectItem itemLabel="Checkbox 1" itemValue="Xbox One" />
+											<f:selectItem itemLabel="Checkbox 2" itemValue="PS+" />
+											<f:selectItem itemLabel="Checkbox 3" itemValue="Wii U" />
+											<f:selectItem itemLabel="Checkbox 4" itemValue="Wii U" />
+										</p:selectManyCheckbox>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-3">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Switch</h3>
+
+
+									<div class="ui-g-12 ui-md-6 ui-lg-12">
+										<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+											<p:inputSwitch styleClass="ui-inputswitch-checked " />
+										</div>
+										<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+											<p:inputSwitch
+												styleClass="ui-inputswitch-checked switch-n-img" />
+										</div>
+
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-3">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Slider</h3>
+
+
+									<div class="ui-g-12 ui-md-6 ui-lg-12">
+										<h:inputText id="slider" value="10"
+											styleClass="range-slider-value" />
+										<p:slider for="slider" />
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-3">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Disable Slider</h3>
+
+
+									<div class="ui-g-12 ui-md-6 ui-lg-12">
+										<h:inputText id="slider2" disabled="true"
+											styleClass="range-slider-value" />
+										<p:slider for="slider2" dir="rtl" disabled="true" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-3">
+							<div class="card">
+								<div class="ui-g">
+
+									<h3 class="headline-bold mb-25">Range Slider</h3>
+
+									<h:panelGrid columns="1" width="100%">
+										<h:outputText id="displayRange" styleClass="display-range"
+											value="Between 10 and 40" />
+										<p:slider for="txt6,txt7" display="displayRange"
+											style="width: 100%" range="true"
+											displayTemplate="Between {min} and {max}" />
+
+									</h:panelGrid>
+									<h:inputHidden id="txt6" value="10" />
+									<h:inputHidden id="txt7" value="40" />
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+						<div class="ui-g-6">
+							<div class="card">
+								<div class="ui-g">
+								<h3 class="headline-bold mb-25">Picklist</h3>
+									<p:pickList id="pickList" value="#{pickListView.cities}"
+										var="cities" itemLabel="#{cities}" itemValue="#{cities}" />
+								</div>
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+						</div>
+						
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<div class="card">
+						<h3 class="headline-bold mb-25">File Upload</h3>
+								
+									<p:growl id="upload_messages" showDetail="true" />
+
+									<p:fileUpload mode="advanced" styleClass="file-upload-1"
+										multiple="true" sizeLimit="402400"
+										invalidSizeMessage="Maximum file size allowed is 100 KB"
+										invalidFileMessage="only gif | jpg | jpeg | png is allowed"
+										update="upload_messages" label="سحب وإسقاط ملف هنا"
+										listener="#{cropUploaderBean.handleFileUpload}" />
+
+								
+								</div>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-6">
+						<div class="card">
+						<h3 class="headline-bold mb-25">File Upload</h3>
+								
+								
+								   <p:fileUpload listener="#{fileUploadView.handleFileUpload}" mode="advanced" dragDropSupport="false" styleClass="file-upload-2"
+                      multiple="true" update="messages" sizeLimit="100000" fileLimit="3"
+                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+
+        <p:growl id="messages" showDetail="true" keepAlive="true"/>
+        </div>
+        </div>
+
+
+					</div>
+				</div>
+
+
+
+				<div class="table-div-onepage" id="section6">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Table Styles</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+
+						<div class="ui-g-12">
+
+							<p:dataTable var="car" value="#{dtSelectionView.cars7}"
+								 selectionMode="multiple" 
+								rowKey="#{car.id}" paginator="true" paginatorPosition="bottom"
+								rows="5"
+								paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+								rowsPerPageTemplate="6,12,16">
+								<f:facet name="header">
+									Table Heading
+								</f:facet>
+								<p:column selectionMode="multiple" width="50px">
+
+								</p:column>
+								
+
+
+								<p:column headerText="السنه" width="10%"
+									styleClass="number-col-td">
+									<h:outputText value="#{car.year}" title="test title div" />
+								</p:column>
+
+
+								<p:column headerText=" مرتبة" width="30%"
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip1"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									<p:tooltip for="tooltip1" position="bottom">
+										<img src="#{resource['/images/user.jpg']}" class="tooltip-img" />
+										<p class="tooltip-img-txt">الشكل الخارجي للنص أو على الشكل
+											الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها.الشكل
+											الخارجي للنص أو على الشكل الخارجي للنص أو شكل الفقرات في
+											الصفحة التي يقرأها.</p>
+
+									</p:tooltip>
+								</p:column>
+									<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip19"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+								<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip18"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+								<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip17"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+								<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip16"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+								<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip15"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+								<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip14"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+								<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip13"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+								<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip12"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+								<p:column headerText=" مرتبة" 
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip11"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									
+								</p:column>
+
+								<p:column headerText="المحاكمات" styleClass="number-col-td">
+									<h:outputText value="13-10-2019" />
+								</p:column>
+
+								<p:column headerText=" مرتبة" width="20%"
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip2"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									<p:tooltip for="tooltip2" position="bottom">
+
+										<p class="tooltip-img-txt">الشكل الخارجي للنص أو على الشكل
+											الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها.الشكل
+											الخارجي للنص أو</p>
+
+									</p:tooltip>
+								</p:column>
+
+							
+
+
+
+
+							</p:dataTable>
+
+						</div>
+
+
+						<div class="ui-g-12">
+
+							<p:dataTable var="car" value="#{dtSelectionView.cars7}"
+								styleClass="data-table-style-2" selectionMode="multiple"
+								reflow="true" 
+								rowKey="#{car.id}" paginator="true" paginatorPosition="bottom"
+								rows="5"
+								paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+								rowsPerPageTemplate="6,12,16">
+
+								<p:column selectionMode="multiple" width="50px">
+
+								</p:column>
+
+
+								<p:column headerText="السنه" width="4%"
+									styleClass="number-col-td">
+									<h:outputText value="#{car.year}" />
+								</p:column>
+
+
+								<p:column headerText=" مرتبة" width="50%">
+									<h:outputText
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+								</p:column>
+
+								<p:column headerText="المحاكمات" styleClass="number-col-td"
+									width="20%">
+									<h:outputText value="13-10-2019" />
+								</p:column>
+
+								<p:column headerText="مده الخدمات" width="20%">
+									<p:selectOneMenu style="width:100%" styleClass="table-dropdown"
+										id="console10" value="#{selectOneMenuView.console}">
+										<f:selectItem itemLabel="بدون محاكمة" itemValue="" />
+										<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+										<f:selectItem itemLabel="PS4" itemValue="PS4" />
+										<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+									</p:selectOneMenu>
+								</p:column>
+								<p:column width="4%">
+									<p:speedDial direction="left" styleClass="table-quick-icon1">
+										<p:menuitem icon="pi pi-pencil" />
+										<p:menuitem icon="pi pi-refresh" />
+										<p:menuitem icon="pi pi-trash" />
+										<p:menuitem icon="pi pi-upload" />
+										<p:menuitem icon="pi pi-external-link" />
+										<p:menuitem icon="pi pi-pencil" />
+										<p:menuitem icon="pi pi-refresh" />
+										<p:menuitem icon="pi pi-trash" />
+										<p:menuitem icon="pi pi-upload" />
+										<p:menuitem icon="pi pi-external-link" />
+									</p:speedDial>
+								</p:column>
+
+
+
+
+
+							</p:dataTable>
+
+						</div>
+
+
+
+
+						<div class="ui-g-12">
+
+							<p:dataTable var="car" value="#{dtSelectionView.cars7}"
+								styleClass="data-table-style-3 search-table"
+								selectionMode="multiple" reflow="true"
+								 rowKey="#{car.id}"
+								paginator="true" paginatorPosition="bottom" rows="10"
+								paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+								rowsPerPageTemplate="6,12,16">
+								<f:facet name="header">
+									<div class="table-heading">Table Heading</div>
+									<div class="table-search-btn">
+										<div class="tbl-search-icon-btn"></div>
+									</div>
+
+									<div class="search-content-div" style="display: none;">
+										<div class="ui-g">
+
+											<div class="ui-g-12 ui-md-6 ui-lg-4">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="table-input1" /> <p:outputLabel for="@previous"
+														value="ملصق" />
+												</span>
+
+
+											</div>
+											<div class="ui-g-12 ui-md-6 ui-lg-4">
+												<span class="ui-float-label full-w-input"> <p:inputText
+														id="table-input2" /> <p:outputLabel for="@previous"
+														value="ملصق" />
+												</span>
+
+
+											</div>
+											<div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+
+
+												<span class="ui-float-label"> <p:selectOneMenu
+														id="console1" style="width:100%" value=" "
+														styleClass="select-full-w">
+														<f:selectItem itemLabel="select any option" itemValue="" />
+														<f:selectItem itemLabel="Option1" itemValue="Option1" />
+														<f:selectItem itemLabel="Option2" itemValue="Option2" />
+														<f:selectItem itemLabel="Option3" itemValue="Option3" />
+														<f:selectItem itemLabel="Option4" itemValue="Option3" />
+														<f:selectItem
+															itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+															itemValue="Option3" />
+
+
+
+													</p:selectOneMenu> <p:outputLabel for="@this" value="Basic Select" />
+												</span>
+
+
+
+											</div>
+											<div class="ui-g-12 ui-md-6 ui-lg-4">
+												<span class="ui-float-label time-picker"> <p:inputText
+														class="datepicke2" /> <p:outputLabel for="@this"
+														value="Time picker" styleClass="date-label" />
+												</span>
+											</div>
+
+											<div class="ui-g-12 ui-md-6 ui-lg-4">
+												<div class="btn-right">
+
+													<p:button value="Search" icon="bx bx-search"
+														iconPos="right" styleClass="dp-btn-icon" />
+
+
+												</div>
+											</div>
+
+										</div>
+
+
+
+									</div>
+								</f:facet>
+								<p:column selectionMode="multiple" width="50px">
+
+								</p:column>
+
+
+								<p:column headerText="السنه" width="10%"
+									styleClass="number-col-td">
+									<h:outputText value="#{car.year}" title="test title div" />
+								</p:column>
+
+
+								<p:column headerText=" مرتبة" width="30%"
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip1"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									<p:tooltip for="tooltip1" position="bottom">
+										<img src="#{resource['/images/user.jpg']}" class="tooltip-img" />
+										<p class="tooltip-img-txt">الشكل الخارجي للنص أو على الشكل
+											الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها.الشكل
+											الخارجي للنص أو على الشكل الخارجي للنص أو شكل الفقرات في
+											الصفحة التي يقرأها.</p>
+
+									</p:tooltip>
+								</p:column>
+
+								<p:column headerText="المحاكمات" styleClass="number-col-td">
+									<h:outputText value="13-10-2019" />
+								</p:column>
+
+								<p:column headerText=" مرتبة" width="15%"
+									styleClass="table-txt-trim">
+									<h:outputText id="tooltip2"
+										value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+									<p:tooltip for="tooltip2" position="bottom">
+
+										<p class="tooltip-img-txt">الشكل الخارجي للنص أو على الشكل
+											الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها.الشكل
+											الخارجي للنص أو</p>
+
+									</p:tooltip>
+								</p:column>
+
+								<p:column headerText="مده الخدمات">
+									<p:selectOneMenu style="width:100%" styleClass="table-dropdown"
+										id="console10" value="#{selectOneMenuView.console}">
+										<f:selectItem itemLabel="بدون محاكمة" itemValue="" />
+										<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+										<f:selectItem itemLabel="PS4" itemValue="PS4" />
+										<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+									</p:selectOneMenu>
+								</p:column>
+
+								<p:column width="3%">
+									<p:speedDial direction="left" styleClass="table-quick-icon1">
+										<p:menuitem icon="pi pi-pencil" />
+										<p:menuitem icon="pi pi-refresh" />
+										<p:menuitem icon="pi pi-trash" />
+										<p:menuitem icon="pi pi-upload" />
+										<p:menuitem icon="pi pi-external-link" />
+										<p:menuitem icon="pi pi-pencil" />
+										<p:menuitem icon="pi pi-refresh" />
+										<p:menuitem icon="pi pi-trash" />
+										<p:menuitem icon="pi pi-upload" />
+										<p:menuitem icon="pi pi-external-link" />
+									</p:speedDial>
+								</p:column>
+
+
+
+
+
+							</p:dataTable>
+
+						</div>
+
+
+						<div class="ui-g-12">
+
+							<p:dataTable var="car" value="#{dtSelectionView.cars8}"
+								emptyMessage="no data" 
+								selectionMode="multiple" reflow="true"
+								 rowKey="#{car.id}"
+								paginator="true" paginatorPosition="bottom" rows="5"
+								paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+								rowsPerPageTemplate="0">
+
+								<f:facet name="header">
+									Table Heading
+								</f:facet>
+								<f:facet name="emptyMessage">
+									<div class="datatable-empty-image">
+										<img src="#{resource['/dp-layout/images/empty-state.png']}" />
+									</div>
+									<p>لا نتيجة</p>
+								</f:facet>
+
+								<p:column headerText="header 1"></p:column>
+								<p:column headerText="Header 2"></p:column>
+								<p:column headerText="Header 3"></p:column>
+								<p:column headerText="Header 4"></p:column>
+								<p:column headerText="Header 5"></p:column>
+
+
+							</p:dataTable>
+
+						</div>
+
+
+
+					</div>
+
+				</div>
+
+
+
+				<div class="graph-div-onepage" id="section7">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Charts Styles</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+
+						<div class="ui-g-12 ui-md-6 ui-lg-12">
+
+							<div class="card">
+								<h3 class="headline-bold mb-25">Chart Colors</h3>
+								<div class="ui-g">
+
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #0da06e"></div>
+										<p>#0da06e</p>
+
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #07c880"></div>
+
+										<p>#07c880</p>
+									</div>
+
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #9ec12b"></div>
+
+										<p>#9ec12b</p>
+									</div>
+
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #ffa600"></div>
+
+										<p>#ffa600</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #008755"></div>
+
+										<p>#008755</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #63a259"></div>
+
+										<p>#63a259</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #a2bb64"></div>
+
+										<p>#a2bb64</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #e0d379"></div>
+
+										<p>#e0d379</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #387ac4"></div>
+
+										<p>#387ac4</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #00a8c9"></div>
+
+										<p>#00a8c9</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #03c57e"></div>
+
+										<p>#03c57e</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #dbcb35"></div>
+
+										<p>#dbcb35</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #8d6dad"></div>
+
+										<p>#8d6dad</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #4c93d1"></div>
+
+										<p>#4c93d1</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #00b3cc"></div>
+
+										<p>#00b3cc</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #61c9ad"></div>
+
+										<p>#61c9ad</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #c45858"></div>
+
+										<p>#c45858</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #d0835f"></div>
+
+										<p>#d0835f</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #d6ab77"></div>
+
+										<p>#d6ab77</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #dbd19e"></div>
+
+										<p>#dbd19e</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #edc453"></div>
+
+										<p>#edc453</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #e2974a"></div>
+
+										<p>#e2974a</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #cb6d49"></div>
+
+										<p>#cb6d49</p>
+									</div>
+									<div class="chart-main-div">
+										<div class="chart-color-div" style="background-color: #aa4949"></div>
+
+										<p>#aa4949</p>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="card">
+								<div class="ui-g">
+									<p:barChart model="#{chartJsView.barModel}"
+										style="width: 100%; height: 390px;" />
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="card">
+								<div class="ui-g">
+									<p:donutChart model="#{chartJsView.donutModel}"
+										style="width: 100%; height: 500px;" />
+
+
+								</div>
+							</div>
+						</div>
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="card">
+								<div class="ui-g">
+									<p:lineChart model="#{chartJsView.lineModel}"
+										style="width: 100%; height: 390px;" />
+
+
+								</div>
+							</div>
+						</div>
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="card">
+								<div class="ui-g">
+									<p:pieChart model="#{chartJsView.pieModel}"
+										style="width: 100%; height: 500px;" />
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="card">
+								<div class="ui-g">
+									<p:polarAreaChart model="#{chartJsView.polarAreaModel}"
+										style="width: 100%; height: 500px;" />
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4">
+							<div class="card">
+								<div class="ui-g">
+									<p:radarChart model="#{chartJsView.radarModel}"
+										style="width: 100%; height: 500px;" />
+
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+			<div class="message-info-div-onepage" id="section12">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Messages</h4>
+					</div>
+							<div class="ui-g ui-g-full-w">
+
+						<div class="ui-g-12 ui-md-6 ui-lg-12">
+
+							<div class="card">
+		<div class="btn-right">		
+       <p:commandButton value="Sucess" immediate="true" action="#{messagesView.info}" styleClass="dp-btn " />
+        <p:commandButton value="Warn" immediate="true" action="#{messagesView.warn}" styleClass="dp-btn dp-btn-warning" />
+        <p:commandButton value="Error" immediate="true" action="#{messagesView.error}" styleClass="dp-btn dp-btn-danger" />
+        </div>
+					</div>
+					</div>
+					</div>
+					</div>
+	
+
+
+				<div class="step-div-onepage" id="section10">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Steps</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12">
+							<div class="card">
+								<p:steps activeIndex="2" styleClass="custom" readonly="false">
+									<p:menuitem value="الخطوةالاولى" url="#" />
+									<p:menuitem value="الخطوة الثانية" url="#" />
+									<p:menuitem value="خطوة ثالثة" url="#" />
+									<p:menuitem value="الخطوة الرابعة" url="#" />
+									<p:menuitem value="الخطوة الرابعة" url="#" />
+									<p:menuitem value="الخطوة الرابعة" url="#" />
+
+								</p:steps>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+
+
+
+				<div class="modal-div-onepage" id="section9">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Modal</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12">
+							<div class="card">
+								<p:commandButton class="dp-btn" value="Modal"
+									icon="bx bx-windows" type="button" onclick="PF('dlg2').show();"
+									iconPos="right" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+
+<div class="result-div-onepage" id="section15">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Result View</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12">
+							<div class="card">
+							<div class="ui-g">
+					
+					<div class="ui-g-12 ui-md-6 ui-lg-4 result-view">
+								<p:outputLabel value="سكرتير مساعد القائد العام لشرطة دبي لشؤون الأكاديمية والتدريب"  />
+								<h:outputText class="result-value" value="1234 567 890"></h:outputText>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4 result-view">
+							<p:outputLabel value="سكرتير نائب مدير أكاديمية شرطة دبي"  />
+								<h:outputText class="result-value" value="1234 567 890"></h:outputText>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4 result-view">
+							<p:outputLabel value="سكرتير نائب مدير أكاديمية شرطة دبي"  />
+								<h:outputText class="result-value" value="1234 567 890"></h:outputText>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4 result-view">
+							<p:outputLabel value="سكرتير نائب مدير أكاديمية شرطة دبي"  />
+								<h:outputText class="result-value" value="1234 567 890"></h:outputText>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4 result-view">
+							<p:outputLabel value="سكرتير نائب مدير أكاديمية شرطة دبي"  />
+								<h:outputText class="result-value" value="1234 567 890"></h:outputText>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4 result-view">
+							<p:outputLabel value="سكرتير نائب مدير أكاديمية شرطة دبي"  />
+								<h:outputText class="result-value" value="1234 567 890"></h:outputText>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-12 result-view">
+							<p:outputLabel value="سكرتير نائب مدير أكاديمية شرطة دبي"  />
+								<h:outputText class="result-value" value="لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام، الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.
+								"></h:outputText>
+							</div>
+							<div class="ui-g-12 ui-md-6 ui-lg-4 result-view">
+								<p:outputLabel value="أزرار بأحجام مختلفة" />
+								<h:panelGroup>
+									<p:inputText id="input8898" placeholder="Enter Your Place" />
+								</h:panelGroup>
+							</div>
+							
+							
+							<div class="ui-g-12 ui-md-6 ui-lg-12">
+							<div class="btn-left">
+									
+										<p:button value="Download" icon="bx bxs-cloud-download"
+											iconPos="right" styleClass="dp-btn-icon" />
+									
+
+									</div>
+									</div>
+								
+						
+					
+					</div>
+					
+						<div class="ui-g label-green">
+						
+							<div class="ui-g-4">
+								<p:outputLabel value="Telephone Number" />
+								<h:outputText class="result-vew black" value="Test 123"></h:outputText>
+							</div>
+							<div class="ui-g-4">
+								<p:outputLabel value="Mobile Number" />
+								<h:outputText class="result-vew-bdr" value=""></h:outputText>
+							</div>
+							
+						
+						</div>
+					
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="map-div-onepage" id="section11">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Maps</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12">
+							<div class="card">
+					
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="video-div-onepage" id="section8">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Videos</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<div class="card">
+								<h3 class="headline-bold mb-25">MP4</h3>
+								<div class="ui-g">
+									<p:video value="https://www.w3schools.com/html/mov_bbb.mp4"
+										player="mp4" controls="true" width="100%"
+										onplay="console.log('MP4 Started Playing')"
+										onpause="console.log('MP4 Stopped Playing')">
+        Your browser does not support the video element.
+        See: <h:outputLink
+											value="https://www.w3schools.com/html/html5_video.asp">HTML5 Video</h:outputLink>
+									</p:video>
+
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<div class="card">
+								<h3 class="headline-bold mb-25">Webm</h3>
+								<div class="ui-g">
+
+									<p:video value="/resources/demo/media/sample-webm.webm"
+										controls="true" width="100%" height="300px"
+										onplay="console.log('WEBM Started Playing')"
+										onpause="console.log('WEBM Stopped Playing')">
+        Your browser does not support the video element.
+        See: <h:outputLink
+											value="https://www.w3schools.com/html/html5_video.asp">HTML5 Video</h:outputLink>
+									</p:video>
+
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+
+
+				
+				<div class="typo-div-onepage" id="section13">
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Typography</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12">
+							<div class="card">
+									
+									
+									<table class="typography-table" >
+
+  <thead>
+    <tr>
+      <th scope="col">Scale Category</th>
+      <th scope="col">Typeface</th>
+      <th scope="col">Font</th>
+      <th scope="col">Size</th>
+      <th scope="col" width="20%">Class Name</th>
+       <th scope="col" width="24%">Html</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td ><h1 class="h1-heading">H1</h1></td>
+      <td >bukra</td>
+      <td >Bold Italic</td>
+      <td >40px</td>
+       <td >.h1-heading</td>
+      <td ><p><code><span>&lt;h1 class="h1-heading"&gt;</span><span>&lt;/</span><span>h1&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><h2 class="h2-heading">H2</h2></td>
+      <td >bukra</td>
+      <td >Bold Italic</td>
+      <td >30px</td>
+        <td >.h2-heading</td>
+          <td ><p><code><span>&lt;h2 class="h2-heading"&gt;</span><span>&lt;/</span><span>h2&gt;</span></code></p></td>
+    </tr>
+    <tr>
+       <td ><h3 class="h3-heading">H3</h3></td>
+      <td >bukra</td>
+      <td >Bold Italic</td>
+      <td >27px</td>
+        <td >.h3-heading</td>
+          <td ><p><code><span>&lt;h3 class="h3-heading"&gt;</span><span>&lt;/</span><span>h3&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><h4 class="h4-heading">H4</h4></td>
+      <td >bukra</td>
+      <td >Bold</td>
+      <td >24px</td>
+        <td >.h4-heading</td>
+          <td ><p><code><span>&lt;h4 class="h4-heading"&gt;</span><span>&lt;/</span><span>h4&gt;</span></code></p></td>
+    </tr>
+    <tr>
+       <td ><h5 class="h5-heading">H5</h5></td>
+      <td >bukra</td>
+      <td >Bold</td>
+      <td >22px</td>
+        <td >.h5-heading</td>
+          <td ><p><code><span>&lt;h5 class="h5-heading"&gt;</span><span>&lt;/</span><span>h5&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><h6 class="h6-heading">H6</h6></td>
+      <td >bukra</td>
+      <td >Bold</td>
+      <td >20px</td>
+        <td >.h6-heading</td>
+          <td ><p><code><span>&lt;h6 class="h6-heading"&gt;</span><span>&lt;/</span><span>h6&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><h3 class="headline-bold mb-25">Headline</h3></td>
+      <td >bukra</td>
+      <td >R / B</td>
+      <td >17px</td>
+        <td >.headline-bold <br></br> .headline-regular</td>
+          <td ><p><code><span>&lt;h3 class="headline-bold"&gt;</span><span>&lt;/</span><span>h3&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><h3 class="sub-headline-bold">Subheadline</h3></td>
+      <td >bukra</td>
+      <td >R / B</td>
+      <td >12px</td>
+        <td >.sub-headline-bold <br></br> .sub-headline-regular </td>
+          <td ><p><code><span>&lt;h3 class="sub-headline-bold"&gt;</span><span>&lt;/</span><span>h3&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><p class="body-t-1-bold">Body 1</p></td>
+      <td >dubai</td>
+      <td >R / B</td>
+      <td >17px</td>
+        <td >.body-t-1-bold <br></br> .body-t-1-regular</td>
+          <td ><p><code><span>&lt;p class="body-t-1-bold"&gt;</span><span>&lt;/</span><span>p&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><p class="body-t-2-bold">Body 2</p></td>
+      <td >dubai</td>
+      <td >R / B</td>
+      <td >15px</td>
+        <td >.body-t-2-bold <br></br> .body-t-2-regular</td>
+          <td ><p><code><span>&lt;p class="body-t-2-bold"&gt;</span><span>&lt;/</span><span>p&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><p class="body-t-3-bold">Body 3</p></td>
+      <td >dubai</td>
+      <td >R / B</td>
+      <td >13px</td>
+        <td >.body-t-3-bold <br></br> .body-t-3-regular</td>
+          <td ><p><code><span>&lt;p class="body-t-3-bold"&gt;</span><span>&lt;/</span><span>p&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><p class="caption1-bold">Caption 1</p></td>
+      <td >bukra</td>
+      <td >R / B</td>
+      <td >14px</td>
+        <td >.caption1-bold <br></br> .caption1-regular</td>
+          <td ><p><code><span>&lt;p class="caption1-bold"&gt;</span><span>&lt;/</span><span>p&gt;</span></code></p></td>
+    </tr>
+    <tr>
+      <td ><p class="caption2-bold">Caption 2</p></td>
+      <td >bukra</td>
+      <td >R / B</td>
+      <td >9px</td>
+        <td >.caption2-bold <br></br> .caption2-regular</td>
+          <td ><p><code><span>&lt;p class="caption2-bold"&gt;</span><span>&lt;/</span><span>p&gt;</span></code></p></td>
+    </tr>
+    
+  </tbody>
+</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Margins and Paddings</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12">
+							<div class="card">
+									
+									
+									<table class="typography-table" >
+
+  <thead>
+    <tr>
+      <th scope="col">Margin-top CSS</th>
+      <th scope="col">Margin-right CSS</th>
+      <th scope="col">Margin-bottom CSS</th>
+      <th scope="col">Margin-left CSS</th>
+          <th scope="col">padding-top CSS</th>
+      <th scope="col">padding-right CSS</th>
+      <th scope="col">padding-bottom CSS</th>
+      <th scope="col">padding-left CSS</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td >mt-5</td>
+      <td >mr-5</td>
+      <td >mb-5</td>
+      <td >ml-5</td>
+      
+      <td >pt-5</td>
+      <td >pr-5</td>
+      <td >pb-5</td>
+      <td >pl-5</td>
+      
+    </tr>
+    <tr>
+      <td >mt-10</td>
+      <td >mr-10</td>
+      <td >mb-10</td>
+      <td >ml-10</td>
+      
+      <td >pt-10</td>
+      <td >pr-10</td>
+      <td >pb-10</td>
+      <td >pl-10</td>
+    </tr>
+    <tr>
+      <td >mt-15</td>
+      <td >mr-15</td>
+      <td >mb-15</td>
+      <td >ml-15</td>
+      
+      <td >pt-15</td>
+      <td >pr-15</td>
+      <td >pb-15</td>
+      <td >pl-15</td>
+    </tr>
+     <tr>
+       <td >mt-20</td>
+      <td >mr-20</td>
+      <td >mb-20</td>
+      <td >ml-20</td>
+      
+      <td >pt-20</td>
+      <td >pr-20</td>
+      <td >pb-20</td>
+      <td >pl-20</td>
+    </tr>
+    <tr>
+      <td >mt-25</td>
+      <td >mr-25</td>
+      <td >mb-25</td>
+      <td >ml-25</td>
+      
+      <td >pt-25</td>
+      <td >pr-25</td>
+      <td >pb-25</td>
+      <td >pl-25</td>
+    </tr>
+    <tr>
+     <td >mt-30</td>
+      <td >mr-30</td>
+      <td >mb-30</td>
+      <td >ml-30</td>
+      
+      <td >pt-30</td>
+      <td >pr-30</td>
+      <td >pb-30</td>
+      <td >pl-30</td>
+    </tr>
+   
+    
+  </tbody>
+</table>
+							</div>
+						</div>
+					</div>
+				
+				
+				
+					<div class="ui-g-12">
+						<h4 class="h2-heading">Buttons</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12">
+							<div class="card">
+									
+									
+									<table class="typography-table" >
+
+  <thead>
+    <tr>
+      <th scope="col">Default Button with icon</th>
+      <th scope="col">Outlined Default Button</th>
+      <th scope="col">Text Button</th>
+      <th scope="col">Large Button</th>
+      <th scope="col">Small Button</th>
+      <th scope="col">XSmall Button</th>
+      <th scope="col">CommandLink</th>
+      <th scope="col">Button Colors</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td >
+      .dp-btn
+      </td>
+      <td >.outlined-dp-btn
+      </td>
+      <td >
+      .text-dp-btn
+      </td>
+      <td >.dp-btn-l
+      </td>
+      
+      <td >.dp-btn-sm
+     
+      </td>
+      <td >
+      .dp-btn-xs-sm
+      </td>
+      <td >
+      .cmd-dp-btn
+      </td>
+      <td style="background-image: linear-gradient(to bottom, #07c880, #06be7c, #07b477, #0aaa73, #0da06e);color: #fff;border-left: 1px solid #000;">.dp-btn
+      </td>
+      
+    </tr>
+     <tr>
+      <td >
+     .dp-btn-icon
+      </td>
+      <td >
+      .outlined-dp-btn-icon
+      </td>
+      <td >
+      .text-dp-btn-icon
+      </td>
+      <td > .dp-btn-icon-l
+      </td>
+      
+      <td > .dp-btn-icon-sm 
+     
+      </td>
+      <td >
+   .dp-btn-xs-icon-sm
+      </td>
+      <td > .cml-btn
+      </td>
+        <td style="background-image: linear-gradient(to right, #22abff, #008aff);color: #fff;border-left: 1px solid #000;">.dp-btn-primary
+      </td>
+      
+    </tr>
+     <tr>
+      <td >
+      </td>
+      <td > .white-dp-btn
+      </td>
+      <td >
+     </td>
+      <td > .outlined-dp-btn-l
+      </td>
+      
+      <td > .outlined-dp-btn-sm
+     
+      </td>
+      <td >.outlined-dp-btn-xs
+      </td>
+      <td > .cmd-outlined-btn
+      </td>
+     <td style="background-image: linear-gradient(to right, #e0aa05, #dc9f05);color: #fff;border-left: 1px solid #000;">.dp-btn-warning
+      </td>
+      
+    </tr>
+     <tr>
+      <td >
+      </td>
+      <td > </td>
+      <td >
+     </td>
+      <td > .outlined-dp-btn-icon-l
+      </td>
+      
+      <td > .outlined-dp-btn-icon-sm
+     
+      </td>
+      <td > .outlined-dp-btn-icon-xs
+      </td>
+      <td > .cml-btn-white
+      </td>
+       <td style="background-image: linear-gradient(to right, #fe5f4f, #e74c3c);color: #fff;border-left: 1px solid #000;"> .dp-btn-danger
+      </td>
+      
+    </tr>
+   
+   
+    
+  </tbody>
+</table>
+							</div>
+						</div>
+					</div>
+			
+			<div class="ui-g-12">
+						<h4 class="h2-heading">icons library</h4>
+					</div>
+					<div class="ui-g ui-g-full-w">
+						<div class="ui-g-12">
+							<div class="card">
+									
+									
+									<table class="typography-table" >
+
+  <thead>
+    <tr>
+      <th scope="col">Fontawesome</th>
+      <th scope="col">Box icons</th>
+      <th scope="col">Primefaces icons</th>
+      <th scope="col">Material Icons</th>
+     
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td ><a href="https://fontawesome.com/icons" target="blank">https://fontawesome.com/icons</a></td>
+      <td ><a href="https://boxicons.com/" target="blank">https://boxicons.com/</a></td>
+      <td ><a href="https://www.primefaces.org/showcase/icons.xhtml?jfwid=1b2ba" target="blank">https://www.primefaces.org/showcase/icons.xhtml?jfwid=1b2ba</a></td>
+      <td ><a href=" https://fonts.google.com/icons" target="blank"> https://fonts.google.com/icons</a></td>
+     
+     
+    </tr>
+ 
+   
+    
+  </tbody>
+</table>
+							</div>
+						</div>
+					</div>
+				
+				
+				
+				</div>
+
+
+
+			</div>
+			<p:dialog header="حوار مشروط" widgetVar="dlg2" modal="true" resizable="false"
+				width="60%" height="50vh" class="top" draggable="false" showEffect="fade">
+	
+					
+						<p:tabView styleClass="tab-inside-card">
+
+							<p:tab>
+								<f:facet name="title">
+									<p:graphicImage
+										value="/resources/dp-layout/images/user-icon.svg"
+										styleClass="h-tab-svg-icon" />
+									<h:outputText value="تحرير عينة" />
+								</f:facet>
+
+								<div class="ui-g">
+									<div class="ui-g-12 ui-md-6 ui-lg-6">
+										<span class="ui-float-label full-w-input"> <p:inputText
+												id="float-input3" /> <p:outputLabel for="@previous"
+												value="ملصق" />
+										</span>
+
+
+									</div>
+									<div class="ui-g-12 ui-md-6 ui-lg-6">
+										<span class="ui-float-label full-w-input"> <p:inputText
+												id="float-input4" value="تعديل ملف" /> <p:outputLabel
+												for="@previous" value="ملصق" />
+										</span>
+									</div>
+
+									<div class="ui-g-12 ui-md-6 ui-lg-6">
+										<span class="ui-float-label"> <p:inputNumber
+												id="input3" modifyValueOnWheel="false" /> <p:outputLabel
+												for="input3" value="Input Number" />
+										</span>
+									</div>
+
+									<div class="ui-g-12 ui-md-6 ui-lg-6">
+
+
+
+
+										<span class="ui-float-label"> <p:selectOneMenu
+												id="console4" style="width:100%" value=" "
+												styleClass="select-full-w">
+												<f:selectItem itemLabel="select any option" itemValue="" />
+												<f:selectItem itemLabel="Option1" itemValue="Option1" />
+												<f:selectItem itemLabel="Option2" itemValue="Option2" />
+												<f:selectItem itemLabel="Option3" itemValue="Option3" />
+												<f:selectItem itemLabel="Option4" itemValue="Option3" />
+												<f:selectItem
+													itemLabel="read from it on 0:0:0:0:0:0:0:1:55,833 during the config   33 during the configured idle timeout of 5 seconds seconds 33 during the configured idle timeout of 5 seconds 33 during the "
+													itemValue="Option3" />
+
+
+
+											</p:selectOneMenu> <p:outputLabel for="@this" value="Basic Select" />
+										</span>
+
+
+
+									</div>
+
+
+									<div class="ui-g-12">
+										<div class="btn-left">
+											<p:button value="Save" icon="bx bxs-save" iconPos="right"
+												styleClass="dp-btn-icon" />
+
+										</div>
+
+									</div>
+									
+									<div class="ui-g-12">
+									<p>
+									Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+									</p>
+									</div>
+								</div>
+
+							</p:tab>
+							<p:tab>
+								<f:facet name="title">
+									<i class="pi pi-folder h-tab-icon"></i>
+									<h:outputText value="رابط مباشر" />
+								</f:facet>
+
+								<div class="ui-g">
+									<div class="ui-g-12 ui-md-12 ui-lg-12">
+										<p:barChart model="#{chartJsView.barModel}"
+											style="width: 100%; height: 390px;" />
+									</div>
+								</div>
+
+							</p:tab>
+							<p:tab title="اختر ملف">
+								<f:facet name="title">
+									<i class="pi pi-paperclip h-tab-icon"></i>
+									<h:outputText value="تحرير عينة" />
+								</f:facet>
+								<div class="ui-g">
+									<div class="ui-g-12 ui-md-12 ui-lg-12">
+										<p:dataTable var="car" value="#{dtSelectionView.cars7}"
+											styleClass="data-table-style-1" selectionMode="multiple"
+											reflow="true" 
+											rowKey="#{car.id}" paginator="true"
+											paginatorPosition="bottom" rows="5"
+											paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+											rowsPerPageTemplate="6,12,16">
+											<f:facet name="header">
+												<div class="table-heading">Table Heading</div>
+											</f:facet>
+											<p:column selectionMode="multiple" width="4%">
+
+											</p:column>
+
+
+											<p:column headerText="السنه" width="10%"
+												styleClass="number-col-td">
+												<h:outputText value="#{car.year}" title="test title div" />
+											</p:column>
+
+
+											<p:column headerText=" مرتبة" width="30%"
+												styleClass="table-txt-trim">
+												<h:outputText id="tooltip1"
+													value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+												<p:tooltip for="tooltip1" position="bottom">
+													<img src="#{resource['/images/user.jpg']}"
+														class="tooltip-img" />
+													<p class="tooltip-img-txt">الشكل الخارجي للنص أو على
+														الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي
+														يقرأها.الشكل الخارجي للنص أو على الشكل الخارجي للنص أو شكل
+														الفقرات في الصفحة التي يقرأها.</p>
+
+												</p:tooltip>
+											</p:column>
+
+											<p:column headerText="المحاكمات" styleClass="number-col-td">
+												<h:outputText value="13-10-2019" />
+											</p:column>
+
+											<p:column headerText=" مرتبة" width="20%"
+												styleClass="table-txt-trim">
+												<h:outputText id="tooltip2"
+													value=" الشكل الخارجي للنص أو   على الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي يقرأها." />
+												<p:tooltip for="tooltip2" position="bottom">
+
+													<p class="tooltip-img-txt">الشكل الخارجي للنص أو على
+														الشكل الخارجي للنص أو شكل الفقرات في الصفحة التي
+														يقرأها.الشكل الخارجي للنص أو</p>
+
+												</p:tooltip>
+											</p:column>
+
+											<p:column headerText="مده الخدمات">
+												<p:selectOneMenu style="width:100%"
+													styleClass="table-dropdown" id="console10"
+													value="#{selectOneMenuView.console}">
+													<f:selectItem itemLabel="بدون محاكمة" itemValue="" />
+													<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+													<f:selectItem itemLabel="PS4" itemValue="PS4" />
+													<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+												</p:selectOneMenu>
+											</p:column>
+
+
+
+
+
+										</p:dataTable>
+									</div>
+								</div>
+
+							</p:tab>
+						</p:tabView>
+
+				
+			</p:dialog>
+ 
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

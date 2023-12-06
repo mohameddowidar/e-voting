@@ -1,0 +1,139 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui" 
+                xmlns:pa="http://primefaces.org/barcelona">
+    <style>
+        .green-line {
+            border: 0;
+            height: 3px; /* Adjust the thickness of the line here */
+            background-color: green; /* This sets the color of the line */
+            margin-bottom: 20px; /* Adjust the space after the line */
+        }
+
+    </style>
+
+    <p:messages id="messages" showDetail="true"  closable="true" styleClass="message-alert" >
+
+        <p:effect type="clip" event="click" delay="500"/>		   
+        <p:autoUpdate/>
+    </p:messages>
+
+    <div class="topbar">
+        <div class="logo fadeInDown animated">
+            <h:link outcome="/index">
+                <img src="#{resource['/images/dp-logo-eg.png']}" />
+            </h:link>
+
+        </div>
+
+        <div class="govt-logo fadeInDown animated">
+
+            <h:link outcome="/index">
+                <img src="#{resource['/images/eg-gov.png']}" width="100px" height="100px" />
+
+                <!-- img class="dplogo" /-->
+            </h:link>
+        </div>
+
+
+        <ul class="topbar-menu fadeInDown animated">
+
+
+
+            <li class="profile-item">
+
+                <a href="#"> <!-- <i class="fa fa-caret-down caret-down" aria-hidden="true"></i> -->
+                    <div class="profile-info">
+                        <span class="topbar-item-name profile-name">مرحبا , </span>
+                        <span class="topbar-item-name profile-role">#{session.getAttribute("USER_NAME")}</span>
+                    </div>
+                    <div class="profile-image">
+                        <img src="data:image/png;base64,#{loginBean.getUserImage()}"
+                             width="100px"  height="100px"/>
+
+
+                    </div>
+                    <div class="notification-bg1"></div>
+                </a>
+
+
+            </li>
+            <li class="date-item cust-date">
+                <a href="#" class="clock-div">
+                    <div class="clock-bg">
+                        <!-- <p:clock /> -->
+                        <time id="time" class="time"></time>
+                    </div>
+                    <i class="topbar-icon material-icons clock-icon">schedule</i>
+
+                </a>
+
+
+            </li> 
+
+            <!-- <li class="search-item cust-search"><h:form>
+                                            <span class="inputfield"> <p:inputText placeholder="بإمكانك الكتابة لبدء البحث " /> <i class="fa fa-search"></i>
+                                            </span>
+
+            </h:form></li> -->
+        </ul>
+
+    </div>
+
+
+
+    <script>
+        $(document).ready(function ($) {
+            $('.tab_content').hide();
+            $('.tab_content:first').show();
+            $('.tabs li:first').addClass('active');
+            $('.tabs li').click(function (event) {
+                $('.tabs li').removeClass('active');
+                $(this).addClass('active');
+                $('.tab_content').hide();
+
+                var selectTab = $(this).find('a').attr("href");
+
+                $(selectTab).fadeIn();
+            });
+        });
+    </script>
+    <script>
+        [].map.call(document.querySelectorAll('[anim="ripple"]'), function (el) {
+            el.addEventListener('click', function (e) {
+                e = e.touches ? e.touches[0] : e;
+                var r = el.getBoundingClientRect(), d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;
+                el.style.cssText = "--s: 0; --o: 1;";
+                el.offsetTop;
+                el.style.cssText = "--t: 1; --o: 0; --d: " + d + "; --x:" + (e.clientX - r.left) + "; --y:" + (e.clientY - r.top) + ";";
+            });
+        });
+
+    </script>
+
+    <script>
+        $(".tree-btn-1").click(function () {
+            $(".tree-first").toggleClass("is-active");
+            $(".tree-second").removeClass("is-active2");
+
+
+        });
+
+    </script>
+    <script>
+        $(".tree-btn-2").click(function () {
+            $(".tree-second").toggleClass("is-active2");
+            $(".tree-first").removeClass("is-active");
+        });
+    </script>
+
+
+
+
+
+
+
+
+</ui:composition>

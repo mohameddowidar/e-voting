@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+      <style>
+      
+    .scroll-section{
+      
+    overflow-x: hidden !important;
+    overflow: auto;
+    height: calc(100vh - 320px);
+    position: relative;
+    }
+      
+      /* landing-page */
+      
+      
+.landing-page{
+	background-image: url("#{resource['barcelona-layout/images/bg-1.png']}");        
+    background-repeat:no-repeat;        
+    position: fixed;
+	height: 100%;
+	width: 100%;
+	left: 0px;
+    -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover !important;
+	}
+	
+	.landing-page .top-header-div {
+	    width: 82%;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 21px;
+}
+	.landing-page .top-main-logo {
+	width: 131px;
+	height: 45px;
+	right: 56px;
+	position: relative;
+}
+
+.landing-page .section {
+	margin-top: 0%;
+	}
+.landing-page .section-1 {
+	width: 87%;
+	margin: 0 auto;
+	position: relative;
+	margin-top: 6%;
+	margin-bottom:70px;
+}
+.landing-page .user-main-div {
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.landing-page .rounded-circle {
+	border-radius: 50% !important;
+}
+.landing-page .user-bg-2 {
+	background-image: url("#{resource['images/Comp-2.gif']}");
+	background-repeat:no-repeat;
+	background-size: cover !important;
+	width: 718px;
+	height: 516px;
+	margin-top: 0;
+	left: 50%;
+	position: absolute;
+	opacity: 0.2;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	margin-left: 164px;
+	margin-top: 0;
+}
+.landing-page .user-div{
+	position: relative;
+	top: 67px;
+}
+
+.landing-page .user-div img{
+	width:100px; 
+	height:100px;
+}
+.landing-page .user-img-shadow {
+    -webkit-box-shadow: 0px 17px 17px -8px rgba(0,0,0,0.58);
+    -moz-box-shadow: 0px 17px 17px -8px rgba(0,0,0,0.58);
+    box-shadow: 0px 17px 17px -8px rgba(0,0,0,0.58);
+    border: 2px solid #fff;
+}
+
+.landing-page .user-name-txt {
+	font-size: 17px !important;
+	font-family: '29ltbukrabold' !important;
+	color: #fff;
+	text-align: center;
+	margin-top: 9px;
+}
+.landing-page .user-name-span {
+	font-size: 12px !important;
+	font-family: '29ltbukraregular' !important;
+}
+
+
+
+/*dp-theme-index-btn-style*/
+.menu-btn-div {
+    width: 180px;
+    float: none;
+    position: relative;
+    display: inline-block;
+    margin: 0 20px;
+    margin-bottom: 35px;
+}
+
+.section-4 {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 280px;
+    text-align: center;
+}
+
+.poster {
+	cursor: pointer;
+	margin: 15px;
+	box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.5);
+	border-radius: 16px;
+	margin: 0;
+}
+.poster .poster__image-perspective {
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: perspective(700px);
+	transform: perspective(700px);
+}
+.poster:hover .poster__image-container {
+	-webkit-transform: scale(1.02);
+	transform: scale(1.02);
+}
+.poster:hover .poster__image {
+	box-shadow: 0px 65px 120px -34px rgba(0, 0, 0, 0.5);
+}
+.poster:hover .poster__shine {
+	opacity: 1;
+}
+.poster:hover .poster__title {
+	top: 55px;
+	opacity: 1;
+}
+.poster__image-container {
+	position: relative;
+	z-index: 2;
+	transition: -webkit-transform 300ms;
+	transition: transform 300ms;
+	transition: transform 300ms, -webkit-transform 300ms;
+}
+.poster__image {
+	position: relative;
+	width: 100%;
+	height: 82px;
+	background: #f9f9f9;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-radius: 16px;
+	overflow: hidden;
+	transition: box-shadow 300ms;
+	padding: 29px 13px;
+}
+.poster__shine {
+	position: absolute;
+	width: 100%;
+	padding-top: 90%;
+	background: rgba(255, 255, 255, 0.3);
+	-webkit-filter: blur(25px);
+	filter: blur(25px);
+	pointer-events: none;
+	border-radius: 50%;
+	opacity: 0;
+	transition: opacity 300ms;
+}
+.poster__title {
+	position: relative;
+	top: -20px;
+	font-size: 20px;
+	opacity: 0;
+	text-align: center;
+	z-index: 1;
+	transition: top 300ms, opacity 200ms;
+}
+.landing-page-icon {
+	float: left;
+	width: 32%;
+	top: -4px;
+	position: relative;
+	left: -12px;
+}
+.count-details-div {
+	padding: 0;
+	padding-left: 0;
+}
+.menu-btn-txt1 {
+	font-size: 13px;
+	font-family: '29ltbukrabold';
+	margin: 0;
+	text-align: right;
+	margin-bottom: -1px;
+	margin-top: -5px;
+	color: #008c5b;
+	top: 6px;
+	position: relative;
+}
+.menu-btn-count-div {
+	float: right;
+	position: relative;
+	margin-right: 0;
+	color: #008c5b;
+	float: right;
+	width:68%;
+}
+.menu-notification-icon {
+	font-size: 37px;
+	position: relative;
+	top: 20px;
+	color: #008c5b;
+	left: 16px;
+}
+
+
+
+
+/* menu-section */
+
+.menu-toggle {
+	width: 30px;
+    height: 40px;
+    position: absolute;
+    top: 25px;
+    right: 156px !important;
+    cursor: pointer;
+    z-index: 55;
+    padding: 7px 8px;
+}
+.menu-toggle:hover {
+	background-color: #1010105c;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	padding: 7px 8px;
+}
+.one, .two, .three {
+	width: 100%;
+	height: 2px;
+	background: white;
+	margin: 5px auto;
+	backface-visibility: hidden;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+.menu-toggle.on .one {
+	-moz-transform: rotate(45deg) translate(5px, 3px);
+	-ms-transform: rotate(45deg) translate(5px, 3px);
+	-webkit-transform: rotate(45deg) translate(5px, 3px);
+	transform: rotate(45deg) translate(5px, 3px);
+}
+.menu-toggle.on .two {
+	opacity: 0;
+}
+.menu-toggle.on .three {
+	-moz-transform: rotate(-45deg) translate(7px, -5px);
+	-ms-transform: rotate(-45deg) translate(7px, -5px);
+	-webkit-transform: rotate(-45deg) translate(7px, -5px);
+	transform: rotate(-45deg) translate(7px, -5px);
+}
+.menu-section.on {
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: fixed;
+	background: rgba(0,88,69,1);
+	background: -moz-linear-gradient(-45deg, rgba(0,88,69,1) 0%, rgba(0,156,99,0.73) 100%);
+	background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,88,69,1)), color-stop(100%, rgba(0,156,99,0.73)));
+	background: -webkit-linear-gradient(-45deg, rgba(0,88,69,1) 0%, rgba(0,156,99,0.73) 100%);
+	background: -o-linear-gradient(-45deg, rgba(0,88,69,1) 0%, rgba(0,156,99,0.73) 100%);
+	background: -ms-linear-gradient(-45deg, rgba(0,88,69,1) 0%, rgba(0,156,99,0.73) 100%);
+	background: linear-gradient(135deg, rgba(0,88,69,1) 0%, rgba(0,156,99,0.73) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005845', endColorstr='#009c63', GradientType=1 );
+}
+.menu-section nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	margin: 12em auto;
+	text-align: center;
+}
+.menu-section nav ul.hidden {
+	display: none !important;
+}
+.menu-section nav ul a {
+	-moz-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+	-webkit-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+	text-decoration: none;
+	color: white;
+	font-size: 31px;
+	line-height: 1.5;
+	width: 100%;
+	display: block;
+	font-family: '29ltbukraregular';
+}
+.menu-section nav ul a:hover {
+	color: #2ae0a4;
+	text-decoration: none;
+}
+.menu-section nav ul a:focus {
+	color: #2ae0a4;
+	text-decoration: none;
+}
+.menu-section nav ul .menu-logo {
+	width: 6%;
+	margin-bottom: 20px;
+}
+.menu-section {
+	position: absolute;
+	width: 100%;
+}
+.menu-icon-font{
+	    font-size: 41px !important;
+    	float: left;
+    	margin-top: -6px;
+    	color: #008c5b;}
+    	
+    /* topbar */
+    
+    .topbar {
+    position: relative;
+    margin: 0 auto;
+    width: 77%;
+    height: 88px;
+    padding: 22px 0px;
+    box-sizing: border-box;
+    z-index: 2;
+    -moz-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0
+	 rgba(0, 0, 0, 0.26);
+	}
+    .topbar .logo img {
+    width: 131px;
+    margin-top: 0px;
+    margin-right: 2px;
+	}
+	
+	.topbar .logo {
+    width: 131px;
+    height: 60px;
+    display: inline-flex;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    margin-right: 0px;
+	}
+    	
+    .topbar .topbar-menu {
+    float: left;
+    margin: 6px 0px 0px 0px;
+    list-style-type: none;
+	}
+	.topbar .topbar-menu>li {
+    float: left;
+    margin-left: 0px;
+    margin-right: 28px;
+	}
+	.topbar .topbar-menu>li>a {
+    position: relative;
+    display: block;
+    color: #fff;
+	}
+	.topbar .topbar-menu>li.date-item {
+    position: relative;
+    color: #ffffff;
+    padding: 9px 20px;
+    margin-left: 4px !important;
+	}
+	.topbar .topbar-menu>li.date-item i {
+    position: absolute;
+    left: 12px;
+    top: 7px;
+    color: #ffffff;
+    font-size: 24px;
+	}
+	.clock-bg .ui-widget-header {
+    background-color: transparent;
+    color: #ffffff;
+    border: 0px solid #07c880;
+    padding: 8px 14px;
+	}
+	.clock-bg span {
+    position: relative;
+    color: #ffffff;
+    line-height: 13px !important;
+    font-size: 12px !important;
+    float: left;
+    text-align: left;
+    font-family: '29ltbukraregular' !important;
+    margin-left: 10px;
+    margin-top: -10px;
+	}
+	.cust-date {
+    width: 130px;
+    height: 41px;
+    background-color: #009c62;
+    border-radius: 42px;
+    border: 1px solid #0da06a;
+    padding: 8px 20px;
+    margin-top: -5px;
+	}
+	.fullscreen-btn-icon {
+    font-size: 38px !important;
+    margin-top: -3px;
+    cursor: pointer;
+	}
+	
+	/* scroll */
+	::-webkit-scrollbar-thumb {
+    background: rgba(13,160,110,1) !important;
+    border-radius: 50px !important;
+	}
+	::-webkit-scrollbar-track-piece {
+    background: #00704f !important;
+    border-radius: 0px !important;
+	}
+      </style>
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <link rel="shortcut icon" type="image/png" href="#{resource['/images/fav.png']}"/>
+        </f:facet>
+        <title><ui:insert name="title">Dubai Police</ui:insert></title>
+        <h:outputScript name="js/nanoscroller.js" library="barcelona-layout" />
+        <h:outputScript name="js/wow.min.js" library="barcelona-layout" />
+        <h:outputScript name="js/jquery.min.js" library="barcelona-layout" />
+        <h:outputScript name="js/layout.js" library="barcelona-layout" />
+        <h:outputScript name="js/ripple.js" library="barcelona-layout" />
+        <ui:insert name="head"/>
+    </h:head>
+
+    <h:body styleClass="landing-page">
+        
+		  <div class="menu-section">
+		  <div class="topbar">
+		<div class="logo fadeInDown animated">
+			<h:link outcome="/index">
+				<!-- <p:graphicImage name="images/dp-logo.png" library="barcelona-layout" /> -->
+				<img class="dplogo" />
+			</h:link>
+			<!-- <h:form class="cust-search">
+							<span> <i class="fa fa-search"></i></span> <span class="inputfield"> <p:inputText placeholder="بإمكانك الكتابة لبدء البحث " /> </span>
+						</h:form> -->
+		</div>
+		
+		<ul class="topbar-menu fadeInDown animated">
+		
+		<li ><a id="fs-doc-button"> <i class="topbar-icon material-icons animated zoomIn fullscreen-btn-icon">fullscreen</i> <span class="topbar-item-name"></span>
+			</a>
+			</li>
+			<li style="display:none"><a id="fs-exit-doc-button"> <i class="topbar-icon material-icons animated zoomIn fullscreen-btn-icon">fullscreen_exit</i> <span class="topbar-item-name"></span>
+			</a>
+			</li>
+			<li class="date-item cust-date">
+			<a href="#"><i class="topbar-icon material-icons clock-icon">query_builder</i>
+					<div class="clock-bg">
+						<p:clock />
+					</div>
+			</a>
+			</li>
+		</ul>
+	</div>
+		</div> 
+		
+        <div class="clearfix"></div>
+        <div class="section">
+         <div class="section-1">
+			  <div class="ui-g"> 
+			    <div class="ui-lg-12" style="width:100%">
+			      <div class="user-main-div">
+			        <div class="user-bg-2" ></div>
+			        <div class="user-div text-center animated fadeInUp slow delay-1s"> 
+			        <center>
+			        <img src="resources/images/user1.JPG" class="rounded-circle user-img-shadow" alt="..." />
+			        </center>
+			        <p class="user-name-txt"><span class="user-name-span">صباح الخير</span>سامي </p>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<div class="scroll-section">
+		  <div class="section-4">
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <i class="fa fa-globe menu-icon-font" aria-hidden="true" ></i> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/04.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات جواز السفر</p>
+		                </div>
+		                <img src="resources/images/03.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="menu-btn-div">
+		      <div class="poster animated wow zoomIn wHighlight" data-wow-delay=".35s">
+		        <div class="poster__image-container">
+		          <div class="poster__image-perspective">
+		            <div class="poster__image">
+		              <div class="count-details-div">
+		                <div class="menu-btn-count-div">
+		                  <p class="menu-btn-txt1">سجلات فيزا المقيم</p>
+		                </div>
+		                <img src="resources/images/02.png" class="landing-page-icon" /> </div>
+		              <div class="poster__shine"> </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		  </div>
+		  </div>
+        
+        <h:outputStylesheet name="css/nanoscroller.css" library="barcelona-layout" />
+        <h:outputStylesheet name="css/animate.css" library="barcelona-layout" />
+        <h:outputStylesheet name="css/animate.min.css" library="barcelona-layout" />
+        <h:outputStylesheet name="css/wow.css" library="barcelona-layout" />
+        <h:outputStylesheet name="css/ripple.css" library="barcelona-layout" />
+        <h:outputStylesheet name="css/layout-intra-green.css" library="barcelona-layout" />
+        <h:outputScript name="js/appletv.js" library="barcelona-layout" />
+         
+		  <!-- <script>
+			$(".menu-toggle").on('click', function() {
+			  $(this).toggleClass("on");
+			  $('.menu-section').toggleClass("on");
+			  $("nav ul").toggleClass('hidden');
+			});	
+		</script> -->
+		<script>
+    var requestFullscreen = function (ele) {
+	if (ele.requestFullscreen) {
+		ele.requestFullscreen();
+	} else if (ele.webkitRequestFullscreen) {
+		ele.webkitRequestFullscreen();
+	} else if (ele.mozRequestFullScreen) {
+		ele.mozRequestFullScreen();
+	} else if (ele.msRequestFullscreen) {
+		ele.msRequestFullscreen();
+	} else {
+		console.log('Fullscreen API is not supported.');
+	}
+};
+
+var exitFullscreen = function () {
+	if (document.exitFullscreen) {
+		document.exitFullscreen();
+	} else if (document.webkitExitFullscreen) {
+		document.webkitExitFullscreen();
+	} else if (document.mozCancelFullScreen) {
+		document.mozCancelFullScreen();
+	} else if (document.msExitFullscreen) {
+		document.msExitFullscreen();
+	} else {
+		console.log('Fullscreen API is not supported.');
+	}
+};
+
+
+// will check after some time...ok
+
+var fsDocButton = document.getElementById('fs-doc-button');
+var fsExitDocButton = document.getElementById('fs-exit-doc-button');
+
+fsDocButton.addEventListener('click', function(e) {
+	e.preventDefault();
+	requestFullscreen(document.documentElement);
+	$("#fs-doc-button").parent().css("display","none");
+	$("#fs-exit-doc-button").parent().css("display","");
+});
+
+fsExitDocButton.addEventListener('click', function(e) {
+	e.preventDefault();
+	exitFullscreen();
+	$("#fs-exit-doc-button").parent().css("display","none");
+	$("#fs-doc-button").parent().css("display","");
+});
+
+    </script>
+    </h:body>
+
+</html>

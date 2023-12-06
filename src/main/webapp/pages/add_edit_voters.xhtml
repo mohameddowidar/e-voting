@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Dubai Police Smart CMS</ui:define>
+    <ui:define name="breadCrumb">
+        <p:breadCrumb>
+            <p:menuitem value="Home" url="#"/>
+        </p:breadCrumb>
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="voterFormId" name="voterFormId" dir="RTL" style="width:100% !important"  enctype="multipart/form-data">
+            <div class="wow zoomIn wHighlight animated web">
+                        <div class="card">
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-lg-8">
+                                        <label class="pure-material-textfield-outlined">
+                                            <span>اسم الناخب</span>
+                                            <p:inputText class=""
+                                                         placeholder=" "
+                                                         filter="true" required="true"
+                                                         requiredMessage="Name is required"
+                                                         value="#{voterMB.selectedVoter.name}">
+                                            </p:inputText>
+                                        </label>
+                                    </div>
+                                    <div class="ui-g-12 ui-lg-4">
+                                        <label class="pure-material-textfield-outlined">
+                                            <span>تاريخ الميلاد</span>
+                                            <p:calendar id="dob" value="#{voterMB.selectedVoter.dateOfBirth}" pattern="dd-MM-yyyy" required="true" requiredMessage="Date of Birth is required" />
+                                        </label>
+                                    </div>
+                                    <div class="ui-g-12 ui-lg-12">
+                                        <label class="pure-material-textfield-outlined">
+                                            <span> عنوان الناخب</span>
+                                            <p:inputTextarea id="address" value="#{voterMB.selectedVoter.address}" required="true"  requiredMessage="Address is required"/>
+                                        </label>
+                                    </div>
+                                    <div class="ui-g-12 ui-lg-3">
+                                        <label class="pure-material-textfield-outlined">
+                                            <span> رقم الهوية الوطنية </span>
+                                            <p:inputText id="nationalId" value="#{voterMB.selectedVoter.nationalId}" required="true" requiredMessage="National ID is required"/>
+                                        </label>
+                                    </div>
+                                    <div class="ui-g-12 ui-lg-3">
+                                        <label class="pure-material-textfield-outlined">
+                                            <span> بريد إلكتروني </span>
+                                            <p:inputText id="email" value="#{voterMB.selectedVoter.email}" required="true" requiredMessage="Email is required"/>
+                                        </label>
+                                    </div>
+                                        <div class="ui-g-12 ui-lg-3">
+                                            <label class="pure-material-textfield-outlined">
+                                                <span> رقم التليفون </span>
+                                                <p:inputText id="phone" value="#{voterMB.selectedVoter.phoneNumber}" required="true" requiredMessage="Phone Number is required" />
+                                            </label>
+                                        </div>
+                                    <div class="ui-g-12 ui-lg-3">
+                                        <label class="pure-material-textfield-outlined">
+                                            <span> عمر </span>
+                                            <p:inputText id="age" value="#{voterMB.selectedVoter.age}" required="true" requiredMessage="Age is required" />
+                                        </label>
+                                    </div>
+                                    <div class="ui-g-12">
+                                        <!-- Start Upload Image Section  -->
+                                        <p:outputPanel id="img-icon">
+                                            <div class="ui-g-12 ui-lg-4">
+                                                <p:outputPanel id="imgIcon">
+                                                    <div class="button--icon">
+                                                        <img src="data:image/png;base64,#{voterMB.imgIcon}" width="100%"  height="100%"/>
+                                                    </div>
+                                                    <p id="title"></p>
+                                                </p:outputPanel>
+                                            </div>
+                                        </p:outputPanel>
+                                        <div class="ui-g-12 ui-lg-8">
+                                            <p:outputPanel id="panel-internal">
+                                                <p:fileUpload required="true" value="#{voterMB.imageFileContent}" styleClass="file-upload-2"
+                                                              listener="#{voterMB.uploadIcon}"
+                                                              uploadLabel="إرفاق صورة المواطن" label="إرفاق  صورة المواطن" auto="true" process="@this"  sizeLimit="5000000"
+                                                              update="imgIcon messages" validatorMessage="ملف غير صالح"
+                                                              invalidFileMessage=" ملف غير صالح من فضللك أختر ملف صورة ينتهى  ب (.gif|jpg|jpeg|png )" invalidSizeMessage="حجم ملف غير صالح"
+                                                              allowTypes="/(\.|\/)(gif|jpg|jpeg|png)$/"  />
+                                            </p:outputPanel>
+                                        </div>
+                                    </div>
+                                    <div class="ui-g-12 ui-lg-8 btn-left">
+                                        <p:commandButton styleClass="dp-btn mt-5" value="حفظ" icon="pi pi-save"
+                                                         actionListener="#{voterMB.save}"  update="@form" />
+                                        <h:outputText value="&lt;/&gt;" escape="false" />
+                                        <p:button id="backButtonId" icon="pi pi-step-backward" class="dp-btn" outcome="voters.xhtml" value="رجوع" />
+                                    </div>
+                                </div>
+                            <div class="ui-g-12">
+                            </div>
+                        </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

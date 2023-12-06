@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+    <ui:composition template="/WEB-INF/template.xhtml">
+
+        <ui:define name="content">
+    <p:button></p:button>
+    <p:tree filterMatchMode="contains" var="node"
+            filterBy="#{node.permissionName}"
+            id="treeNodeId"
+            value="#{permissionController.root}"
+            selectionMode="single"
+            selection="#{permissionController.selectedNode}">
+
+        <p:treeNode type="Folder" expandedIcon="fa fa-folder-open fa-2x"
+                    collapsedIcon="fa fa-folder fa-2x">
+            <h:outputText value="#{node.permissionName}" />
+        </p:treeNode>
+
+        <p:treeNode type="Key" expandedIcon="fa fa-folder-open fa-2x"
+                    collapsedIcon="fa fa-key fa-2x">
+            <h:outputText value="#{node.permissionName}" />
+        </p:treeNode>
+        <p:ajax event="select"
+                listener="#{permissionController.onNodeSelect}" process="@this"/>
+    </p:tree>
+        </ui:define>
+    </ui:composition>
+</f:view>

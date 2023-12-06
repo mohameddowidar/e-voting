@@ -1,0 +1,189 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        template="/WEB-INF/template.xhtml"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+    <p:dialog id="addEmployeePermDlg" header="إدارة الأحقيات الخاصة ب موظف"
+              widgetVar="addEmployeePermDlg" width="80%"  height="80%" class="top" modal="true" dynamic="true">
+
+        <style>
+
+            .picklist .ui-picklist .ui-picklist-buttons .ui-button.ui-button-icon-only.ui-picklist-button-add .ui-icon {
+                transform: rotate(180deg);
+            }
+
+            .picklist .ui-picklist .ui-picklist-buttons .ui-button.ui-button-icon-only.ui-picklist-button-add-all .ui-icon {
+                transform: rotate(180deg);
+            }
+
+            .picklist .ui-picklist .ui-picklist-buttons .ui-button.ui-button-icon-only.ui-picklist-button-remove .ui-icon {
+                transform: rotate(360deg);
+            }
+
+            .picklist .ui-picklist .ui-picklist-buttons .ui-button.ui-button-icon-only.ui-picklist-button-remove-all .ui-icon {
+                transform: rotate(180deg);
+            }
+
+            .picklist {background-color: #f2f4f8;
+                border-radius: 8px;
+                padding: 25px 0 !important;
+                border: 5px solid #fff;
+                border-bottom: none;
+            }
+
+            .picklist .ui-picklist .ui-picklist-buttons .ui-button.ui-button-icon-only {
+                width: 32px;
+                padding: 6px;
+            }
+
+            .picklist .ui-widget-content .ui-icon {
+                color: #fff;
+            }
+
+            .picklist .ui-button.ui-button-icon-only .ui-icon {
+                margin-left: -10px;
+                top: 0;
+            }
+
+            .picklist .ui-picklist .ui-picklist-filter-container .ui-picklist-filter {
+                width: 100%;
+                border: 1px solid #000;
+                border-radius: 4px;
+                background-color: #fff;
+                margin-bottom: 9px;
+            }
+
+            .picklist .ui-picklist .ui-picklist-filter-container .ui-icon {
+                color: #757575;
+                top: 15px;
+                right: 7px;
+            }
+
+            .picklist .ui-picklist.ui-picklist-responsive .ui-picklist-buttons {
+                width: 48px;
+                padding-top: 81px;
+            }
+
+        </style>
+        <h:form id="addPermUserForm">
+            <p:growl life="5000" id="msg" showDetail="true" />
+            <div class="ui-g">
+                <div class="ui-g-4">
+                    <p:inputNumber
+                            value="#{userPermissionController.permissionSearchDTO.grp}"
+                            thousandSeparator="" placeholder="رقم الموظف" decimalPlaces="0"
+                            id="emp_number" required="true"
+                            requiredMessage="الرجاء ادخال رقم الموظف"></p:inputNumber>
+                </div>
+                <div class="ui-g-3">
+                    <p:commandButton
+                            actionListener="#{userPermissionController.searchEmployee}"
+                            value="بحث" class="dp-btn" icon="fa fa-search"
+                            process="@this emp_number" update=":addPermUserForm :addPermUserForm:msg footerId">
+                    </p:commandButton>
+                </div>
+            </div>
+            <h:panelGroup
+                    rendered="#{userPermissionController.selectedEmployee ne null }"
+                    styleClass="form-group label-green" layout="block"
+                    id="servicesSectionId">
+                <div class="ui-g">
+                    <div class="ui-g-12"
+                         style="text-align: center;
+						 font-family: 'bukrabold';
+						 padding: 17px;
+						 font-size: 16px;
+						 margin-bottom: 14px;
+						 color: #fff;
+						 background: linear-gradient(to right, #0da06e, #0da06e 100%) !important;">
+                        <h:outputText
+                                value="#{userPermissionController.selectedEmployee.grpNumber}"></h:outputText>
+                        <h:outputText
+                                value="#{userPermissionController.selectedEmployee.fullName}"></h:outputText>
+                        <h:outputText
+                                value="#{userPermissionController.selectedEmployee.parentDepartment.shortName}"></h:outputText>
+                    </div>
+                    <div class="ui-g-12 ui-lg-6">
+                        <label class="pure-material-textfield-outlined">
+                            <p:selectOneMenu appendTo="@this" style="width:100%" required="true"
+                                             id="serviceType" filter="true" filterMatchMode="contains"
+                                             value="#{userPermissionController.permissionSearchDTO.permissionId}">
+                                <f:selectItem itemLabel="#{msg['select']}" />
+                                <f:selectItems
+                                        value="#{userPermissionController.rootPermissions}"
+                                        var="perm" itemLabel="#{perm.permissionName}" itemValue="#{perm.id}" />
+                                <p:ajax event="change" process="@this" execute="@this" listener="#{userPermissionController.onSelectService}"
+                                        update="permissionsList" />
+                            </p:selectOneMenu> <span> الأحقيات الرئيسية</span>
+                        </label>
+                    </div>
+                    <div class="ui-g-12 ui-lg-4 cust-margin">
+                        <p:spacer width="20"  height="20"/>
+                        <i class="ico-right-hand fa-2x"></i><p:spacer width="20"  height="20"/>
+                        <p:outputLabel value="من فضللك اختر الأحقية الرئيسية من هنا " />
+                    </div>
+                    <div class="ui-g-12 ui-lg-2">
+                    </div>
+                    <div class="ui-g-12 ui-lg-6 picklist">
+                        <p:pickList id="permissionsList" value="#{userPermissionController.permissionsListModal}" var="perm"
+                                    itemValue="#{perm}" itemLabel="#{perm.permissionName}" showSourceControls="true"
+                                    showTargetControls="true" showCheckbox="true"
+                                    showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains"
+                                    converter="#{permissionsConverter}" responsive="true">
+
+                            <f:facet name="sourceCaption">الأحقيات </f:facet>
+                            <f:facet name="targetCaption">الأحقيات المختارة للموظف</f:facet>
+
+                            <p:ajax event="transfer" listener="#{userPermissionController.onTransfer}" update="msg"/>
+                            <p:ajax event="select" listener="#{userPermissionController.onSelect}" update="msg"/>
+                            <p:ajax event="unselect" listener="#{userPermissionController.onUnselect}" update="msg"/>
+                            <p:ajax event="reorder" listener="#{userPermissionController.onReorder}" update="msg"/>
+
+                            <p:column style="width:94%">
+                                <div class="p-d-flex p-ai-center">
+                                    <h:outputText value="#{perm.permissionName}"/>
+                                </div>
+                            </p:column>
+                        </p:pickList>
+                    </div>
+                    <div class="ui-g-12 ui-lg-6 picklist">
+                        <p:pickList id="departmentsList" value="#{userPermissionController.departmentsListModal}" var="dept"
+                                    itemValue="#{dept}" itemLabel="#{dept.departmentName}" showSourceControls="true"
+                                    showTargetControls="true" showCheckbox="true"
+                                    showSourceFilter="true" showTargetFilter="true" filterMatchMode="contains"
+                                    converter="#{orgMapDepartmentConverter}" responsive="true">
+
+                            <f:facet name="sourceCaption">جميع الإدارات</f:facet>
+                            <f:facet name="targetCaption">الإدارات المختارة</f:facet>
+
+                            <p:ajax event="transfer" listener="#{userPermissionController.onDepartmentTransfer}" update="msg"/>
+                            <p:ajax event="select" listener="#{userPermissionController.onDepartmentSelect}" update="msg"/>
+                            <p:ajax event="unselect" listener="#{userPermissionController.onDepartmentUnselect}" update="msg"/>
+                            <p:ajax event="reorder" listener="#{userPermissionController.onDepartmentReorder}" update="msg"/>
+
+                            <p:column style="width:94%">
+                                <div class="p-d-flex p-ai-center">
+                                    <h:outputText value="#{dept.departmentName}"/>
+                                </div>
+                            </p:column>
+                        </p:pickList>
+                    </div>
+                </div>
+            </h:panelGroup>
+            <p:panel id="footerId">
+                <f:facet name="footer">
+                    <div class="ui-g-12 ui-lg-12 btn-left">
+                        <p:commandButton class="dp-btn" icon="fa fa-times"
+                                         value="#{msg['cancel']}" ajax="false"
+                                         onclick="PF('addEmployeePermDlg').hide();return false;" />
+                        <p:commandButton value="إضافة" icon="fa fa-save" class="dp-btn"
+                                         rendered="#{userPermissionController.selectedEmployee ne null }" update=":treeNodeFormId:userList :addUserForm:msg"
+                                         process="@this" actionListener="#{userPermissionController.save}">
+                        </p:commandButton>
+                    </div>
+                </f:facet>
+            </p:panel>
+        </h:form>
+    </p:dialog>
+</f:view>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:sec="http://www.springframework.org/security/tags"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+    <ui:composition template="/WEB-INF/template.xhtml">
+      
+        <ui:define name="content">
+            <div class="ui-g wow zoomIn wHighlight animated web">
+                <h:form id="treeNodeFormId" rendered="#{p:ifAnyGranted('PERMISSION_ADD_EMPLOYEE')}" styleClass="full-width-form" >  
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="60%">
+                        <p:commandButton value="نعم" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                        <p:commandButton value="لا" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    </p:confirmDialog>
+                    <p:growl life="4000" id="message" showDetail="true" />
+
+                    <div class="ui-g-12">
+                        <div class="card" style="padding: 10px;">
+                            <div class="ui-g" 
+                                 id="searchDiv">
+
+                                <div class="ui-g-3">
+
+                                    <span class="ui-float-label full-w-input "> 
+                                        <p:inputText id="grpNum" value="#{permissionSearchController.data.grpNumber}" /> 
+                                        <p:outputLabel  value="رقم الموظف" />
+                                    </span><!-- comment -->
+
+
+                                </div>
+                                <div class="ui-g-3">
+                                    <p:commandButton update="dataTable" process="@this,grpNum" icon="bx bx-search" value="بحث" styleClass="dp-btn mt-5"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                        <div class="ui-g">
+                            <p:dataTable lazy="true" value="#{permissionSearchController.data}" id="dataTable" paginator="true"
+                                         rows="10"
+                                         rowIndexVar="index"
+                                         paginatorPosition="bottom"
+                                         paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+                                         var="perm">
+                                <f:facet name="header">
+                                    بحث الأحقيات
+                                </f:facet>
+                                <f:facet name="emptyMessage">
+                                    <div class="datatable-empty-image">
+                                        <img src="#{resource['/images/empty-state.png']}" />
+                                    </div>
+                                    <p>#{msg['noResultsFound']}</p>
+                                </f:facet>
+                                <p:column headerText="م" style="width:5%">
+                                    <p:outputLabel  value="#{index + 1}"/>
+                                </p:column>
+                                <p:column   headerText="الأحقية" width="15%">
+                                    <h:outputText value="#{perm.permission.permissionName}"
+                                                  rendered="#{perm.employee.id ne null}"/>
+                                    <h:outputText value="لا يوجد" rendered="#{perm.employee.id eq null}"/>
+                                </p:column>
+                                <p:column headerText="الرقم الوظيفي" width="15%">
+                                    <h:outputText value="#{perm.employee.id}"
+                                                  rendered="#{perm.employee.id ne null}"/>
+                                    <h:outputText value="لا يوجد" rendered="#{perm.employee.id eq null}"/>
+                                </p:column>
+                                <p:column headerText="أسم الموظف" width="25%">
+                                    <h:outputText value="#{perm.employee.fullName}" rendered="#{perm.employee.fullName ne null}"/>
+                                    <h:outputText value="لا يوجد" rendered="#{perm.employee.fullName eq null}"/>
+                                </p:column>
+                                <p:column headerText="الأدارة" width="25%">
+                                    <h:outputText value="#{perm.employee.parentDepartment.shortName}"
+                                                  rendered="#{perm.employee.parentDepartment.shortName ne null}"/>
+                                    <h:outputText value="لا يوجد" rendered="#{perm.employee.parentDepartment.shortName eq null}"/>
+                                </p:column>
+                                <p:column headerText="تاريخ اخر تحديث" style="width:15%">
+                                    <h:outputText value="#{perm.insertDate}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                                    </h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </h:form>
+                <div class="ui-g-12">
+                    <h:form id="noPermissionForm" rendered="#{!p:ifAnyGranted('PERMISSION_ADD_EMPLOYEE')}">
+                        <ui:include src="no-permission.xhtml"/>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</f:view>

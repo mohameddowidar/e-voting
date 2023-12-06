@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-web-app
+		xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-web-app"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        https://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd
+        http://xmlns.oracle.com/weblogic/weblogic-web-app
+        https://xmlns.oracle.com/weblogic/weblogic-web-app/1.4/weblogic-web-app.xsd">
+	<wls:container-descriptor>
+		<wls:prefer-web-inf-classes>false</wls:prefer-web-inf-classes>
+		<!-- to tell weblogic to use application provided libraries -->
+		<wls:prefer-application-packages>
+			<wls:package-name>org.apache.commons.collections4.*</wls:package-name>
+			<wls:package-name>org.apache.commons.compress.*</wls:package-name>
+			<wls:package-name>org.apache.poi.*</wls:package-name>
+			<wls:package-name>org.openxmlformats.*</wls:package-name>
+			<wls:package-name>schemaorg_apache_xmlbeans.*</wls:package-name>
+			<wls:package-name>schemaorg_apache_xmlbeans.system.*</wls:package-name>
+			<wls:package-name>repackage.*</wls:package-name>
+			<wls:package-name>com.fasterxml.jackson</wls:package-name>
+			<wls:package-name>org.apache.logging.log4j.*</wls:package-name>
+			<wls:package-name>org.apache.*</wls:package-name>
+			<wls:package-name>org.apache.xmlbeans</wls:package-name>
+			<wls:package-name>org.springframework.*</wls:package-name>
+			<wls:package-name>org.jboss.logging</wls:package-name>
+			<wls:package-name>org.jboss</wls:package-name>
+<!--			<wls:package-name>javax.faces</wls:package-name>-->
+<!--			<wls:package-name>javax.el</wls:package-name>-->
+<!--			<wls:package-name>antlr</wls:package-name>-->
+			<wls:package-name>org.slf4j.*</wls:package-name>
+<!--			<wls:package-name>com.sun.faces</wls:package-name>-->
+			<!--<wls:package-name>com.bea.faces</wls:package-name>
+			<wls:package-name>com.sun.el</wls:package-name>-->
+			<!--<wls:package-name>org.apache.*</wls:package-name>-->
+			<!--<wls:package-name>com.sun.xml.*</wls:package-name>-->
+			<!--<wls:package-name>com.ocpsoft.pretty.*</wls:package-name>-->
+			<!--<wls:package-name>javax.xml.ws.handler.*</wls:package-name>-->
+			<wls:package-name>com.sun.xml.ws.api.wsdl.parser.*</wls:package-name>
+			<!--<wls:package-name>org.apache.ws.security.*</wls:package-name>-->
+			<!--<wls:package-name>javax.xml..*</wls:package-name>-->
+			<!--<wls:package-name>com.sun.xml.ws.*</wls:package-name>-->
+			<!--<wls:package-name>javax.xml.ws.handler.soap.*</wls:package-name>-->
+		</wls:prefer-application-packages>
+
+		<wls:prefer-application-resources>
+			<wls:resource-name>schemaorg_apache_xmlbeans/system/sXMLCONFIG/TypeSystemHolder.class</wls:resource-name>
+			<wls:resource-name>schemaorg_apache_xmlbeans/system/sXMLLANG/TypeSystemHolder.class</wls:resource-name>
+			<wls:resource-name>schemaorg_apache_xmlbeans/system/sXMLSCHEMA/TypeSystemHolder.class</wls:resource-name>
+			<wls:resource-name>schemaorg_apache_xmlbeans/system/sXMLTOOLS/TypeSystemHolder.class</wls:resource-name>
+			<wls:resource-name>META-INF/services/javax.xml.ws.*</wls:resource-name>
+			<wls:resource-name>META-INF/services/com.sun.xml.ws.*</wls:resource-name>
+			<wls:resource-name>META-INF/services/com.sun.tools.ws.*</wls:resource-name>
+			<wls:resource-name>META-INF/services/javax.servlet.ServletContainerInitializer</wls:resource-name>
+			<wls:resource-name>META-INF/services/com.sun.faces.*</wls:resource-name>
+			<!--<wls:resource-name>META-INF/services/javax.xml.ws.*</wls:resource-name>-->
+			<!--<wls:resource-name>META-INF/services/com.sun.xml.ws.*</wls:resource-name>-->
+			<!--<wls:resource-name>META-INF/services/com.sun.tools.ws.*</wls:resource-name>-->
+			<!--<wls:resource-name>com.ocpsoft.pretty.*</wls:resource-name>-->
+			<!--&lt;!&ndash;<wls:resource-name>javax.xml.ws.*</wls:resource-name>&ndash;&gt;-->
+			<!--&lt;!&ndash;<wls:resource-name>com.sun.xml.*</wls:resource-name>&ndash;&gt;-->
+			<!--&lt;!&ndash;<wls:resource-name>javax.jws.*</wls:resource-name>&ndash;&gt;-->
+			<!--&lt;!&ndash;<wls:resource-name>org.apache.ws.security.*</wls:resource-name>&ndash;&gt;-->
+		</wls:prefer-application-resources>
+
+
+	</wls:container-descriptor>
+	<wls:context-root>e-voting</wls:context-root>
+
+</wls:weblogic-web-app>

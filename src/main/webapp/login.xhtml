@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                >
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <link rel="shortcut icon" type="image/png" href="#{resource['dp-layout/images/fav.png']}" />
+        </f:facet>
+        <title>Application Login</title>
+        <h:outputStylesheet name="css/dp-style.css" library="dp-layout" />
+
+    </h:head>
+
+    <h:body styleClass="login-body animated wow fadeIn wHighlight">
+        <div class="layout-wrapper layout-rtl" style="height:100%">
+            <ui:include src="/WEB-INF/login-topbar.xhtml" />
+
+            <div class="login-center-div" >
+                <h:form role="form" id="f1" >
+                    <p:growl id="msg" life="5000" />
+                    <div class="ui-g form-login">
+                        <h4 class="login-heading">
+                            مرحبًا بكم في منصة التصويت الإلكترونية الرسمية في مصر
+                        </h4>
+                        <div class="ui-g-12">
+                            <h:panelGroup styleClass="md-inputfield">
+                                <label>رقم الهوية الوطنية </label>
+                                <p:inputText value="#{loginBean.nationalId}" required="true"
+                                             id="user" requiredMessage="من فضلك ادخل  رقم الهوية الوطنية" />
+                            </h:panelGroup>
+                        </div>
+                        <div class="ui-g-12 button-container text-center text-center">
+                            <p:commandButton styleClass="dp-btn mt-5" value="دخول" update="msg f1  "
+                                             action="#{loginBean.login}" />
+                        </div>
+                    </div>
+                </h:form>
+
+
+            </div>
+
+        </div>
+        <h:outputScript name="js/nanoscroller.js" library="dp-layout" />
+        <h:outputScript name="js/sidebar-n.js" library="dp-layout" />
+        <h:outputScript name="js/wow.min.js" library="dp-layout" />
+        <h:outputScript name="js/layout.js" library="dp-layout" />
+        <h:outputScript name="js/ripple.js" library="dp-layout" />
+
+        <h:outputScript name="js/date_time.js" library="dp-layout" />
+        <h:outputScript name="js/aos.js" library="dp-layout" />
+        <h:outputScript name="js/customjs.js" library="dp-layout" />
+        <script>
+            $(".gj-timepicker").click(function () {
+                $(".gj-timepicker .gj-textbox-md").addClass("time-date-div");
+                $(".time-label").addClass("label-top");
+            });
+
+            $(".gj-datepicker").click(function () {
+                $(".gj-datepicker .gj-textbox-md").addClass("time-date-div");
+                $(".date-label").addClass("label-top");
+            });
+        </script>
+
+    </h:body>
+
+</ui:composition>

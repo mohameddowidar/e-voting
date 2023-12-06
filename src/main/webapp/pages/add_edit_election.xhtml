@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Election Management</ui:define>
+    <ui:define name="breadCrumb">
+        <p:breadCrumb>
+            <p:menuitem value="Home" url="#"/>
+            <!-- Additional breadcrumb items if needed -->
+        </p:breadCrumb>
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="electionForm" dir="RTL" style="width:100% !important">
+            <div class="wow zoomIn wHighlight animated web">
+                <div class="ui-g">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <div class="ui-g">
+                                <!-- Election Fields -->
+                                <div class="ui-g-12 ui-lg-12">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>عنوان الانتخابات</span>
+                                        <p:inputText placeholder=" "
+                                                     required="true"
+                                                     requiredMessage="Name is required"
+                                                     value="#{electionMB.selectedElection.name}">
+                                        </p:inputText>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-12">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>وصف</span>
+                                        <p:inputTextarea value="#{electionMB.selectedElection.description}" required="true" requiredMessage="Description is required"/>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-3">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>تاريخ بدء الانتخابات</span>
+                                        <p:calendar value="#{electionMB.selectedElection.startDate}" pattern="dd-MM-yyyy" required="true" requiredMessage="Start Date is required"/>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-3">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>تاريخ انتهاء الانتخابات</span>
+                                        <p:calendar value="#{electionMB.selectedElection.endDate}" pattern="dd-MM-yyyy" required="true" requiredMessage="End Date is required"/>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-3">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span> سنة الانتخابات </span>
+                                        <p:inputText placeholder=" "
+                                                     required="true"
+                                                     requiredMessage="Name is required"
+                                                     value="#{electionMB.selectedElection.year}">
+                                        </p:inputText>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-3">
+                                    <label class="pure-material-textfield-outlined">
+                                        <p:selectOneMenu value="#{electionMB.selectedElection.electionType}" required="true" requiredMessage="Election Type is required">
+                                            <f:selectItem itemLabel="اختر  نوع الانتخابات " itemValue="" noSelectionOption="true"/>
+                                            <f:selectItems value="#{electionMB.electionTypes}" />
+                                        </p:selectOneMenu>
+                                    </label>
+                                </div>
+                                <div class="ui-g-12 ui-lg-8 btn-left">
+                                    <p:commandButton  styleClass="dp-btn mt-5" value="حفظ" icon="pi pi-save"
+                                                      actionListener="#{electionMB.save}" update="@form" />
+                                    <p:button class="dp-btn"  icon="pi pi-step-backward" outcome="elections.xhtml" value="عودة" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

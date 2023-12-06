@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Election Management</ui:define>
+    <ui:define name="breadCrumb">
+        <p:breadCrumb>
+            <p:menuitem value="Home" url="#"/>
+            <!-- Additional breadcrumb items if needed -->
+        </p:breadCrumb>
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="electionForm" dir="RTL" style="width:100% !important">
+            <div class="wow zoomIn wHighlight animated web">
+                <div class="ui-g" id="searchDiv">
+                    <div class="ui-g-12">
+                        <div class="card">
+                            <div class="ui-g">
+                                <!-- Search and filter fields -->
+                                <!-- Example: Name filter -->
+                                <div class="ui-g-12 ui-lg-4">
+                                    <label class="pure-material-textfield-outlined">
+                                        <span>اسم المُرَشَّح</span>
+                                        <p:inputText placeholder=" " filter="true"
+                                                     value="#{electionMB.electionLazyDataModel.searchDTO.title}">
+                                        </p:inputText>
+                                    </label>
+                                </div>
+
+                                <!-- Add more search fields as required -->
+
+                                <!-- Search and Add Buttons -->
+                                <div class="ui-g-12 ui-lg-8 btn-left">
+                                    <p:commandButton styleClass="dp-btn mt-5"  value="بحث" icon="pi pi-search"
+                                                     update="electionForm:electionTable" id="search-btn" />
+                                    <p:button icon="fa fa-plus" class="dp-btn"
+                                              outcome="add_edit_election" value="إضافة الانتخابات">
+                                    </p:button>
+                                    <p:commandButton styleClass="dp-btn mt-5"  value="إعادة تعيين حقول البحث" icon="pi pi-sync"
+                                                     actionListener="#{electionMB.clearSearchFields}"
+                                                     update="@form" />
+                                </div>
+
+                                <!-- Election DataTable -->
+                                <div class="ui-g-12">
+                                    <p:dataTable var="election"
+                                                 value="#{electionMB.electionLazyDataModel}" paginator="true"
+                                                 rows="5" id="electionTable" lazy="true"
+                                                 paginatorTemplate="{RowsPerPageDropdown} {LastPageLink} {NextPageLink} {CurrentPageReport} {PreviousPageLink} {FirstPageLink}"
+                                                 paginatorPosition="bottom" styleClass="fixed-size ui-ltr"
+                                                 varStatus="index" metaKeySelection="false"
+                                                 nativeElements="true" rowKey="#{election.electionId}" dir="rtl">
+                                        <f:facet name="header">
+                                            <!-- Custom header if needed -->
+                                        </f:facet>
+                                        <f:facet name="emptyMessage">
+                                            <p>لم يتم العثور على نتائج</p>
+                                        </f:facet>
+
+                                        <!-- Columns for Election attributes -->
+                                        <p:column headerText="عنوان الانتخابات">
+                                            <h:outputText value="#{election.name}" />
+                                        </p:column>
+
+                                        <p:column headerText="نوع الانتخابات">
+                                            <h:outputText value="#{election.electionType}" />
+                                        </p:column>
+                                        <p:column headerText="سنة الانتخابات">
+                                            <h:outputText value="#{election.year}" />
+                                        </p:column>
+                                        <p:column headerText="تاريخ بدء">
+                                            <h:outputText value="#{election.startDate}">
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                                        <p:column headerText="تاريخ انتهاء">
+                                            <h:outputText value="#{election.endDate}">
+                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                                        <p:column headerText="تعديل">
+                                            <p:link id="editMediaGalleryId"
+                                                    outcome="add_edit_election">
+                                                <f:param name="electionId" value="#{election.electionId}"></f:param>
+                                                <i class="pi pi-user-edit" style="padding-left:4px;" aria-hidden="true"></i>
+                                            </p:link>
+                                        </p:column>
+                                        <p:column headerText="حذف">
+                                            <p:commandLink
+                                                    actionListener="#{voterMB.deleteElection(election)}" update="@form" immediate="true">
+                                                <p:confirm header="Confirmation" message="هل أنت متأكد؟"  icon="pi pi-user-edit"/>
+                                                <i class="pi pi-ban" style="padding-left:4px;" aria-hidden="true"></i>
+                                            </p:commandLink>
+                                        </p:column>
+                                    </p:dataTable>
+                                </div>
+                            </div>
+                        </div>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="نعم" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                            <p:commandButton value="لا" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                        </p:confirmDialog>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

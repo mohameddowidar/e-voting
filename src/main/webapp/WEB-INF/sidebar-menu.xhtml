@@ -1,0 +1,157 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui">
+
+    <div id="sidebar-inner" class="sidebar-inner">
+        <div class="image-size">
+            <img src="#{resource['/images/sidebar-dp-logo.png']}" />
+        </div>
+        <!-- accordian -->
+        <div class="scroll-acd">
+            <h:form>
+                <div id="accordian" class="accordian">
+                    <ul>
+
+                        <li class="">
+                            <h3><a href="#" onclick=""><i class="material-icons">dashboard</i><label>الافتراضية</label><!-- <i class="fa fa-chevron-down"></i> --></a></h3>
+                        </li>
+                        <li class="">
+                            <h3><p:commandLink > <i class="material-icons">visibility</i> <h:outputLabel value="الافتراضية"/></p:commandLink></h3>
+                        </li>
+                        <li class="active">
+                            <h3><a href="#" ><i class="fa fa-database"></i><label>الافتراضية</label><i class="fa fa-chevron-down"></i></a></h3>
+                            <ul class="parent">
+                                <li><p:commandLink ><i class="fa fa-square view"></i><h:outputLabel value="Add"/></p:commandLink></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><a href="#"><i class="fa fa-lg fa-tasks"></i><label>المهام النشطة</label><i class="fa fa-chevron-down"></i></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-database view"></i><label>المهام النشطة</label><i class="fa fa-chevron-down arrow1"></i></a>
+                                    <ul class="child">
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><a href="#"><i class="fa fa-lg fa-calendar"></i><label>الافتراضية</label><i class="fa fa-chevron-down"></i><span>6</span></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><a href="#"><i class="fa fa-lg fa-heart"></i><label>Favourites</label><i class="fa fa-chevron-down"></i><span>10</span></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><a href="#"><i class="fa fa-lg fa-heart"></i><label>Favourites</label><i class="fa fa-chevron-down"></i><span>10</span></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                            </ul>
+                        </li><li>
+                            <h3><a href="#"><i class="fa fa-lg fa-heart"></i><label>Favourites</label><i class="fa fa-chevron-down"></i><span>10</span></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><a href="#"><i class="fa fa-lg fa-tasks"></i><label>المهام النشطة</label><i class="fa fa-chevron-down"></i></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-database view"></i><label>المهام النشطة</label><i class="fa fa-chevron-down arrow1"></i></a>
+                                    <ul class="child">
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><a href="#"><i class="fa fa-lg fa-tasks"></i><label>المهام النشطة</label><i class="fa fa-chevron-down"></i></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-database view"></i><label>المهام النشطة</label><i class="fa fa-chevron-down arrow1"></i></a>
+                                    <ul class="child">
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><a href="#"><i class="fa fa-lg fa-tasks"></i><label>المهام النشطة</label><i class="fa fa-chevron-down"></i></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-database view"></i><label>المهام النشطة</label><i class="fa fa-chevron-down arrow1"></i></a>
+                                    <ul class="child">
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><a href="#"><i class="fa fa-lg fa-tasks"></i><label>المهام النشطة</label><i class="fa fa-chevron-down"></i></a></h3>
+                            <ul class="parent">
+                                <li><a href="#"><i class="fa fa-database view"></i><label>المهام النشطة</label><i class="fa fa-chevron-down arrow1"></i></a>
+                                    <ul class="child">
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                        <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>الافتراضية</label></a></li>
+                                <li><a href="#"><i class="fa fa-square view"></i><label>المهام النشطة</label></a></li>
+                            </ul>
+                        </li>
+                        <!-- fontello-icon -->
+                        <li class="">
+                            <h3><a href="#" onclick=""><i class="icon-chat-1 menu-icon-font"></i><label>الافتراضية</label><!-- <i class="fa fa-chevron-down"></i> --></a></h3>
+                        </li>
+                    </ul>
+                </div>
+            </h:form>
+        </div>
+        <!-- bottom-btn -->
+        <h:form>
+            <div class="botttom-btn">
+                <p:commandButton actionListener="#{loginBean.logout}" value="الخروج" class="dp-btn-logout" icon="ui-icon-power-settings-new"/>
+                <p:commandButton  value="الإعدادات" class="dp-btn-logout" icon="fa fa fa-cog"/>
+                <!-- <button class="btn-set"><i class="fa fa-power-off"></i><p>Logout</p></button> -->
+                <!-- <button class="btn-set"><i class="fa fa-cog"></i><p>Settings</p></button> -->
+            </div>
+        </h:form>
+    </div>
+
+
+</ui:composition>

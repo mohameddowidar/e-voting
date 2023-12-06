@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:sec="https://joinfaces.org/security"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+    <ui:composition template="/WEB-INF/template.xhtml">
+        <ui:define name="head">
+
+        </ui:define>
+        <ui:define name="breadCrumb">
+            <h:form id="modeForm">
+                <p:breadCrumb>
+                    <p:menuitem value="FILE Storage SERVICE" url="/pm/index.xhtml" />
+                </p:breadCrumb>
+            </h:form>
+        </ui:define>
+        <ui:define name="content">
+            <div class="wow zoomIn wHighlight animated web">
+                <h:form id="toolbar_form" styleClass="full-width-form">
+                    <div class="ui-g fixed-div">
+                        <div class="fixed-card">
+                            <div class="card card-style-2" >
+                                <p:toolbar id="toolbar" styleClass="toolbar-div-style" >
+                                    <p:toolbarGroup align="right" id="managePermId" styleClass="toolbar-group-right">
+                                        <sec:authorize access="hasAnyRole('ROLE_PERMISSION_SERVICE_ADMIN','ROLE_PERMISSION_ADD_EDIT')">
+                                            <p:commandLink id="add_perm_but" styleClass="commandlink-icon"
+                                                           actionListener="#{permissionController.createNewPermission}"
+                                                           update=":addPermissionForm" oncomplete="PF('addPermissionDlg').show()">
+                                                <i class="bx bx-key"/>
+                                                <p:tooltip for="add_perm_but" value="إضافة أحقية"
+                                                           showEffect="clip" hideEffect="fade" position="right" />
+                                            </p:commandLink>
+                                        </sec:authorize>
+                                        <p:commandLink  id="add_user_btn"  update=":addUserForm" styleClass="commandlink-icon"
+                                                        disabled="#{empty(permissionController.selectedNode)}"
+                                                        oncomplete="PF('addUserDlg').show()">
+                                            <i class="bx bxs-user-plus mdi-36px"/>
+                                            <p:tooltip for="add_user_btn" value="إضافة موظف / موظفين"
+                                                       showEffect="clip" hideEffect="fade" position="right" />
+                                        </p:commandLink>
+
+                                    </p:toolbarGroup >
+                                    <p:toolbarGroup   align="left" styleClass="toolbar-group-left">
+                                        <span class="ui-float-label full-w-input ml-10" style="width:40%"> 
+                                            <p:inputText id="searchGrpId" value="#{permissionController.userData.grpNumber}"
+                                                         converterMessage="من فضللك ادخل ارقام فقط" validatorMessage=" رقم الموظف يجب أن يكون اقل من تسعه ارقام" maxlength="9" /> 
+                                            <p:outputLabel  value="بحث برقم الموظف" />
+                                        </span>
+                                        <p:commandButton id="searchAllId" styleClass="dp-btn " value="البحث"  actionListener="#{permissionController.searchEmployeeData}" process="searchGrpId @this"
+                                                         icon="bx bx-search" iconPos="right" update=":treeNodeFormId:userList :treeNodeFormId:message toolbar" >
+
+                                            <p:tooltip for="searchAllId" value="بحث برقم وظيفى من خلال الأحقية المختارة"
+                                                       showEffect="clip" hideEffect="fade" position="right" />
+                                        </p:commandButton>
+                                    </p:toolbarGroup >
+                                </p:toolbar>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+                <h:form id="treeNodeFormId" styleClass="full-width-form " >
+                    <p:confirmPopup global="true">
+                        <p:commandButton value="لا" type="button" styleClass="dp-btn dp-btn-danger ui-confirm-popup-no ui-button-flat" icon="bx bx-x"/>
+                        <p:commandButton value="نعم" type="button" styleClass="ui-confirm-popup-yes dp-btn" icon="bx bx-check" />
+                    </p:confirmPopup>
+<!--                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="20%" styleClass="confirm-dlg-style">-->
+<!--                        <p:commandButton value="نعم" type="button" styleClass="dp-btn" icon="bx bx-check" />-->
+<!--                        <p:commandButton value="لا" type="button" styleClass="dp-btn dp-btn-danger" icon="bx bx-x" />-->
+<!--                    </p:confirmDialog>-->
+                    <div class="ui-g label-green panel-style-div" dir="rtl"
+                         id="searchDiv">
+                        <p:growl life="4000" id="message" showDetail="true" />
+                        <p:panel fullPage="true" style="position:relative !important;" id="lay">
+                            <div class="ui-g-9">
+                                <p:panel position="center" resizable="true" size="100%"  minSize="600" maxSize="600" styleClass="tree-test"  >
+                                    <p:dataTable id="userList" styleClass="table-style-5"
+                                                 rowIndexVar="index"
+                                                 value="#{permissionController.userData}"  paginator="true" var="emp"
+                                                 rows="25" paginatorPosition="bottom"
+                                                 paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+                                                 >
+                                        <f:facet name="header" >
+                                            <div class="table-heading">
+                                                <h:outputLabel value="#{permissionController.currentBreadcrumb}" />
+                                                <h:outputLabel rendered="#{!empty(permissionController.selectedNode) and sessionBean.developerMode}"
+                                                               value=" - ( #{permissionController.selectedNode.data.id} )" />
+                                                <p:commandLink id="export_to_excel"  ajax="false" immediate="true" title="" style="float: left">
+                                                    <p:dataExporter type="xlsxstream" target="userList" encoding="utf-8"
+                                                                    fileName="أحقيات #{permissionController.currentBreadcrumb} " />
+                                                    <i class="bx bxs-download mdi-24px" style="color: white"/>
+                                                    <p:tooltip for="export_to_excel"  value="تصدير اكسيل"
+                                                               showEffect="clip" hideEffect="fade" position="right" />
+                                                </p:commandLink>
+                                            </div>
+                                        </f:facet>
+                                        <f:facet name="emptyMessage">
+                                            <div class="datatable-empty-image">
+                                                <img src="#{resource['/images/empty-state.png']}" />
+                                            </div>
+                                            <p>#{msg['noResultsFound']}</p>
+                                        </f:facet>
+                                        <p:column headerText="م" style="width:5%">
+                                            <p:outputLabel  value="#{index + 1}"/>
+                                        </p:column>
+                                        <p:column headerText="الرقم الوظيفي" width="15%">
+                                            <h:outputText value="#{emp.employee.id}"
+                                                          rendered="#{emp.employee.id ne null}"/>
+                                            <h:outputText value="لا يوجد" rendered="#{emp.employee.id eq null}"/>
+                                        </p:column>
+                                        <p:column headerText="أسم الموظف" width="30%">
+                                            <p:commandLink actionListener="#{permissionController.showUserLog(emp.employee.id)}"
+                                                           update=":logForm" oncomplete="PF('permissionLogDlg').show()" ajax="true">
+                                                <p:outputLabel style="float: right;margin-left: 5px" rendered="#{emp.mask ge 4611686018427387904}">
+                                                    <i class="mdi mdi-account-tie mdi-18px"/>
+                                                </p:outputLabel>
+                                                <h:outputText value="#{emp.employee.fullName}" style="float: right"
+                                                              rendered="#{emp.employee.fullName ne null}"/>
+                                                <h:outputText value="لا يوجد" rendered="#{emp.employee.fullName eq null}"/>
+                                            </p:commandLink>
+                                        </p:column>
+                                        <p:column headerText="الأدارة" width="30%">
+                                            <h:outputText value="#{emp.employee.parentDepartment.shortName}"
+                                                          style="float: right"
+                                                          rendered="#{emp.employee.parentDepartment.shortName ne null}"/>
+                                            <h:outputText value="لا يوجد" rendered="#{emp.employee.parentDepartment.shortName eq null}"/>
+                                        </p:column>
+                                        <p:column headerText="تاريخ اخر تحديث" width="18%">
+                                            <h:outputText value="#{emp.insertDate}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                                            </h:outputText>
+                                        </p:column>
+                                        <p:column headerText="..." width="10%" exportable="false" styleClass="table-icon">
+                                            <sec:authorize access="hasAnyRole('ROLE_PERMISSION_SERVICE_ADMIN','ROLE_PERMISSION_ADD_EMPLOYEE')">
+                                                <p:commandLink  update=":sidebar:permissionSideBar" process="@this"
+                                                                actionListener="#{permissionController.prepareToMask(emp)}"
+                                                                oncomplete="PF('permissionSideBar').show()" >
+                                                    <i class='bx bxs-layer-plus plus-icon-table'></i>
+                                                </p:commandLink>
+                                            </sec:authorize>
+                                            <sec:authorize access="hasAnyRole('ROLE_PERMISSION_SERVICE_ADMIN','ROLE_PERMISSION_ADD_EMPLOYEE','ROLE_PERMISSION_SERVICE_ADMIN')">
+                                                <p:commandLink
+                                                    actionListener="#{permissionController.deleteUserPermission(emp)}"
+                                                    update=":treeNodeFormId:userList" >
+                                                    <p:confirm type="popup"  message="هل تريد حذف هذه الأحقية #{emp.employee.fullName}"/>
+                                                    <i class="fa-solid fa-trash delete-icon-table"></i>
+                                                </p:commandLink>
+                                            </sec:authorize>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:panel>
+                            </div>
+                            <div class="ui-g-3 tree-style">
+                                <div class="card">
+
+                                    <p:panel position="east" resizable="true" size="100%" id="tree" styleClass="right-tree-list"
+                                             minSize="600" maxSize="600">
+                                        <span class="ui-float-label full-w-input ml-10 padding-left" >
+                                            <p:inputText id="txtSearch" value="#{permissionController.filterText}">
+                                                <p:ajax event="blur" listener="#{permissionController.buildTree}" 
+                                                        process="@this"
+                                                        update=":treeNodeFormId:treeNodeId" />  
+                                            </p:inputText>
+                                            <p:outputLabel  value="" />
+                                        </span>
+                                        <p:tree var="node"
+                                                dynamic="true"
+                                            filterMatchMode="contains"
+                                            filterBy="#{node.permissionName}"
+                                                id="treeNodeId"
+                                                value="#{permissionController.root}"
+                                                selectionMode="single"
+                                                selection="#{permissionController.selectedNode}">
+
+                                            <p:treeNode type="Folder" expandedIcon="bx bxs-folder-open fa-2x"
+                                                        collapsedIcon="bx bxs-folder fa-2x">
+                                                <h:outputText value="#{node.permissionName}" />
+                                            </p:treeNode>
+                                            <p:treeNode type="Key" expandedIcon="bx bxs-folder-open fa-2x" 
+                                                        collapsedIcon="bx bx-key mdi-24px mdi-flip-h">
+                                                <h:outputText value="#{node.permissionName}" />
+                                            </p:treeNode>
+                                            <p:ajax event="select" update=":treeNodeFormId:userList :toolbar_form:toolbar"
+                                                    listener="#{permissionController.onNodeSelect}" process="@this"/>
+                                        </p:tree>
+
+                                        <sec:authorize ifAllGranted="ROLE_PERMISSION_ADD_EDIT">
+                                            <p:contextMenu for="treeNodeId" styleClass="tree-edit-div" >
+                                                <p:menuitem
+                                                    value="تحرير"  update=":addPermissionForm"
+                                                    actionListener="#{permissionController.editPermission}"
+                                                    icon="bx bxs-edit mdi-24px" />
+                                                <p:menuitem value="نقل إلي" update=":treeform"
+                                                            actionListener="#{permissionController.movePermission}"
+                                                            icon="bx bx-transfer mdi-24px" />
+                                                <p:menuitem
+                                                    value="حذف" update="treeNodeId message"
+                                                    actionListener="#{permissionController.deletePermission}"
+                                                    icon="bx bxs-trash mdi-24px">
+                                                    <p:confirm message="هل تريد حذف هذه الأحقية"/>
+                                                </p:menuitem>
+                                            </p:contextMenu>
+                                        </sec:authorize>
+                                    </p:panel>
+                                </div>
+                            </div>
+                            <p:panel position="south" resizable="true" size="100" minSize="5" maxSize="200" styleClass="tree-list-2" style="display:none">
+                                <div class="ui-g">
+                                    <div class="ui-g-12">
+                                        <p:toolbar style="height:5px;"/>
+                                    </div>
+                                </div>
+                            </p:panel>
+                        </p:panel>
+                    </div>
+                </h:form>
+                <sec:anonymous>
+                    <h:form id="noPermissionForm" rendered="#{false}">
+                        <ui:include src="../no-permission.xhtml"/>
+                    </h:form>
+                </sec:anonymous>
+            </div>
+
+            <ui:include src="dlg/addUserDlg.xhtml"/>
+            <ui:include src="dlg/addPermission.xhtml"/>
+            <ui:include src="dlg/permissionLog.xhtml"/>
+
+            <!--ui:include src="addEmployeePermission.xhtml"/-->
+            <h:form id="treeform">
+                <p:dialog id="treeDlg" dynamic="true" widgetVar="treeDlg" width="800" modal="true"
+                          header="اختر الأحقية المراد النقل اليها"  class="top">
+
+                    <p:tree filterBy="#{node.permissionName}" id="treeNodeId2" value="#{permissionController.rootMove}" var="node"
+                            selectionMode="single"	selection="#{permissionController.selectedMoveNode}">
+
+                        <p:treeNode type="Folder" expandedIcon="bx bxs-folder-open fa-2x"
+                                    collapsedIcon="bx bxs-folder fa-2x">
+                            <h:outputText value="#{node.permissionName}" />
+                        </p:treeNode>
+                        <p:treeNode type="Key" expandedIcon="bx bxs-folder-open fa-2x"
+                                    collapsedIcon="fa fa-key fa-2x">
+                            <h:outputText value="#{node.permissionName}" />
+                        </p:treeNode>
+                        <p:ajax event="select"  listener="#{permissionController.onNodeMoveSelect}" process="@this"/>
+                    </p:tree>
+                    <f:facet name="footer">
+                        <p:commandButton style="margin-left: 15px;" value="حفظ" process="@this" actionListener="#{permissionController.moveNode}"
+                                         update=":treeNodeFormId:treeNodeId :treeNodeFormId:userList :treeNodeFormId:message"/>
+                        <p:commandButton value="إغلاق" ajax="false" onclick="PF('treeDlg').hide();return false;"/>
+
+                    </f:facet>
+                </p:dialog>
+            </h:form>
+            <h:form id="sidebar" styleClass="sidebar-style">
+                <p:sidebar widgetVar="permissionSideBar" id="permissionSideBar" baseZIndex="10000" >
+                    <br/>
+                    <div class="ui-g employee-details">
+                        <div class="employee-right-section">
+                            <h:outputText value="#{permissionController.editEmployeePermission.employee.id}"/>
+                        </div>
+                        <div class="employee-left-section">
+                            <p:outputLabel value="#{permissionController.editEmployeePermission.employee.fullName}"/>
+                        </div>
+                    </div>
+
+                    <div class="ui-g">
+
+                        <h3 class="breadcrumb-style">
+                            <h:outputText value="#{permissionController.currentBreadcrumb}"/>
+                        </h3>
+
+
+                    </div>
+
+                    <div class="ui-g">
+
+                        <p:selectManyCheckbox id="masks" styleClass="list-item-checkbox" layout="pageDirection" value="#{permissionController.masks}">
+                            <f:selectItem itemLabel="أحقية الاطلاع" itemValue="0" />
+                            <f:selectItem itemLabel="أحقية التعديل" itemValue="1" />
+                            <f:selectItem itemLabel="أحقية الحذف" itemValue="2" />
+                            <f:selectItem itemLabel="أحقية الارفاق" itemValue="3" />
+                            <f:selectItem itemLabel="أحقية النشر" itemValue="4" />
+                            <f:selectItem itemLabel="أحقية منح أحقية" itemValue="62" />
+                            <f:selectItem itemLabel="أحقية مدير" itemValue="63" />
+                        </p:selectManyCheckbox>
+
+                    </div>
+                    <div class="ui-g">
+                        <div class="sidebar-bottom-btn">
+                            <p:commandButton value="حفظ" process="@this masks" styleClass="dp-btn" update=":treeNodeFormId:message" actionListener="#{permissionController.saveMask}"/>
+
+                            <p:commandButton value="إغلاق" ajax="false" styleClass="dp-btn dp-btn-danger" onclick="PF('permissionSideBar').hide();return false;"/>
+                        </div>
+                    </div>
+                </p:sidebar>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</f:view>

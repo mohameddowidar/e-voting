@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets" 
+xmlns:p="http://primefaces.org/ui" 
+xmlns:pa="http://primefaces.org/barcelona">
+
+    <style>
+        .login-body{
+          background-image: url("#{resource['/images/bg-1.png']}");     
+        }
+        
+        .chkbox-style-2{
+                font-family: 'bukraregular';
+                    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+        }
+        
+        .chkbox-style-2 label{
+             font-family: 'bukrabold';
+    font-size: 11px;
+        }
+        
+    </style>
+	
+	<div class="topbar">
+		<div class="logo fadeInDown animated">
+			<h:link outcome="/dp-components">
+				<img src="#{resource['/images/dp-logo-eg.png']}" />
+			
+				<!-- img class="dplogo" /-->
+			</h:link>
+			<!-- <h:form class="cust-search">
+							<span> <i class="fa fa-search"></i></span> <span class="inputfield"> <p:inputText placeholder="بإمكانك الكتابة لبدء البحث " /> </span>
+						</h:form> -->
+		</div>
+		
+		<div class="govt-logo fadeInDown animated">
+		
+			<h:link outcome="/dp-components">
+				<img src="#{resource['/images/eg-gov.png']}" width="100px" height="100px"/>
+			
+				<!-- img class="dplogo" /-->
+			</h:link>
+			</div>
+
+
+		<ul class="topbar-menu fadeInDown animated">
+		
+		
+	
+			
+			<li class="date-item cust-date">
+			<a href="#" class="clock-div">
+					<div class="clock-bg">
+						<!-- <p:clock /> -->
+                  		<time id="time" class="time"></time>
+					</div>
+					<i class="topbar-icon material-icons clock-icon">schedule</i>
+		
+			</a>
+
+				
+			</li> 
+			
+			<!-- <li class="search-item cust-search"><h:form>
+							<span class="inputfield"> <p:inputText placeholder="بإمكانك الكتابة لبدء البحث " /> <i class="fa fa-search"></i>
+							</span>
+
+			</h:form></li> -->
+		</ul>
+		
+	</div>
+	<script>
+		$(document).ready(function($) {
+		  $('.tab_content').hide();
+		  $('.tab_content:first').show();
+		  $('.tabs li:first').addClass('active');
+		  $('.tabs li').click(function(event) {
+		  $('.tabs li').removeClass('active');
+		  $(this).addClass('active');
+		  $('.tab_content').hide();
+		
+		    var selectTab = $(this).find('a').attr("href");
+		
+		    $(selectTab).fadeIn();
+		  });
+		});
+	</script>
+	<script>
+	[].map.call(document.querySelectorAll('[anim="ripple"]'), function (el) {
+	    el.addEventListener('click', function (e) {
+	        e = e.touches ? e.touches[0] : e;
+	        var r = el.getBoundingClientRect(), d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;
+	        el.style.cssText = "--s: 0; --o: 1;";
+	        el.offsetTop;
+	        el.style.cssText = "--t: 1; --o: 0; --d: " + d + "; --x:" + (e.clientX - r.left) + "; --y:" + (e.clientY - r.top) + ";";
+	    });
+	});
+	
+	</script>
+	
+
+	
+</ui:composition>

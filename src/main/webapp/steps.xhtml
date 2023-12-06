@@ -1,0 +1,133 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+	template="/layout/intra-green/template.xhtml">
+
+	<ui:define name="breadCrumb">
+		<h:form id="breadCrumbForm">
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#" />
+				<p:menuitem value="مختلفة" url="#" />
+				<p:menuitem value="مختلفة" url="#" disabled="true" />
+			</p:breadCrumb>
+		</h:form>
+	</ui:define>
+	<ui:define name="content">
+		<style>
+		/* steps-styles */
+
+.ui-steps .ui-steps-item {
+    width: 25%;
+    float: right;
+}
+ 
+.ui-state-highlight {
+    text-shadow: none !important;
+}
+.ui-steps.custom {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+    height: 6px;
+    padding: 0 0em;
+    overflow: visible;
+    border: 0px solid #c8c8c8;
+    display: block;
+    background: linear-gradient(to left, rgba(7,200,129,1) 0%, rgba(13,160,110,1) 100%);
+}
+.ui-steps.custom .ui-steps-item.ui-state-disabled .ui-menuitem-link {
+    height: 6px;
+    padding: 0 0em;
+    overflow: visible;
+    border: 0px solid #c8c8c8;
+    display: block;
+    background: linear-gradient(to right, #dcdcdc 0%, #dcdcdc 100%) !important;
+}
+.ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-number {
+    background: linear-gradient(to right, rgba(7,200,129,1) 0%, rgba(13,160,110,1) 100%);
+    color: #fff;
+    display: inline-block;
+    width: 71px;
+    height: 71px;
+    border-radius: 50%;
+    margin-top: -6px;
+    margin-bottom: 10px;
+    margin-right: -2px;
+    position: relative;
+    top: -27px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 18px 0px;
+    font-size: 22px;
+    float: right;
+}
+.ui-steps.custom .ui-steps-item.ui-state-disabled .ui-menuitem-link .ui-steps-number {
+    background: linear-gradient(to right, #dcdcdc 0%, #dcdcdc 100%) !important;
+    color: #757575 !important;
+    display: inline-block;
+}
+.ui-steps.custom .ui-steps-item .ui-menuitem-link .ui-steps-title {
+    margin-top: -6px;
+}
+.ui-steps.custom .ui-steps-item.ui-state-disabled .ui-menuitem-link .ui-steps-title {
+     color: #000 !important;
+     font-family: '29ltbukraregular';
+}
+.ui-steps.custom .ui-steps-item.ui-state-highlight .ui-steps-title {
+    font-weight: 700;
+    color: #000 !important;
+    font-family: '29ltbukrabold';
+}
+.ui-steps .ui-steps-item .ui-menuitem-link .ui-steps-title {
+    color: #0ba972 !important;
+    font-family: '29ltbukrabold';
+    font-size:14.5px;
+    display: block;
+    margin-left: 10px;
+    right: 0;
+    text-align: right;
+    margin-right: -70px;
+    float: right;
+    top: 60px;
+    position: relative;
+}
+.ui-steps.custom .ui-steps-item:last-child .ui-menuitem-link .ui-steps-title {
+    text-align: right;
+    margin-right: 0px;
+    float: right;
+    top: -15px;
+    position: relative;
+}
+.ui-steps.custom .ui-steps-item:last-child .ui-menuitem-link {
+    width: 2%;
+}
+body .ui-steps:before {
+    content: ' ';
+    border: 0px solid #eaeaea;
+    width: 90%;
+    top: 45%;
+    left: 0;
+    display: block;
+    position: absolute;
+}
+		</style>
+
+		<h:form id="form-test3">
+			<div class="ui-g">
+				<div class="ui-g-12">
+					<div class="main-title">
+						<h1 class="animated wow fadeIn" data-wow-delay=".75s">أنواع من علامات التبويب</h1>
+					</div>
+				</div>
+				<div class="ui-g-12 ui-lg-12">
+					<p:steps activeIndex="2" styleClass="custom" readonly="false">
+						<p:menuitem value="الخطوةالاولى" url="#" icon="fa fa-edit" />
+						<p:menuitem value="الخطوة الثانية" url="#" />
+						<p:menuitem value="خطوة ثالثة" url="#" />
+						<p:menuitem value="الخطوة الرابعة" url="#" />
+					</p:steps>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

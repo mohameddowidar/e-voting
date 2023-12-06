@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Election Search</ui:define>
+    <ui:define name="content">
+        <h:form id="form">
+            <p:growl id="messages" showDetail="true"/>
+            <div class="ui-g-12">
+                <div class="card">
+                    <div class="ui-g">
+                        <div class="ui-g-12">
+                            <div class="main-title">
+                                <h1>الرجاء تحديد الانتخابات للتصويت</h1>
+                            </div>
+                            <hr class="green-line" />
+
+                            <div class="card animated wow zoomIn wHighlight" data-wow-delay=".35s">
+                                <div class="ui-g">
+<!--                                    <div class="ui-g-12">-->
+<!--                                        <h1 class="sub-title">علامة تبويب أساسية</h1>-->
+<!--                                    </div>-->
+                                    <div class="ui-g-12">
+                                        <ui:repeat value="#{addVoteMB.elections}" var="election" varStatus="status">
+                                            <p:accordionPanel activeIndex="#{status.index == 0 ? '0' : '-1'}">
+                                                <p:tab title="#{election.name}">
+                                                    <!-- Wrap the panelGrid and commandButton in an outer container for better control -->
+                                                    <div class="election-info-container">
+                                                        <h:panelGrid columns="2" styleClass="election-info-grid" columnClasses="label-column,value-column">
+                                                            <h:outputText value=" عنوان الانتخابات : " styleClass="label" />
+                                                            <h:outputText value="#{election.name}" />
+
+                                                            <h:outputText value="وصف :" styleClass="label" />
+                                                            <h:outputText value="#{election.description}" />
+
+                                                            <h:outputText value="تاريخ بدء : "  styleClass="label" />
+                                                            <h:outputText value="#{election.startDate}">
+                                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                                            </h:outputText>
+
+                                                            <h:outputText value="تاريخ انتهاء :" styleClass="label" />
+                                                            <h:outputText value="#{election.endDate}">
+                                                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                                                            </h:outputText>
+
+                                                            <h:outputText value="نوع الانتخابات :" styleClass="label" />
+                                                            <h:outputText value="#{election.electionType}" />
+                                                        </h:panelGrid>
+                                                        <p:commandButton  styleClass="dp-btn mt-5" update=":form:electionDetail" actionListener="#{addVoteMB.setSelectedElection(election)}"
+                                                                class="dp-btn" value="صوت الان" immediate="true" oncomplete="PF('electionDialog').show();" icon="pi pi-search"  />
+                                                    </div>
+
+                                                </p:tab>
+                                        </p:accordionPanel>
+                                        </ui:repeat>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g">
+                        <p:dialog header="Car Info" widgetVar="electionDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false"
+                        width="60%">
+                            <p:outputPanel id="electionDetail" style="text-align:center;">
+                                <ui:repeat value="#{addVoteMB.candidates}" var="candidate" varStatus="status">
+                                    <p:accordionPanel activeIndex="#{status.index == 0 ? '0' : '-1'}">
+                                        <p:tab title="#{candidate.voter.name}">
+                                            <!-- Wrap the panelGrid and commandButton in an outer container for better control -->
+                                            <div class="election-info-container">
+                                                <h:panelGrid columns="2" styleClass="election-info-grid" columnClasses="label-column,value-column">
+                                                    <h:outputText value=" اسم المُرَشَّح" />
+                                                    <h:outputText value="#{candidate.voter.name}"/>
+                                                    <h:outputText value="رقم الهوية الوطنية" />
+                                                    <h:outputText value="#{candidate.voter.nationalId}"/>
+                                                    <h:outputText value="عنوان الانتخابات" />
+                                                    <h:outputText value="#{candidate.election.name}"/>
+                                                    <h:outputText value="نوع الانتخابات" />
+                                                    <h:outputText value="#{candidate.election.electionType}"/>
+                                                </h:panelGrid>
+                                                <p:commandButton  update=":form:electionDetail" actionListener="#{addVoteMB.addVote(candidate.candidateId)}"
+                                                                  class="dp-btn" value="صوت الان" immediate="true" oncomplete="PF('electionDialog').hide();"
+                                                                  icon="pi pi-search"  />
+                                            </div>
+
+                                        </p:tab>
+                                    </p:accordionPanel>
+                                </ui:repeat>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

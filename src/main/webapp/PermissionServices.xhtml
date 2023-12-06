@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+        xmlns:sec="https://joinfaces.org/security"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+    <ui:composition template="/WEB-INF/template.xhtml">
+        <ui:define name="breadCrumb">
+            <h:form id="modeForm">
+                <p:breadCrumb>
+                    <p:menuitem value="FILE Storage SERVICE" url="/pm/index.xhtml" />
+                </p:breadCrumb>
+            </h:form>
+        </ui:define>
+        <ui:define name="content">
+            <div class="ui-g wow zoomIn wHighlight animated web">
+                <h:form id="treeNodeFormId" rendered="#{p:ifAnyGranted('ROLE_PERMISSION_ADD_EDIT')}" styleClass="full-width-form" >  
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="60%">
+                        <p:commandButton value="نعم" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                        <p:commandButton value="لا" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    </p:confirmDialog>
+                    <p:growl life="4000" id="message" showDetail="true" />
+
+
+                    <div class="ui-g-12">
+                        <div class="ui-g" style="padding-bottom: 10px">
+                            <p:commandButton id="searchAllId" styleClass="dp-btn " value="add" 
+                                             actionListener="#{permissionServicesController.addPermissionServices}" 
+                                             process="@this"
+                                             style="width:150px"
+                                             icon="fa fa-solid fa-plus" 
+                                             iconPos="right"
+                                             update="addLeadershipPermissionForm" oncomplete="PF('addLeadershipPermissionDlg').show()">
+
+                            </p:commandButton>
+                        </div>
+                        <div class="ui-g">
+                            <p:dataTable lazy="true" value="#{permissionServicesController.permissionServicesList}"
+                                         id="dataTable" paginator="true"
+                                         rows="10"
+                                         rowIndexVar="index"
+                                         paginatorPosition="bottom"
+                                         paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+                                         var="perm">
+                                <f:facet name="header">
+                                    إذن
+                                </f:facet>
+                                <f:facet name="emptyMessage">
+                                    <div class="datatable-empty-image">
+                                        <img src="#{resource['/images/empty-state.png']}" />
+                                    </div>
+                                    <p>#{msg['noResultsFound']}</p>
+                                </f:facet>
+                                <p:column headerText="م" style="width:5%">
+                                    <p:outputLabel  value="#{index + 1}"/>
+                                </p:column>
+                                <p:column   headerText="الأحقية" width="70%">
+                                    <h:outputText value="#{perm.serviceName}"/>
+
+                                </p:column>
+                                <p:column headerText="..." width="15%">
+                                    <sec:authorize access="hasAnyRole('ROLE_PERMISSION_ADD_EDIT')">
+                                        <p:commandLink  process="@this"
+                                                        actionListener="#{permissionServicesController.getPermissionLeadership(perm.id)}"
+                                                        update="leadershipPermissionForm" oncomplete="PF('leadershipPermissionDlg').show()">
+                                            <i class='fa fa-sitemap plus-icon-table'></i>
+                                        </p:commandLink>
+                                    </sec:authorize>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </h:form>
+                <h:form id="addLeadershipPermissionForm"   >
+                    <p:dialog id="addLeadershipPermissionDlg"  dynamic="true" widgetVar="addLeadershipPermissionDlg"
+                              width="70%" modal="true" class="top" draggable="false">
+                        <div class="ui-g">
+                            <div class="ui-g-12">
+                                <div class="ui-g-3"></div>
+                                <div class="ui-g-3">
+                                    <p:commandButton value="Save" styleClass="dp-btn-icon"
+                                                     update=":treeNodeFormId:dataTable"
+                                                     oncomplete="PF('addLeadershipPermissionDlg').hide()"
+                                                     actionListener="#{permissionServicesController.savePermissionServices}" 
+                                                     iconPos="right" icon="bx bxs-save"/>
+                                </div>
+                                <div class="ui-g-6">
+                                    <span class="ui-float-label full-w-input "> 
+                                        <p:inputText id="serviceName"
+                                                     value="#{permissionServicesController.permissionService.serviceName}" /> 
+                                        <p:outputLabel  value="application name" />
+                                    </span>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </p:dialog>
+                </h:form>
+                <h:form id="leadershipPermissionForm"   >
+                    <p:dialog id="leadershipPermissionDlg"  dynamic="true" widgetVar="leadershipPermissionDlg"
+                              width="70%" modal="true" class="top" draggable="false">
+                        <div class="ui-g">
+
+                            <div class="ui-g-12">
+
+                                <div class="ui-g-3">
+                                    <p:commandButton value="Save" styleClass="dp-btn-icon"
+                                                     update=":leadershipPermissionForm:dataTableLeader"
+                                                     actionListener="#{permissionServicesController.savePermissionServices}" 
+                                                     iconPos="right" icon="bx bxs-save"/>
+                                </div>
+                                <div class="ui-g-6">
+                                    <span class="ui-float-label full-w-input "> 
+                                        <p:inputText id="permissionName"
+                                                     value="#{permissionServicesController.permissionLeadership.serviceName}" /> 
+                                        <p:outputLabel  value="permission name" />
+                                    </span>
+                                </div>
+                                <div class="ui-g-3">
+                                    <span class="ui-float-label full-w-input "> 
+                                        <p:inputText id="permissionId"
+                                                     value="#{permissionServicesController.permissionLeadership.id}" /> 
+                                        <p:outputLabel  value="permission  number" />
+                                    </span>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="ui-g-12">
+                                <p:dataTable lazy="true" value="#{permissionServicesController.permissionLeadershipList}"
+                                             id="dataTableLeader" paginator="true"
+                                             rows="10"
+                                             rowIndexVar="index"
+                                             paginatorPosition="bottom"
+                                             paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+                                             var="leadership">
+                                    <f:facet name="header">
+                                        السجل
+                                    </f:facet>
+                                    <f:facet name="emptyMessage">
+                                        <div class="datatable-empty-image">
+                                            <img src="#{resource['/images/empty-state.png']}" />
+                                        </div>
+                                        <p>#{msg['noResultsFound']}</p>
+                                    </f:facet>
+                                    <p:column headerText="م" style="width:5%">
+                                        <p:outputLabel style="text-align:center" value="#{index + 1}"/>
+                                    </p:column>
+                                    <p:column headerText="permissionId" width="30%">
+                                        <h:outputText value="#{leadership.id}"/>
+                                    </p:column>
+                                    <p:column headerText="created date" width="15%">
+                                        <h:outputText value="#{leadership.createdDate}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="..." width="10%">
+
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </p:dialog>
+                </h:form>
+                <div class="ui-g-12">
+                    <h:form id="noPermissionForm" rendered="#{!p:ifAnyGranted('ROLE_PERMISSION_ADD_EDIT')}">
+                        <ui:include src="no-permission.xhtml"/>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</f:view>

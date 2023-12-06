@@ -1,0 +1,135 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <div id="sidebar-inner" class="sidebar-inner">
+        <div class="image-size">
+            <img src="#{resource['dp-layout/images/side-logo.png']}" />
+            <p class="side-logo-name">نظام التصميم</p>
+            <!-- 			<p class="side-logo-name">نظام التصميم</p> -->
+        </div>
+        <!-- accordian -->
+        <div class="scroll-acd">
+            <h:form>
+                <div id="accordian" class="accordian">
+                    <ul class="nav">
+
+
+                        <li class="">
+                            <h3><a  href="#section1"><img src="#{resource['dp-layout/images/sample-menu/form-img.svg']}" class="side-menu-svg-icon" /><label>Forms</label></a></h3>
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section2"><img src="#{resource['dp-layout/images/sample-menu/button.svg']}" class="side-menu-svg-icon" /><label>Buttons</label></a></h3>
+
+
+                        </li>
+
+                        <li class="">
+                            <h3><a href="#section3"><img src="#{resource['dp-layout/images/sample-menu/accordion-menu.svg']}" class="side-menu-svg-icon" /><label>Accordion</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section4"><img src="#{resource['dp-layout/images/sample-menu/tabs-.svg']}" class="side-menu-svg-icon" /><label>Tabs</label></a></h3>
+
+
+
+                        </li>
+
+                        <li class="">
+                            <h3><a href="#section5"><img src="#{resource['dp-layout/images/sample-menu/switch.svg']}" class="side-menu-svg-icon" /><label>Input 2</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section6"><img src="#{resource['dp-layout/images/sample-menu/tablet.svg']}" class="side-menu-svg-icon" /><label>Tables</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section7"><img src="#{resource['dp-layout/images/sample-menu/bar-chart.svg']}" class="side-menu-svg-icon" /><label>Charts</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section12"><i class='bx bxs-message-alt-error side-menu-font-icon'></i><label>Messages</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section10"><img src="#{resource['dp-layout/images/sample-menu/numbers.svg']}" class="side-menu-svg-icon" /><label>Steps</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section9"><i class='bx bx-windows side-menu-font-icon'></i><label>Modal</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section15"><img src="#{resource['dp-layout/images/sample-menu/google-forms.svg']}" class="side-menu-svg-icon" /><label>Result View</label></a></h3>
+
+
+
+                        </li>
+
+
+
+
+
+                        <li class="">
+                            <h3><a href="#section11"><i class='bx bxs-map side-menu-font-icon'></i><label>Maps</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section8"><i class='bx bxs-videos side-menu-font-icon'></i><label>Videos</label></a></h3>
+
+
+
+                        </li>
+                        <li class="">
+                            <h3><a href="#section13"><img src="#{resource['dp-layout/images/sample-menu/type.svg']}" class="side-menu-svg-icon" /><label>Documentation</label></a></h3>
+
+
+
+                        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+                    </ul>
+                </div>
+            </h:form>
+        </div>
+        <!-- bottom-btn -->
+        <h:form>
+            <div class="botttom-btn">
+                <p:commandButton  outcome="/login" icon="bx bx-log-out-circle" value="الخروج" class="dp-btn-logout" iconPos="right" ></p:commandButton> 
+
+                <!-- <button class="btn-set"><i class="fa fa-power-off"></i><p>Logout</p></button> -->
+                <!-- <button class="btn-set"><i class="fa fa-cog"></i><p>Settings</p></button> -->
+            </div>
+        </h:form>
+    </div>
+
+
+
+
+</ui:composition>

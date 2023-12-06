@@ -1,0 +1,123 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        template="/WEB-INF/template.xhtml"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+
+    <h:form id="addUserForm">
+        <p:growl life="5000" id="msg" showDetail="true"/>
+        <p:dialog id="addUserDlg" dynamic="true" widgetVar="addUserDlg" width="70%" modal="true" class="top" draggable="false">
+            <h:panelGroup id="searchPanel">
+                <div class="ui-g">
+                    <div class="ui-g-3">
+                        
+                        
+                        <span class="ui-float-label"> 
+                            <p:inputNumber value="#{permissionController.grpNumber}" thousandSeparator="" decimalPlaces="0"
+                                       id="emp_number" required="true" requiredMessage="الرجاء ادخال رقم الموظف" /> 
+                            <p:outputLabel value="رقم الموظف" />
+			</span>
+                        
+                    </div>
+                    <div class="ui-g-2">
+                        <p:commandButton  actionListener="#{permissionController.searchEmployee}"
+                                          value="بحث" class="dp-btn" icon="bx bx-search" iconPos="right"  process="@this emp_number" update="searchPanel"/>
+                    </div>
+                    <div class="ui-g-12">
+                        <p:message for="emp_number"/>
+                    </div>
+                </div>
+            <h:panelGroup id="employeePanel" rendered="#{!empty(permissionController.selectedEmployee)}">
+                <div class="ui-g">
+                    <div class="ui-g-1">
+                        <h:outputText  rendered="#{!empty(permissionController.selectedEmployee)}"
+                                       value="#{permissionController.selectedEmployee.id}"/>
+                    </div>
+                    <div class="ui-g-4">
+                        <h:outputText  rendered="#{!empty(permissionController.selectedEmployee)}"
+                                       value="#{permissionController.selectedEmployee.fullName}"/>
+                    </div>
+                    <div class="ui-g-3">
+                        <h:outputText  rendered="#{!empty(permissionController.selectedEmployee)}"
+                        value="#{permissionController.selectedEmployee.parentDepartment.shortName}"/>
+                    </div>
+                    <div class="ui-g-1">
+                        <p:commandLink rendered="#{!empty(permissionController.selectedEmployee)}"
+                                       actionListener="#{permissionController.addEmployee}" process="@this"
+                                       update="searchPanel toAddList :addUserForm:msg">
+                            <i class="fa fa-plus-circle fa-2x" aria-hidden="true" />
+                        </p:commandLink>
+                    </div>
+                    </div>
+            </h:panelGroup>
+                <div class="ui-g">
+                    <div class="ui-g-6">
+                        <p:fileUpload  required="true" listener="#{permissionController.handleUploadEmployeeFile}" styleClass="file-upload-2"
+                                       uploadLabel="إرفاق ملف للموظفين" label="إرفاق ملف للموظفين" auto="true" process="@this"  sizeLimit="5000000"
+                                       update="emp_number toAddList :addUserForm:msg"
+                                       allowTypes="/(\.|\/)(xlsx)$/" validatorMessage="ملف غير صالح"
+                                       invalidFileMessage=" ملف غير صالح من فضللك أختر ملف اكسيل ينتهى  ب (.xlst )" invalidSizeMessage="حجم ملف غير صالح"/>
+                    </div>
+                    <div class="ui-g-2" style="position: relative" >
+                        <div class="download-txt-link">
+                            <h:commandLink  id="downloadFileId" styleClass="download-emp-details"
+                                            immediate="true" actionListener="#{permissionController.downLoaEmployeeFile}" >
+                                <p:fileDownload value="#{permissionController.employeeFile}" />
+                                <i class="fa fa-file-excel-o fa-2x"/>
+                            </h:commandLink>
+                            <p:tooltip for="downloadFileId" value="تنزيل القالب الرئيسيى لإدخال الموظفين به ثم تحميله مرة ثانية"/>
+                        </div>
+                    </div>
+                </div>
+
+            </h:panelGroup>
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <p:dataTable id="toAddList" var="emp" rowIndexVar="index" paginatorPosition="bottom"
+                                 value="#{permissionController.toAddList}" paginator="true" rows="5"
+                                  paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+>
+                        <f:facet name="header">
+									Table Heading
+								</f:facet>
+                        <f:facet name="emptyMessage">
+                            <div class="datatable-empty-image">
+                                <img src="#{resource['/images/empty-state.png']}" width="20%" />
+                            </div>
+                            <p>#{msg['noResultsFound']}</p>
+                        </f:facet>
+                        <p:column headerText="م" style="width:5%">
+                            <p:outputLabel style="text-align:center" value="#{index + 1}"/>
+                        </p:column>
+                        <p:column headerText="رقم الموظف" width="15%">
+                            <h:outputText value="#{emp.id}"/>
+                        </p:column>
+                        <p:column headerText="اسم الموظف" width="40%">
+                            <h:outputText value="#{emp.fullName}"/>
+                        </p:column>
+                        <p:column headerText="الادارة / المركز" width="40%">
+                            <h:outputText value="#{emp.parentDepartment.shortName}"/>
+                        </p:column>
+                        <p:column headerText="..." width="5%">
+                            <p:commandLink process="@this" update="toAddList :addUserForm:msg" actionListener="#{permissionController.removeEmployeeFromToAddList(emp)}">
+                                <i class="fa fa-trash" aria-hidden="true"/>
+                            </p:commandLink>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </div>
+            <f:facet name="footer">
+                <div class="ui-g-12 ui-lg-12 btn-left">
+                    <p:commandButton class="dp-btn dp-btn-danger" icon="bx bx-x"  value="#{msg['cancel']}" ajax="false" onclick="PF('addUserDlg').hide();return false;" />
+                    <p:commandButton  value="إضافة" icon="bx bxs-save" class="dp-btn" process="@this"
+                                      update=":treeNodeFormId:userList :addUserForm:msg" actionListener="#{permissionController.saveList}" >
+                    </p:commandButton>
+                </div>
+            </f:facet>
+        </p:dialog>
+    </h:form>
+</f:view>
+
+
+

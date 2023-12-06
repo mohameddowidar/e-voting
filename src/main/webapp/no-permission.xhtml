@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <link rel="shortcut icon" type="image/png" href="#{resource['/images/fav.png']}"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+        </f:facet>
+        <title>No Permission</title>
+        <h:outputScript name="js/ripple.js" library="barcelona-layout"/>
+        <h:outputScript name="js/layout.js" library="barcelona-layout"/>
+    </h:head>
+
+    <style>
+        .login1-body{
+            height: 100%;
+            width: 100%;
+            background-color: #fff !important;
+        }
+        .login1-body .login-panel {
+            width: 460px;
+            margin: 0 auto;
+            padding-bottom: 20px;
+            -webkit-box-shadow: inherit !important;
+            -moz-box-shadow: inherit !important;
+            box-shadow: inherit !important;
+            margin-top: 0%;
+        }
+        /* error-pages */
+
+        .error-img-div{
+            width: 420px;
+            margin: 0 auto;
+            text-align: center;
+           
+        }
+        .error-img-div img {
+            height: auto;
+            width: 100%;
+        }
+        .error-img-div .logo img {
+            height: auto;
+            width: 50%;
+        }
+        .error-img-div p{
+            line-height: 21px;
+            font-size: 14px;
+            color: #000000;
+            font-family: '29ltbukraregular';
+        }
+        .arabic p {
+            line-height: 21px;
+            font-size: 14px;
+            color: #0cb779;
+            font-family: '29ltbukraregular';
+        }
+        .error-header{
+            font-size:40px;
+            text-align:center;
+            color:#0ab777;
+            margin-bottom: 0px;
+            font-family: '29ltbukraBold';
+        }
+        .error-header1{
+            font-size:40px;
+            text-align:center;
+            color:#000000;
+            margin-bottom: 4px;
+            font-family: '29ltbukraBold';
+        }
+
+        @media ( max-width : 780px) {
+            .error-img-div{
+                width: 80%;}
+        }
+        .cml-btn label{
+            font-family: '29ltbukrabold';
+            padding-left: 10px;
+            cursor: pointer;}
+
+    </style>
+    <h:body styleClass="login1-body">
+    <div class="ui-g">
+			<div class="ui-g-12">
+				
+						<div class="error-img-div">
+							<img src="#{resource['dp-layout/images/forbidden.svg']}" />
+							<h2 class="error-header mb-20 mt-30">
+							الدخول ممنوع
+						</h2>
+						  <p class="error-txt mb-20">
+					تم الإبلاغ عن هذه الصفحة على أنها تزوير ويب وتم<br/> حظرها حسب تفضيلات الأمان
+						  </p>
+						
+						<p:button value="الرجوع الى الصفحة الرئيسية" styleClass="dp-btn" />
+						</div>
+						
+						
+				
+			</div>
+		</div>
+
+    </h:body>
+</html>

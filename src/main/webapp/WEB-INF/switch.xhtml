@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui">
+    <h:form>
+        <!--	<p:inputSwitch />-->
+        <div class="top-main-menu">
+            <nav>
+                <ul>
+                    <li class="top-menu-item"><a href="#{request.contextPath}/pages/elections.xhtml">
+                        <span class="shield-key-icon"/>
+                        <i class="fa-solid fa-list-check icon-size"></i>
+                        إدارة الانتخابات
+                    </a></li>
+                    <li class="top-menu-item">
+                        <a href="#{request.contextPath}/pages/votes.xhtml" >
+                            <span class="shield-search-icon"/>
+                            <i class="fa-solid fa-folder-tree icon-size"></i>
+                            إدارة الأصوات
+                        </a>
+                    </li>
+                    <li class="top-menu-item">
+                        <a href="#{request.contextPath}/pages/candidates.xhtml">
+                            <span class="shield-search-icon"/>
+                            <i class="fa-solid fa-clock-rotate-left icon-size"></i>
+                            إدارة المرشحين
+                        </a>
+
+                    </li>
+                    <li class="top-menu-item">
+                        <a href="#{request.contextPath}/pages/voters.xhtml">
+                            <span class="shield-search-icon"/>
+                            <i class="fa-solid fa-laptop-code icon-size"></i>
+                            إدارة الناخبين
+                        </a>
+                    </li>
+                    <li class="top-menu-item">
+                        <a href="#{request.contextPath}/pages/add_vote.xhtml">
+                            <span class="shield-search-icon"/>
+                            <i class="fa-solid fa-laptop-code icon-size"></i>
+                              صوت الان 
+                        </a>
+                    </li>
+                    <li class="top-menu-item">
+                        <a href="#{request.contextPath}/login.xhtml">
+                            <span class="shield-search-icon"/>
+                            <i class="fa-solid fa-sign-out icon-size"></i>
+                            تسجيل خروج
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </h:form>
+</ui:composition>

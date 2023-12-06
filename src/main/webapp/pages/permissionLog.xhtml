@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:sec="http://www.springframework.org/security/tags"
+        xmlns:p="http://primefaces.org/ui" locale="ar">
+    <ui:composition template="/WEB-INF/template.xhtml">
+        <ui:define name="breadCrumb">
+            <h:form id="modeForm">
+                <p:breadCrumb>
+                    <p:menuitem url="/pm/index.xhtml" >
+                        <span class="mdi mdi-home mdi-24px"/>
+                    </p:menuitem>
+                </p:breadCrumb>
+            </h:form>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="mainForm" rendered="#{p:ifAnyGranted('PERMISSION_ADD_EMPLOYEE')}"  styleClass="full-width-form" >
+                <div class="wow zoomIn wHighlight animated web">
+                    <div class="ui-g">
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="60%">
+                            <p:commandButton value="نعم" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                            <p:commandButton value="لا" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                        </p:confirmDialog>
+                        <p:growl life="4000" id="message" showDetail="true" />
+                        <div class="ui-g-12">
+                            <div class="card" style="padding: 10px;">
+                                <div class="ui-g label-green" dir="rtl" id="searchDiv">
+
+                                    <div class="ui-g-3">
+
+
+                                        <span class="ui-float-label full-w-input "> 
+                                            <p:inputText id="permPath" value="#{permissionUserLogController.currentBreadcrumb}"   /> 
+                                            <p:outputLabel  value="" />
+                                        </span>
+
+
+                                    </div>
+                                    <div class="ui-g-1"><p:commandLink update=":treeForm:treeFormDlg" oncomplete="PF('treeFormDlg').show()" process="@this">
+                                            <i class="fa fa-align-justify fa-2x" style="padding-top: 10px;padding-left: 10px;" aria-hidden="true"/>
+                                        </p:commandLink>
+                                        <p:commandLink update=":mainForm:permPath" actionListener="#{permissionUserLogController.resetNode}"
+                                                       process="@this">
+                                            <i class="fa fa-times fa-2x" style="padding-top: 10px;" aria-hidden="true"/>
+                                        </p:commandLink></div>
+                                    <div class="ui-g-3">
+                                        <span class="ui-float-label full-w-input "> 
+                                            <p:inputText id="grpNum" value="#{permissionUserLogController.data.employeeNumber}" /> 
+                                            <p:outputLabel  value="رقم الموظف" />
+                                        </span>
+
+
+                                    </div>
+                                    <div class="ui-g-3">
+
+                                        <span class="ui-float-label full-w-input "> 
+                                            <p:inputText id="actionGrp" value="#{permissionUserLogController.data.actionBy}" /> 
+                                            <p:outputLabel  value="القائم بالفعل" />
+                                        </span>
+
+
+
+                                    </div>
+                                    <div class="ui-g-2">
+                                        <p:commandButton update="dataTable" process="@this,grpNum,actionGrp" value="البحث" icon="bx bx-search" styleClass="dp-btn mt-5"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-g-12">
+                            <div class="ui-g">
+                                <p:dataTable lazy="true" value="#{permissionUserLogController.data}" id="dataTable" paginator="true"
+                                             rows="10"
+                                             rowIndexVar="index"
+                                             paginatorPosition="bottom"
+                                             paginatorTemplate=" {JumpToPageInput}  &lt;div class='pg-text'&gt; انتقل إلى صفحة &lt;/div&gt; {CurrentPageReport} {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}  &lt;div class='dp-pg-text'&gt;الصفوف في كل صفحة: &lt;/div&gt; "
+                                             var="log">
+                                    <f:facet name="header">
+                                        السجل
+                                    </f:facet>
+                                    <f:facet name="emptyMessage">
+                                        <div class="datatable-empty-image">
+                                            <img src="#{resource['/images/empty-state.png']}" />
+                                        </div>
+                                        <p>#{msg['noResultsFound']}</p>
+                                    </f:facet>
+                                    <p:column headerText="م" style="width:5%">
+                                        <p:outputLabel style="text-align:center" value="#{index + 1}"/>
+                                    </p:column>
+                                    <p:column headerText="الأحقية" width="15%">
+                                        <h:outputText value="#{log.permissionPath}"/>
+                                    </p:column>
+                                    <p:column headerText="الموظف" width="15%">
+                                        <h:outputText value="#{log.employeeName}"/>
+                                    </p:column>
+                                    <p:column headerText="القائم بالفعل" width="30%">
+                                        <h:outputText value="#{log.actionByName}"/>
+                                    </p:column>
+                                    <p:column headerText="تاريخ اخر تحديث">
+                                        <h:outputText value="#{log.actionDate}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column headerText="نوع الحدث">
+                                        <h:outputText value="#{log.actionType==1?'منح أحقية':log.actionType==3?'سحب أحقية':'تعديل'}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            <div class="ui-g-12">
+                <h:form id="noPermissionForm" rendered="#{!p:ifAnyGranted('PERMISSION_ADD_EMPLOYEE')}">
+
+                    <ui:include src="../no-permission.xhtml"/>
+
+                </h:form>
+            </div>
+
+            <ui:include src="dlg/permissionTree.xhtml"/>
+        </ui:define>
+    </ui:composition>
+</f:view>

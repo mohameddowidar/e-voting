@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Election Search</ui:define>
+    <ui:define name="content">
+        <h:form id="electionSearchForm">
+            <p:growl id="messages" showDetail="true"/>
+            <div class="ui-g-12">
+                <div class="card">
+                    <div class="ui-g">
+                        <div class="ui-g-12 ui-lg-4">
+                            <label class="pure-material-textfield-outlined">
+                                <span>اسم المُرَشَّح</span>
+                                <p:inputText class=""
+                                             placeholder=" "
+                                             filter="true" required="false"
+                                             requiredMessage="اسم المُرَشَّح "
+                                             value="#{candidateMB.candidateLazyDataModel.searchDTO.title}">
+                                </p:inputText>
+                            </label>
+                        </div>
+                        <div class="ui-g-12 ui-lg-4">
+                            <label class="pure-material-textfield-outlined">
+                                <span>رقم الهوية الوطنية</span>
+                                <p:inputText class=""
+                                             placeholder=" "
+                                             filter="true" required="false"
+                                             requiredMessage="رقم الهوية الوطنية"
+                                             value="#{candidateMB.candidateLazyDataModel.searchDTO.nationalId}">
+                                </p:inputText>
+                            </label>
+                        </div>
+
+                        <div class="ui-g-12 ui-lg-8 btn-left">
+                            <p:commandButton styleClass="dp-btn mt-5" value="إعادة تعيين حقول البحث" icon="pi pi-sync" actionListener="#{candidateMB.clearSearchFields}" update="@form" />
+                            <p:commandButton styleClass="dp-btn mt-5" icon="pi pi-search" value="بحث" action="#{candidateMB.search}" update="electionTable" />
+                            <p:button icon="fa fa-plus" class="dp-btn" outcome="add_edit_candidate" value="إضافة مُرَشَّح" />
+                        </div>
+
+                        <p:dataTable var="candidate" value="#{candidateMB.candidateLazyDataModel}"
+                                     id="electionTable" paginator="true"
+                                     rows="5"
+                                     paginatorTemplate="{RowsPerPageDropdown} {LastPageLink}  {NextPageLink} {CurrentPageReport}  {PreviousPageLink} {FirstPageLink}"
+                                     rowsPerPageTemplate="20,40,60,80" lazy="true"
+                                     paginatorPosition="bottom" styleClass="fixed-size ui-ltr"
+                                     varStatus="index" metaKeySelection="false"
+                                     nativeElements="true" rowKey="#{candidate.id}"
+                                     dir="rtl">
+                            <f:facet name="header">
+                                جميع المُرَشَّحين
+                            </f:facet>
+                            <p:column headerText="عنوان الانتخابات">
+                                <h:outputText value="#{candidate.election.name}"/>
+                            </p:column>
+                            <p:column headerText="تاريخ بدء">
+                                <h:outputText value="#{candidate.election.startDate}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="تاريخ انتهاء">
+                                <h:outputText value="#{candidate.election.endDate}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="نوع الانتخابات">
+                                <h:outputText value="#{candidate.election.electionType}"/>
+                            </p:column>
+                            <p:column headerText=" اسم المُرَشَّح">
+                                <h:outputText value="#{candidate.voter.name}"/>
+                            </p:column>
+                            <p:column headerText="رقم الهوية الوطنية">
+                                <h:outputText value="#{candidate.voter.nationalId}"/>
+                            </p:column>
+                            <p:column headerText="تعديل" >
+                                <p:link outcome="add_edit_candidate">
+                                    <f:param name="candidateId" value="#{candidate.candidateId}"></f:param>
+                                    <i class="pi pi-user-edit" style="padding-left:4px;" aria-hidden="true"></i>
+                                </p:link>
+                            </p:column>
+                            <p:column headerText="حذف" >
+                                <p:commandLink actionListener="#{candidate.deleteCandidate(candidate)}" update="@form" immediate="true">
+                                    <p:confirm header="Confirmation" message="هل أنت متأكد؟"  icon="pi pi-user-edit"/>
+                                    <i class="pi pi-ban" style="padding-left:4px;" aria-hidden="true"></i>
+                                </p:commandLink>
+                            </p:column>
+                        </p:dataTable>
+                        <p:confirmDialog global="true" showEffect="fade"  hideEffect="fade">
+                            <p:commandButton value="نعم" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                            <p:commandButton value="لا" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                        </p:confirmDialog>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

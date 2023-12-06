@@ -1,0 +1,131 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+
+
+
+
+    <ui:define name="content">
+        <style>
+            /*Primefaces 12.0 */
+            .list-services{
+                width: 100%;
+                float: right;
+                position: relative;
+                display: block;
+                margin-top: 40px;
+                margin-bottom: 17vh;
+                display: flex;
+                justify-content: center;
+                margin-top: 90px;
+            }
+            .list-services ul li {
+                display: block;
+                float: right;
+                text-align: center;
+                background-color: #fff;
+                width: 240px;
+                height: 254px;
+                padding: 40px;
+                margin: 0 0 30px 30px;
+                border-radius: 8px;
+                box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 20%);
+                transition: all 0.3s ease-in-out;
+            }
+
+            .card-center-div .mdi:before{
+                font-size: 76px;
+                margin-bottom: 18px;
+                color: #0da06e;
+            }
+
+            .card-center-div {
+                top: 50%;
+                transform: translate(0%,-50%);
+                position: relative;
+            }
+
+            .bg-img {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            .icon-size-index{
+                font-size: 60px;
+                margin-bottom: 20px;
+                color:#0da06e;
+            }
+
+
+        </style>
+
+
+
+        <h1 style="text-align: center;
+            font-size: 3em;
+            margin-top: 1em;">
+            الهيئة الوطنية للانتخابات
+        </h1>
+        <div class="ui-g">
+            <div class="bg-img">
+                <img src="#{resource['images/help-bg.png']}"/>
+            </div> 
+            <div class="list-services">
+                <ul>
+                    <li>
+                        <div class="card-center-div">
+                            <a href="#{request.contextPath}/pages/elections.xhtml">
+                                <i class="fa-solid fa-list-check icon-size-index"></i>
+                                <p>إدارة الانتخابات</p>
+                            </a> </div>
+                    </li>
+                    <li>
+                        <div class="card-center-div">
+                            <a href="#{request.contextPath}/pages/votes.xhtml" >
+                                <i class="fa-solid fa-folder-tree icon-size-index"></i>
+                                <p>إدارة الأصوات</p>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card-center-div">
+                            <a href="#{request.contextPath}/pages/candidates.xhtml">
+                                <i class="fa-solid fa-clock-rotate-left icon-size-index"></i>
+                                <p>إدارة المرشحين</p>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card-center-div">
+                            <a href="#{request.contextPath}/pages/voters.xhtml">
+                                <i class="fa-solid fa-laptop-code icon-size-index"></i>
+                                <p>إدارة الناخبين</p>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card-center-div">
+                            <a href="#{request.contextPath}/pages/add_vote.xhtml">
+                                <i class="fa-solid fa-laptop-code icon-size-index"></i>
+                                <p>  صوت الان </p>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+    </ui:define>
+
+
+
+</ui:composition>
+
