@@ -1,0 +1,160 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+>
+
+    <h:head>
+        <f:facet name="first">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <link rel="shortcut icon" type="image/png" href="#{resource['dp-layout/images/fav.png']}"/>
+        </f:facet>
+        <title>الهيئة الوطنية للانتخابات</title>
+        <h:outputStylesheet name="css/dp-style.css" library="dp-layout"/>
+<style>
+    .login-body {
+        background: url('/resources/images/empty-state.png') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .styled-button {
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .styled-button:hover {
+        background-color: darkgreen;
+    }
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .styled-button {
+        /* ... existing styles ... */
+    }
+
+    .custom-alert-background {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        z-index: 999; /* Make sure it's above other content */
+    }
+
+    .custom-alert {
+        background-color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+        backdrop-filter: blur(10px); /* Blur effect */
+        width: 50%; /* Increased width */
+        max-width: 640px; /* Maximum width */
+        min-width: 300px; /* Minimum width */
+        margin: 10% auto; /* Centering */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        /* Other existing styles... */
+    }
+
+
+    .custom-alert button {
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .custom-alert button:hover {
+        background-color: darkgreen;
+    }
+
+</style>
+    </h:head>
+
+    <h:body styleClass="login-body">
+        <h1>خدمة التعرف على الوجه</h1>
+        <video id="video" width="640" height="480" autoplay="autoplay"></video>
+        <button id="capture" class="styled-button" >التقاط الصورة</button>
+        <canvas id="canvas" width="640" height="480"></canvas>
+        <br/>
+        <div class="button-container">
+            <button id="detect" class="styled-button">تحقق من الصورة</button>
+        </div>
+        <p id="result"></p>
+
+
+        <div id="customAlertBackground" class="custom-alert-background">
+            <div id="customAlert" class="custom-alert" style="display: none;">
+                <p>اكتملت عملية الكشف.
+                    مرحباً بمحمد السيد أحمد دويدار، يمكنك التصويت الآن</p>
+                <button onclick="redirectToIndex()">التصويت الآن</button>
+            </div>
+        </div>
+        <script>
+            navigator.mediaDevices.getUserMedia({video: true})
+                .then(function (stream) {
+                    var video = document.getElementById('video');
+                    video.srcObject = stream;
+                })
+                .catch(function (err) {
+                    console.log("An error occurred: " + err);
+                });
+
+            document.getElementById('capture').addEventListener('click', function () {
+                var video = document.getElementById('video');
+                var canvas = document.getElementById('canvas');
+                var context = canvas.getContext('2d');
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            });
+
+            document.getElementById('detect').addEventListener('click', function () {
+                var canvas = document.getElementById('canvas');
+                var imageData = canvas.toDataURL('image/jpeg');
+
+                fetch('/detect', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: 205171,
+                        image_data: imageData.split(',')[1],
+                    }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result) {
+                            document.getElementById('result').innerText = "Hi " + data.result;
+                        } else {
+                            document.getElementById('result').innerText = "Please try again.";
+                        }
+                        showCustomAlert();
+                    })
+                    .catch(error => {
+                        showCustomAlert();
+                        console.error('Error:', error);
+                        document.getElementById('result').innerText = "An error occurred. Please try again.";
+                    });
+            });
+            function redirectToIndex() {
+                window.location = 'index.xhtml';
+            }
+            function showCustomAlert() {
+                document.getElementById('customAlert').style.display = 'block';
+                document.getElementById('customAlertBackground').style.display = 'block';
+            }
+
+        </script>
+    </h:body>
+</ui:composition>

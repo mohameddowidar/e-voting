@@ -5,142 +5,136 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
-    <ui:define name="title">Dubai Police Smart CMS</ui:define>
+    <ui:define name="title">الهيئة الوطنية للانتخابات</ui:define>
     <ui:define name="breadCrumb">
         <p:breadCrumb>
             <p:menuitem value="Home" url="#"/>
         </p:breadCrumb>
     </ui:define>
     <ui:define name="content">
-        <div class="wow zoomIn wHighlight animated web">
-            <div class="ui-g fixed-div">
-                <div class="fixed-card">
-                    <div class="card card-style-2">
-                        <h:form id="voterFormId" styleClass="full-width-form" name="voterFormId" dir="RTL"
-                                style="width:100% !important">
-                            <div class="wow zoomIn wHighlight animated web">
-                                <div class="ui-g" id="searchDiv">
-                                    <div class="ui-g-12">
-                                        <div class="card">
-                                            <div class="ui-g">
-                                                <div class="ui-g-12 ui-lg-4">
-                                                    <label class="pure-material-textfield-outlined">
-                                                        <span>اسم الناخب</span>
-                                                        <p:inputText class=""
-                                                                     placeholder=" "
-                                                                     filter="true" required="false"
-                                                                     requiredMessage="اسم الناخب"
-                                                                     value="#{voterMB.voterLazyDataModel.searchDTO.title}">
-                                                        </p:inputText>
-                                                    </label>
-                                                </div>
-                                                <div class="ui-g-12 ui-lg-4">
-                                                    <label class="pure-material-textfield-outlined">
-                                                        <span>رقم الهوية الوطنية</span>
-                                                        <p:inputText class=""
-                                                                     placeholder=" "
-                                                                     filter="true" required="false"
-                                                                     requiredMessage="رقم الهوية الوطنية"
-                                                                     value="#{voterMB.voterLazyDataModel.searchDTO.nationalId}">
-                                                        </p:inputText>
-                                                    </label>
-                                                </div>
-                                                <div class="ui-g-12">
-                                                    <div class="ui-g-12 ui-lg-8 btn-left">
-                                                        <p:commandButton styleClass="dp-btn mt-5" value="بحث"
-                                                                         icon="pi pi-search"
-                                                                         update="voterFormId:voterSearchTable"
-                                                                         id="search-btn"/>
-                                                        <h:outputText value="&lt;/&gt;" escape="false"/>
-                                                        <p:button icon="pi pi-user-plus" class="dp-btn"
-                                                                  outcome="add_edit_voters" value="إضافة الناخب">
-                                                        </p:button>
-                                                        <p:commandButton styleClass="dp-btn mt-5"
-                                                                         value="إعادة تعيين حقول البحث"
-                                                                         icon="pi pi-sync"
-                                                                         actionListener="#{voterMB.clearSearchFields}"
-                                                                         update="@form"/>
-                                                    </div>
-                                                </div>
-                                                <div class="ui-g-12">
-                                                    <p:dataTable var="content"
-                                                                 value="#{voterMB.voterLazyDataModel}" paginator="true"
-                                                                 rows="5"
-                                                                 paginatorTemplate="{RowsPerPageDropdown} {LastPageLink}  {NextPageLink} {CurrentPageReport}  {PreviousPageLink} {FirstPageLink}"
-                                                                 rowsPerPageTemplate="20,40,60,80" id="voterSearchTable"
-                                                                 lazy="true"
-                                                                 paginatorPosition="bottom"
-                                                                 styleClass="fixed-size ui-ltr"
-                                                                 varStatus="index" metaKeySelection="false"
-                                                                 nativeElements="true" rowKey="#{content.id}"
-                                                                 dir="rtl">
-                                                        <f:facet name="header">
-                                                            جميع الناخبين
-                                                        </f:facet>
-                                                        <f:facet name="emptyMessage">
-                                                            <div class="datatable-empty-image">
-                                                                <img src="#{resource['/images/empty-state.png']}"/>
-                                                            </div>
-                                                            <p>لم يتم العثور على نتائج</p>
-                                                        </f:facet>
-                                                        <p:column headerText="اسم الناخب">
-                                                            <h:outputText value="#{content.name}"/>
-                                                        </p:column>
-
-                                                        <p:column headerText="تاريخ الميلاد">
-                                                            <h:outputText value="#{content.dateOfBirth}">
-                                                                <f:convertDateTime pattern="dd-MM-yyyy"/>
-                                                            </h:outputText>
-                                                        </p:column>
-
-                                                        <p:column headerText="عنوان">
-                                                            <h:outputText value="#{content.address}"/>
-                                                        </p:column>
-                                                        <p:column headerText="رقم التليفون">
-                                                            <h:outputText value="#{content.phoneNumber}"/>
-                                                        </p:column>
-                                                        <p:column headerText="رقم الهوية الوطنية">
-                                                            <h:outputText value="#{content.nationalId}"/>
-                                                        </p:column>
-                                                        <p:column headerText="عمر">
-                                                            <h:outputText value="#{content.age}"/>
-                                                        </p:column>
-                                                        <p:column headerText="تعديل">
-                                                            <p:link id="editMediaGalleryId"
-                                                                    outcome="add_edit_voters.xhtml">
-                                                                <f:param name="voterId"
-                                                                         value="#{content.voterId}"></f:param>
-                                                                <i class="pi pi-user-edit" style="padding-left:4px;"
-                                                                   aria-hidden="true"></i>
-                                                            </p:link>
-                                                        </p:column>
-                                                        <p:column headerText="حذف">
-                                                            <p:commandLink
-                                                                    actionListener="#{voterMB.deleteVoter(content)}"
-                                                                    update="@form" immediate="true">
-                                                                <p:confirm header="Confirmation" message="هل أنت متأكد؟"
-                                                                           icon="pi pi-user-edit"/>
-                                                                <i class="pi pi-ban" style="padding-left:4px;"
-                                                                   aria-hidden="true"></i>
-                                                            </p:commandLink>
-                                                        </p:column>
-                                                    </p:dataTable>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <p:confirmDialog global="true" showEffect="fade"
-                                                         hideEffect="fade">
-                                            <p:commandButton value="نعم" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                            <p:commandButton value="لا" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-                                        </p:confirmDialog>
+        <div class="card card-style-2">
+            <h:form id="voterFormId" styleClass="full-width-form" name="voterFormId" dir="RTL"
+                    style="width:100% !important">
+                <div class="wow zoomIn wHighlight animated web">
+                    <div class="ui-g" id="searchDiv">
+                        <div class="ui-g-12">
+                            <div class="card">
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-lg-4">
+                                        <label class="pure-material-textfield-outlined">
+                                            <span>اسم الناخب</span>
+                                            <p:inputText class=""
+                                                         placeholder=" "
+                                                         filter="true" required="false"
+                                                         requiredMessage="اسم الناخب"
+                                                         value="#{voterMB.voterLazyDataModel.searchDTO.title}">
+                                            </p:inputText>
+                                        </label>
                                     </div>
+                                    <div class="ui-g-12 ui-lg-4">
+                                        <label class="pure-material-textfield-outlined">
+                                            <span>رقم الهوية الوطنية</span>
+                                            <p:inputText class=""
+                                                         placeholder=" "
+                                                         filter="true" required="false"
+                                                         requiredMessage="رقم الهوية الوطنية"
+                                                         value="#{voterMB.voterLazyDataModel.searchDTO.nationalId}">
+                                            </p:inputText>
+                                        </label>
+                                    </div>
+                                    <div class="ui-g-12">
+                                        <div class="ui-g-12 ui-lg-8 btn-left">
+                                            <p:commandButton styleClass="dp-btn mt-5" value="بحث"
+                                                             icon="pi pi-search"
+                                                             update="voterFormId:voterSearchTable"
+                                                             id="search-btn"/>
+                                            <h:outputText value="&lt;/&gt;" escape="false"/>
+                                            <p:button icon="pi pi-user-plus" class="dp-btn"
+                                                      outcome="add_edit_voters" value="إضافة الناخب">
+                                            </p:button>
+                                            <p:commandButton styleClass="dp-btn mt-5"
+                                                             value="إعادة تعيين حقول البحث"
+                                                             icon="pi pi-sync"
+                                                             actionListener="#{voterMB.clearSearchFields}"
+                                                             update="@form"/>
+                                        </div>
+                                    </div>
+                                    <div class="ui-g-12">
+                                        <p:dataTable var="content"
+                                                     value="#{voterMB.voterLazyDataModel}" paginator="true"
+                                                     rows="5"
+                                                     paginatorTemplate="{RowsPerPageDropdown} {LastPageLink}  {NextPageLink} {CurrentPageReport}  {PreviousPageLink} {FirstPageLink}"
+                                                     rowsPerPageTemplate="20,40,60,80" id="voterSearchTable"
+                                                     lazy="true"
+                                                     paginatorPosition="bottom"
+                                                     styleClass="fixed-size ui-ltr"
+                                                     varStatus="index" metaKeySelection="false"
+                                                     nativeElements="true" rowKey="#{content.id}"
+                                                     dir="rtl">
+                                            <f:facet name="header">
+                                                جميع الناخبين
+                                            </f:facet>
+                                            <f:facet name="emptyMessage">
+                                                <div class="datatable-empty-image">
+                                                    <img src="#{resource['/images/empty-state.png']}"/>
+                                                </div>
+                                                <p>لم يتم العثور على نتائج</p>
+                                            </f:facet>
+                                            <p:column headerText="اسم الناخب">
+                                                <h:outputText value="#{content.name}"/>
+                                            </p:column>
 
+                                            <p:column headerText="تاريخ الميلاد">
+                                                <h:outputText value="#{content.dateOfBirth}">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                                </h:outputText>
+                                            </p:column>
+
+                                            <p:column headerText="عنوان">
+                                                <h:outputText value="#{content.address}"/>
+                                            </p:column>
+                                            <p:column headerText="رقم التليفون">
+                                                <h:outputText value="#{content.phoneNumber}"/>
+                                            </p:column>
+                                            <p:column headerText="رقم الهوية الوطنية">
+                                                <h:outputText value="#{content.nationalId}"/>
+                                            </p:column>
+                                            <p:column headerText="عمر">
+                                                <h:outputText value="#{content.age}"/>
+                                            </p:column>
+                                            <p:column headerText="تعديل">
+                                                <p:link id="editMediaGalleryId"
+                                                        outcome="add_edit_voters.xhtml">
+                                                    <f:param name="voterId"
+                                                             value="#{content.voterId}"></f:param>
+                                                    <i class="pi pi-user-edit" style="padding-left:4px;"
+                                                       aria-hidden="true"></i>
+                                                </p:link>
+                                            </p:column>
+                                            <p:column headerText="حذف">
+                                                <p:commandLink
+                                                        actionListener="#{voterMB.deleteVoter(content)}"
+                                                        update="@form" immediate="true">
+                                                    <p:confirm header="Confirmation" message="هل أنت متأكد؟"
+                                                               icon="pi pi-user-edit"/>
+                                                    <i class="pi pi-ban" style="padding-left:4px;"
+                                                       aria-hidden="true"></i>
+                                                </p:commandLink>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </div>
                                 </div>
                             </div>
-                        </h:form>
+                            <p:confirmDialog global="true" showEffect="fade"
+                                             hideEffect="fade">
+                                <p:commandButton value="نعم" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                                <p:commandButton value="لا" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                            </p:confirmDialog>
+                        </div>
+
                     </div>
                 </div>
-            </div>
+            </h:form>
         </div>
     </ui:define>
 

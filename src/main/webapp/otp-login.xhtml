@@ -26,20 +26,17 @@
                 <h:form role="form" id="f1" >
                     <p:growl id="msg" life="5000" />
                     <div class="ui-g form-login">
-                        <h4 class="login-heading">
-                            مرحبًا بكم في منصة التصويت الإلكترونية الرسمية في مصر
-                        </h4>
                         <div class="ui-g-12 ui-md-6 ui-lg-6">
                             <span class="ui-float-label full-w-input">
-                                <p:inputText value="#{loginBean.nationalId}" required="true"
-                                             id="user" requiredMessage="من فضلك ادخل  رقم الهوية الوطنية" />
-                                <p:outputLabel for="@previous" value="رقم الهوية الوطنية" />
+                                <p:inputText value="#{loginBean.otp}" required="true"
+                                             id="otpuser"
+                                             requiredMessage="الرجاء إدخال كلمة المرور لمرة واحدة (OTP) التي تم إرسالها إلى رقم هاتفك المحمول" />
+                                <p:outputLabel for="@previous" value=" كلمة المرور (OTP) التي تم إرسالها إلى رقم هاتفك " />
                             </span>
                         </div>
-
                         <div class="ui-g-12 button-container text-center text-center">
-                            <p:commandButton styleClass="dp-btn mt-5" value="دخول" update="msg f1  "
-                                             action="#{loginBean.login}" />
+                            <p:commandButton styleClass="dp-btn mt-5" value="دخول" process="otpuser"  update="msg f1  "
+                                             action="#{loginBean.otpLogin}" />
                         </div>
                     </div>
                 </h:form>

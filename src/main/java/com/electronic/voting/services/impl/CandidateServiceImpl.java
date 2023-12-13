@@ -36,13 +36,14 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public void delete(Integer id) {
-        candidateRepository.deleteById(id);
+        candidateRepository.deleteCandidateByCandidateId(id);
     }
 
     @Override
     public Page<Candidate> searchVCandidate(SearchDTO searchDTO, int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("createdDate").descending());
-        return candidateRepository.findAll(searchDTO.getNationalId(), searchDTO.getTitle(), pageable);
+        String searchString = (searchDTO.getTitle() == null) ? null : "%" + searchDTO.getTitle() + "%";
+        return candidateRepository.findAll(searchDTO.getNationalId(), searchString, pageable);
     }
 
     @Override

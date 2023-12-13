@@ -77,45 +77,15 @@
             </div> 
             <div class="list-services">
                 <ul>
-                    <li>
-                        <div class="card-center-div">
-                            <a href="#{request.contextPath}/pages/elections.xhtml">
-                                <i class="fa-solid fa-list-check icon-size-index"></i>
-                                <p>إدارة الانتخابات</p>
-                            </a> </div>
-                    </li>
-                    <li>
-                        <div class="card-center-div">
-                            <a href="#{request.contextPath}/pages/votes.xhtml" >
-                                <i class="fa-solid fa-folder-tree icon-size-index"></i>
-                                <p>إدارة الأصوات</p>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card-center-div">
-                            <a href="#{request.contextPath}/pages/candidates.xhtml">
-                                <i class="fa-solid fa-clock-rotate-left icon-size-index"></i>
-                                <p>إدارة المرشحين</p>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card-center-div">
-                            <a href="#{request.contextPath}/pages/voters.xhtml">
-                                <i class="fa-solid fa-laptop-code icon-size-index"></i>
-                                <p>إدارة الناخبين</p>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card-center-div">
-                            <a href="#{request.contextPath}/pages/add_vote.xhtml">
-                                <i class="fa-solid fa-laptop-code icon-size-index"></i>
-                                <p>  صوت الان </p>
-                            </a>
-                        </div>
-                    </li>
+                    <ui:repeat value="#{serviceBean.navList}" var="service" varStatus="status">
+                        <li>
+                            <div class="card-center-div">
+                                <a href="#{request.contextPath}/pages/#{service.url}">
+                                    <i class="fa-solid #{service.iconName} icon-size-index"></i>
+                                    <p> #{service.title} </p>
+                                </a> </div>
+                        </li>
+                    </ui:repeat>
                 </ul>
             </div>
         </div>

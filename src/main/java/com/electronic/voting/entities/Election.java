@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.primefaces.model.charts.pie.PieChartModel;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -42,5 +43,9 @@ public class Election {
 
     @OneToMany(mappedBy = "election", fetch = FetchType.EAGER)
     private Set<Candidate> candidates;
+
+
+    @Transient
+    private PieChartModel pieModel;
 
 }

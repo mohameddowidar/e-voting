@@ -41,4 +41,10 @@ public class Candidate {
     @UpdateTimestamp
     private Date updatedDate;
 
+    @Transient
+    private Number totalVotes;
+
+    @Transient
+    private String color;
+
 }

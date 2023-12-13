@@ -37,7 +37,7 @@ public class AddVoteMB {
     private List<Candidate> candidates;
     @PostConstruct
     public void init() {
-        this.elections = electionService.findAll();
+        this.elections = electionService.findCurrentElections();
     }
 
     public void setSelectedElection(Election selectedElection) {
@@ -56,6 +56,10 @@ public class AddVoteMB {
         vote.setVoterId(userId != null ? userId.intValue() : 0 );
         vote.setTimeStamp(new Date());
         voteService.saveVote(vote);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "تم اعادة تعيين البحث", null));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "تم التصويت ف الإنتخابات بنجاح .. شكرا لكم !  ", null));
+    }
+
+    public boolean hasVote(Integer electionId){
+        return voteService.hasVoted(electionId);
     }
 }

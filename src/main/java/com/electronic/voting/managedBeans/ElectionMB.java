@@ -35,7 +35,7 @@ public class ElectionMB {
 
     @PostConstruct
     public void init() {
-        electionTypes = Arrays.asList("الانتخابات الرئاسية", "نتخابات مجلس الشيوخ", "الانتخابات البرلمانية");
+        electionTypes = Arrays.asList("الانتخابات الرئاسية", "انتخابات مجلس الشيوخ", "الانتخابات البرلمانية");
         this.electionLazyDataModel.setSearchDTO(new SearchDTO());
         this.elections = electionService.findAll();
         FacesContext context = FacesContext.getCurrentInstance();
@@ -59,6 +59,10 @@ public class ElectionMB {
     }
 
     public void deleteElection(Election selectedElection) {
+        if(!selectedElection.getCandidates().isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("لا يمكن حذف الانتخابات لأن هناك مرشحين", null));
+            return;
+        }
         if (selectedElection != null && selectedElection.getElectionId() != null) {
             electionService.delete(selectedElection.getElectionId());
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "تم حذف الناخب ", null));
@@ -68,7 +72,13 @@ public class ElectionMB {
     }
 
     public void save() {
+        if(this.electionService.isThereActiveInitiativePeroidsBetweenDates(this.selectedElection.getElectionId(),
+                this.selectedElection.getStartDate(), this.selectedElection.getEndDate())) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(" يوجد فترة زمنية أخرى فى نفس التوقيت - من فضللك اختر مدة زمنية اخرى", null));
+            return;
+        }
+
         this.electionService.save(this.selectedElection);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "تم اعادة الناخب ", null));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "تمت إضافة الانتخابات بنجاح ", null));
     }
 }

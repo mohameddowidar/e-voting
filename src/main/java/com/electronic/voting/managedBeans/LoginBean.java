@@ -16,10 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.List;
 
 @Component
-@Scope("view")
+@Scope("session")
 @Data
 @Log
 public class LoginBean implements Serializable {
@@ -28,6 +29,9 @@ public class LoginBean implements Serializable {
     @Autowired
     private VoterService voterService;
     private String nationalId;
+    private String otp;
+    private String otpStored;
+    private  Voter authenticatedVoter;
 
     @PostConstruct
     public void init() {
@@ -40,19 +44,41 @@ public class LoginBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "برجاء إضافة رقم هوية مصري صالح", null));
             return;
         }
-        // Assuming the first match is the authenticated user
-        Voter authenticatedVoter = allByNationalIdContainingIgnoreCase.get(0);
+        this.authenticatedVoter = allByNationalIdContainingIgnoreCase.get(0);
         try {
-            // Set session attributes
+            this.otpStored= generateOtp(authenticatedVoter.getPhoneNumber());
+            FacesContext.getCurrentInstance().getExternalContext().redirect("otp-login.xhtml");
+        } catch (IOException e) {
+            log.severe("IOException during redirecting: " + e.getMessage());
+        }
+    }
+
+    public String generateOtp(String mobileNumber) {
+        String otp = String.valueOf(new SecureRandom().nextInt(899999) + 100000);
+        this.otpStored= otp;
+        log.severe("Generated OTP for Mobile Number ::: "+mobileNumber + "  <<<<<  ::: " + otp+ "  >>>  ::: ");
+        return otp;
+    }
+    public void otpLogin(){
+        try {
+            if(!this.otpStored.equalsIgnoreCase(this.otp)){
+                FacesContext.getCurrentInstance().addMessage(
+                        null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                                "الرجاء إدخال كلمة المرور الصحيحة التي تم إرسالها إلى رقم هاتفك المحمول",
+                                null));
+                return;
+            }
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
             session.setAttribute("USER_NAME", authenticatedVoter.getName());
-            session.setAttribute("DEPARTMENT_NAME", authenticatedVoter.getAddress()); // Assuming you have this info in Voter
-            session.setAttribute("ORGANIZATION_NAME", authenticatedVoter.getEmail()); // Assuming you have this info in Voter
+            session.setAttribute("DEPARTMENT_NAME", authenticatedVoter.getAddress());
+            session.setAttribute("ORGANIZATION_NAME", authenticatedVoter.getEmail());
             session.setAttribute("EMAIL_ADDRESS", authenticatedVoter.getEmail());
             session.setAttribute("PHONE_NUMBER", authenticatedVoter.getPhoneNumber());
             session.setAttribute("USER_ID", authenticatedVoter.getVoterId());
             session.setAttribute("NATIONAL_ID", authenticatedVoter.getNationalId());
-            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+            this.otpStored= null;
+            this.otp= null;
+            FacesContext.getCurrentInstance().getExternalContext().redirect("face-login.xhtml");
         } catch (IOException e) {
             log.severe("IOException during redirecting: " + e.getMessage());
         }
@@ -62,8 +88,9 @@ public class LoginBean implements Serializable {
         this.nationalId= null;
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         session.setAttribute("USER_ID", null);
+        session.setAttribute("NATIONAL_ID", null);
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("indexLanding.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/e-voting/login.xhtml");
         } catch (IOException e) {
             log.severe("IOException during redirecting: " + e.getMessage());
         }

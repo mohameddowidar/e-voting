@@ -26,7 +26,7 @@ public class VoterServiceImpl implements VoterService {
 
     @Override
     public void deleteVoter(Long voterId) {
-        voterRepository.deleteById(voterId);
+        voterRepository.deleteVoterByVoterId(voterId);
     }
 
     @Override
@@ -47,7 +47,8 @@ public class VoterServiceImpl implements VoterService {
     @Override
     public Page<Voter> searchVoters(SearchDTO searchDTO, int pageNumber, int pageSize) {
             Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by("createdDate").descending());
-            return voterRepository.findAll(searchDTO.getNationalId(), searchDTO.getTitle(), searchDTO.getFromDate(),searchDTO.getToDate(), pageable);
+        String searchString = (searchDTO.getTitle() == null) ? null : "%" + searchDTO.getTitle() + "%";
+            return voterRepository.findAll(searchDTO.getNationalId(), searchString, searchDTO.getFromDate(),searchDTO.getToDate(), pageable);
     }
 
     @Override

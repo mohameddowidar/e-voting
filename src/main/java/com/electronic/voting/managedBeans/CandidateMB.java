@@ -84,7 +84,7 @@ public class CandidateMB {
             return;
         this.assignElectionToCandidate();
         this.candidateService.save(this.selectedCandidate);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "تم اعادة الناخب ", null));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "تم إضافة المرشح بنجاح  ", null));
     }
 
     private boolean validateOnOtherValues() {
