@@ -24,7 +24,10 @@
 
             <div class="login-center-div" >
                 <h:form role="form" id="f1" >
-                    <p:growl id="msg" life="5000" />
+                    <p:messages id="messages" showDetail="true"  closable="true" styleClass="message-alert" >
+                        <p:effect type="clip" event="click" delay="500"/>
+                        <p:autoUpdate/>
+                    </p:messages>
                     <div class="ui-g form-login">
                         <div class="ui-g-12 ui-md-6 ui-lg-6">
                             <span class="ui-float-label full-w-input">
@@ -35,7 +38,7 @@
                             </span>
                         </div>
                         <div class="ui-g-12 button-container text-center text-center">
-                            <p:commandButton styleClass="dp-btn mt-5" value="دخول" process="otpuser"  update="msg f1  "
+                            <p:commandButton styleClass="dp-btn mt-5" value="دخول" process="otpuser"  update="@form"
                                              action="#{loginBean.otpLogin}" />
                         </div>
                     </div>
